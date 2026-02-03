@@ -1,200 +1,213 @@
 #!/usr/bin/env python3
 """
-IAM & Cybersecurity Job Scraper
-Aggregates job listings from various sources and outputs to jobs.json
+IAM & Cybersecurity Job Scraper - Adzuna Multi-Country Edition
+Pulls real jobs from Adzuna API across multiple countries
 """
 
 import json
 import requests
-from datetime import datetime, timedelta
+from datetime import datetime
 import time
-import random
+import os
 from typing import List, Dict
 
-# Job boards and search parameters
-JOB_SOURCES = {
-    'indeed': {
-        'base_url': 'https://api.indeed.com/ads/apisearch',
-        'keywords': ['IAM engineer', 'identity access management', 'cybersecurity', 'security engineer'],
-    },
-    'linkedin': {
-        'base_url': 'https://api.linkedin.com/v2/jobs',
-        'keywords': ['IAM', 'identity management', 'access management', 'cybersecurity'],
-    },
-    'dice': {
-        'base_url': 'https://www.dice.com/jobs',
-        'keywords': ['IAM', 'CIAM', 'PAM', 'identity governance'],
-    }
+# Adzuna API Configuration
+ADZUNA_APP_ID = os.getenv('ADZUNA_APP_ID', '')
+ADZUNA_APP_KEY = os.getenv('ADZUNA_APP_KEY', '')
+
+# Countries supported by Adzuna (country code: display name)
+ADZUNA_COUNTRIES = {
+    'us': 'United States',
+    'gb': 'United Kingdom',
+    'ca': 'Canada',
+    'au': 'Australia',
+    'de': 'Germany',
+    'fr': 'France',
+    'nl': 'Netherlands',
+    'nz': 'New Zealand',
+    'pl': 'Poland',
+    'at': 'Austria',
+    'ch': 'Switzerland',
+    'in': 'India',
+    'sg': 'Singapore',
+    'za': 'South Africa',
+    'br': 'Brazil',
+    'mx': 'Mexico',
+    'it': 'Italy',
+    'es': 'Spain'
 }
 
-# Sample companies that frequently hire for IAM/Security roles
-COMPANIES = [
-    'Microsoft', 'Okta', 'Ping Identity', 'SailPoint', 'CyberArk', 'ForgeRock',
-    'AWS', 'Google', 'Cisco', 'IBM', 'Oracle', 'Auth0',
-    'Deloitte', 'Accenture', 'Booz Allen', 'KPMG', 'PwC',
-    'Raytheon', 'Lockheed Martin', 'Northrop Grumman', 'Boeing',
-    'JPMorgan Chase', 'Bank of America', 'Wells Fargo', 'Capital One',
-    'Northeastern University', 'MIT', 'Stanford', 'Harvard'
+# Search keywords for IAM and Cybersecurity jobs
+SEARCH_KEYWORDS = [
+    'IAM engineer',
+    'identity access management',
+    'security engineer',
+    'cybersecurity',
+    'identity engineer',
+    'access management'
 ]
 
 def classify_job(title: str, description: str = '') -> Dict[str, str]:
-    """
-    Classify job by type, level, and other attributes based on title and description
-    """
+    """Classify job by type and level"""
     title_lower = title.lower()
     desc_lower = description.lower()
     combined = f"{title_lower} {desc_lower}"
     
-    # Determine job type
-    job_type = 'security'  # default
-    if any(word in title_lower for word in ['iam', 'identity', 'access management', 'idm', 'pam', 'privileged']):
+    # Job type
+    job_type = 'security'
+    if any(word in title_lower for word in ['iam', 'identity', 'access management', 'idm', 'pam', 'privileged', 'okta', 'sailpoint', 'ping', 'saviynt', 'cyberark']):
         job_type = 'iam'
-    elif any(word in title_lower for word in ['architect']):
+    elif 'architect' in title_lower:
         job_type = 'architect'
-    elif any(word in title_lower for word in ['analyst']):
+    elif 'analyst' in title_lower:
         job_type = 'analyst'
-    elif any(word in title_lower for word in ['consultant']):
+    elif 'consultant' in title_lower:
         job_type = 'consultant'
     
-    # Determine experience level
-    level = 'mid'  # default
-    if any(word in title_lower for word in ['junior', 'entry', 'associate', 'i ', ' i)']):
+    # Experience level
+    level = 'mid'
+    if any(word in title_lower for word in ['junior', 'entry', 'associate', 'graduate']):
         level = 'junior'
     elif any(word in title_lower for word in ['senior', 'sr.', 'sr ']):
         level = 'senior'
     elif any(word in title_lower for word in ['principal', 'staff', 'distinguished']):
         level = 'principal'
-    elif any(word in title_lower for word in ['lead', 'manager', 'director']):
+    elif any(word in title_lower for word in ['lead', 'manager', 'director', 'head']):
         level = 'lead'
     
-    # Determine clearance requirement
-    clearance = 'none'
-    if any(word in combined for word in ['ts/sci', 'top secret/sci', 'ts-sci']):
-        clearance = 'ts-sci'
-    elif any(word in combined for word in ['top secret', 'ts clearance']):
-        clearance = 'ts'
-    elif any(word in combined for word in ['secret clearance', 'security clearance']):
-        clearance = 'secret'
-    
-    # Determine location type
-    location_type = 'onsite'  # default
-    if any(word in combined for word in ['remote', '100% remote', 'work from home']):
+    # Location type
+    location_type = 'onsite'
+    if any(word in combined for word in ['remote', 'work from home', 'wfh', 'anywhere']):
         location_type = 'remote'
     elif any(word in combined for word in ['hybrid', 'flexible']):
         location_type = 'hybrid'
     
+    # Clearance
+    clearance = 'none'
+    if any(word in combined for word in ['ts/sci', 'ts-sci', 'top secret/sci']):
+        clearance = 'ts-sci'
+    elif 'top secret' in combined or 'ts clearance' in combined:
+        clearance = 'ts'
+    elif 'secret clearance' in combined or 'security clearance' in combined:
+        clearance = 'secret'
+    
     return {
         'type': job_type,
         'level': level,
-        'clearance': clearance,
-        'locationType': location_type
+        'locationType': location_type,
+        'clearance': clearance
     }
 
-def scrape_indeed_api(api_key: str = None) -> List[Dict]:
-    """
-    Scrape jobs from Indeed API (requires API key)
-    For demonstration, this returns sample data
-    """
-    # In production, you would use:
-    # response = requests.get(url, params=params, headers=headers)
-    
-    print("Fetching jobs from Indeed...")
-    return []
-
-def scrape_linkedin_api(access_token: str = None) -> List[Dict]:
-    """
-    Scrape jobs from LinkedIn API (requires OAuth)
-    For demonstration, this returns sample data
-    """
-    print("Fetching jobs from LinkedIn...")
-    return []
-
-def scrape_dice() -> List[Dict]:
-    """
-    Scrape jobs from Dice (web scraping)
-    For demonstration, this returns sample data
-    """
-    print("Fetching jobs from Dice...")
-    return []
-
-def scrape_company_careers(companies: List[str]) -> List[Dict]:
-    """
-    Scrape from company career pages
-    For demonstration, this returns sample data
-    """
-    print(f"Checking {len(companies)} company career pages...")
-    return []
-
-def generate_sample_jobs() -> List[Dict]:
-    """
-    Generate sample job data for demonstration
-    In production, this would be replaced with actual scraping
-    """
+def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10) -> List[Dict]:
+    """Search jobs in a specific country via Adzuna API"""
     jobs = []
     
-    # Sample job titles
-    job_titles = [
-        "Senior IAM Engineer",
-        "Identity & Access Management Architect",
-        "Cybersecurity Engineer - IAM",
-        "Principal Security Engineer",
-        "IAM Consultant",
-        "Identity Security Analyst",
-        "Privileged Access Management Engineer",
-        "Security Architect - Identity",
-        "IAM Technical Lead",
-        "Identity Governance Engineer"
-    ]
+    if not ADZUNA_APP_ID or not ADZUNA_APP_KEY:
+        print(f"  Skipping {country_code} - API keys not configured")
+        return []
     
-    locations = [
-        ("Remote", "remote"),
-        ("New York, NY", "hybrid"),
-        ("San Francisco, CA", "hybrid"),
-        ("Washington, DC", "onsite"),
-        ("Boston, MA", "hybrid"),
-        ("Seattle, WA", "remote"),
-        ("Chicago, IL", "hybrid"),
-        ("Austin, TX", "remote"),
-        ("Arlington, VA", "onsite"),
-        ("Denver, CO", "remote")
-    ]
-    
-    clearances = ['none', 'none', 'none', 'secret', 'ts', 'ts-sci']
-    
-    # Generate jobs
-    for i in range(25):
-        company = random.choice(COMPANIES)
-        title = random.choice(job_titles)
-        location, loc_type = random.choice(locations)
-        
-        classification = classify_job(title)
-        
-        job = {
-            'company': company,
-            'title': title,
-            'location': location,
-            'locationType': loc_type,
-            'type': classification['type'],
-            'level': classification['level'],
-            'clearance': random.choice(clearances),
-            'posted': (datetime.now() - timedelta(days=random.randint(0, 30))).strftime('%Y-%m-%d'),
-            'url': f'https://careers.example.com/job/{i}',
-            'description': f'Great opportunity for {title} at {company}'
+    try:
+        url = f"https://api.adzuna.com/v1/api/jobs/{country_code}/search/1"
+        params = {
+            'app_id': ADZUNA_APP_ID,
+            'app_key': ADZUNA_APP_KEY,
+            'results_per_page': max_results,
+            'what': keyword,
+            'content-type': 'application/json',
+            'sort_by': 'date'
         }
         
-        jobs.append(job)
+        response = requests.get(url, params=params, timeout=15)
+        
+        if response.status_code == 200:
+            data = response.json()
+            
+            for result in data.get('results', []):
+                try:
+                    classification = classify_job(
+                        result.get('title', ''),
+                        result.get('description', '')
+                    )
+                    
+                    # Extract location
+                    location_obj = result.get('location', {})
+                    location = location_obj.get('display_name', '') or location_obj.get('area', [''])[0]
+                    
+                    # If location empty, use country
+                    if not location:
+                        location = ADZUNA_COUNTRIES.get(country_code, 'Remote')
+                    
+                    job = {
+                        'company': result.get('company', {}).get('display_name', 'Unknown Company'),
+                        'title': result.get('title', 'Untitled Position'),
+                        'location': location,
+                        'locationType': classification['locationType'],
+                        'type': classification['type'],
+                        'level': classification['level'],
+                        'clearance': classification['clearance'],
+                        'posted': result.get('created', datetime.now().strftime('%Y-%m-%d')),
+                        'url': result.get('redirect_url', '#'),
+                        'description': result.get('description', '')[:300]
+                    }
+                    
+                    jobs.append(job)
+                    
+                except Exception as e:
+                    print(f"    Error processing job: {e}")
+                    continue
+            
+            print(f"  ✓ {country_code.upper()}: Found {len(jobs)} jobs for '{keyword}'")
+        else:
+            print(f"  ✗ {country_code.upper()}: API returned {response.status_code}")
+    
+    except requests.exceptions.Timeout:
+        print(f"  ✗ {country_code.upper()}: Request timeout")
+    except Exception as e:
+        print(f"  ✗ {country_code.upper()}: Error - {e}")
     
     return jobs
 
+def search_all_countries() -> List[Dict]:
+    """Search for jobs across all supported countries"""
+    all_jobs = []
+    
+    print("\n🌍 Searching jobs globally via Adzuna API...")
+    print("=" * 60)
+    
+    # Priority countries (search with more keywords)
+    priority_countries = ['us', 'gb', 'ca', 'de', 'in', 'au', 'sg']
+    priority_keywords = ['IAM engineer', 'identity management', 'security engineer']
+    
+    # Other countries (fewer searches to stay within rate limits)
+    other_countries = [code for code in ADZUNA_COUNTRIES.keys() if code not in priority_countries]
+    other_keywords = ['IAM engineer', 'cybersecurity']
+    
+    # Search priority countries
+    print("\n📍 Priority Countries (US, UK, CA, DE, IN, AU, SG):")
+    for country_code in priority_countries:
+        for keyword in priority_keywords:
+            jobs = search_adzuna_country(country_code, keyword, max_results=15)
+            all_jobs.extend(jobs)
+            time.sleep(1)  # Rate limiting - 1 request per second
+    
+    # Search other countries
+    print(f"\n📍 Other Countries ({len(other_countries)} countries):")
+    for country_code in other_countries:
+        for keyword in other_keywords:
+            jobs = search_adzuna_country(country_code, keyword, max_results=5)
+            all_jobs.extend(jobs)
+            time.sleep(1)  # Rate limiting
+    
+    return all_jobs
+
 def deduplicate_jobs(jobs: List[Dict]) -> List[Dict]:
-    """
-    Remove duplicate job listings based on company + title + location
-    """
+    """Remove duplicate jobs"""
     seen = set()
     unique_jobs = []
     
     for job in jobs:
-        key = (job['company'], job['title'], job['location'])
+        # Create unique key from company + title
+        key = (job['company'].lower().strip(), job['title'].lower().strip())
         if key not in seen:
             seen.add(key)
             unique_jobs.append(job)
@@ -202,40 +215,48 @@ def deduplicate_jobs(jobs: List[Dict]) -> List[Dict]:
     return unique_jobs
 
 def main():
-    """
-    Main scraping function
-    """
-    print("Starting IAM & Cybersecurity job scraper...")
+    """Main scraping function"""
+    print("=" * 60)
+    print("IAM & Cybersecurity Job Scraper - Global Edition")
+    print("Powered by Adzuna API")
     print("=" * 60)
     
-    all_jobs = []
-    
-    # In production, uncomment these to use real APIs
-    # all_jobs.extend(scrape_indeed_api())
-    # all_jobs.extend(scrape_linkedin_api())
-    # all_jobs.extend(scrape_dice())
-    # all_jobs.extend(scrape_company_careers(COMPANIES))
-    
-    # For demonstration, use sample data
-    all_jobs.extend(generate_sample_jobs())
+    # Check API keys
+    if not ADZUNA_APP_ID or not ADZUNA_APP_KEY:
+        print("\n⚠️  WARNING: Adzuna API keys not configured!")
+        print("Set these environment variables:")
+        print("  - ADZUNA_APP_ID")
+        print("  - ADZUNA_APP_KEY")
+        print("\nGet free API keys at: https://developer.adzuna.com/signup")
+        print("\nUsing fallback: generating sample international jobs...")
+        print("=" * 60)
+        
+        # Use sample data if no API keys
+        all_jobs = generate_sample_international_jobs()
+    else:
+        print(f"\n✓ API Keys configured")
+        print(f"  App ID: {ADZUNA_APP_ID[:8]}...")
+        
+        # Search all countries
+        all_jobs = search_all_countries()
     
     # Deduplicate
-    unique_jobs = deduplicate_jobs(all_jobs)
+    print(f"\n📊 Results:")
+    print(f"  Total jobs found: {len(all_jobs)}")
     
-    print(f"\nFound {len(all_jobs)} total jobs")
-    print(f"After deduplication: {len(unique_jobs)} unique jobs")
+    unique_jobs = deduplicate_jobs(all_jobs)
+    print(f"  After deduplication: {len(unique_jobs)}")
     
     # Sort by posted date (newest first)
-    unique_jobs.sort(key=lambda x: x['posted'], reverse=True)
+    unique_jobs.sort(key=lambda x: x.get('posted', ''), reverse=True)
     
-    # Create output data
+    # Create output
     output = {
         'lastUpdate': datetime.now().isoformat() + 'Z',
         'jobs': unique_jobs
     }
     
     # Write to file
-    import os
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
     output_file = os.path.join(project_root, 'data', 'jobs.json')
@@ -243,34 +264,110 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
     
-    print(f"\nJob data written to {output_file}")
-    print("=" * 60)
+    print(f"\n✓ Jobs written to: {output_file}")
     
-    # Print summary statistics
-    print("\nJob Summary:")
-    print(f"  Total jobs: {len(unique_jobs)}")
+    # Print summary by country
+    country_counts = {}
+    for job in unique_jobs:
+        # Extract country for stats
+        location = job.get('location', 'Unknown')
+        country_counts[location] = country_counts.get(location, 0) + 1
     
-    # Count by type
+    print("\n📍 Jobs by Location (top 10):")
+    sorted_countries = sorted(country_counts.items(), key=lambda x: x[1], reverse=True)[:10]
+    for location, count in sorted_countries:
+        print(f"  {location}: {count}")
+    
+    # Print by type
     type_counts = {}
     for job in unique_jobs:
         job_type = job.get('type', 'unknown')
         type_counts[job_type] = type_counts.get(job_type, 0) + 1
     
-    print("\n  By type:")
+    print("\n🔷 Jobs by Type:")
     for job_type, count in sorted(type_counts.items()):
-        print(f"    {job_type}: {count}")
+        print(f"  {job_type}: {count}")
     
-    # Count by location type
-    location_counts = {}
-    for job in unique_jobs:
-        loc_type = job.get('locationType', 'unknown')
-        location_counts[loc_type] = location_counts.get(loc_type, 0) + 1
+    print("\n" + "=" * 60)
+    print("✓ Scraping complete!")
+    print("=" * 60)
+
+def generate_sample_international_jobs() -> List[Dict]:
+    """Fallback: Generate sample jobs if API keys not available"""
+    from datetime import timedelta
     
-    print("\n  By location type:")
-    for loc_type, count in sorted(location_counts.items()):
-        print(f"    {loc_type}: {count}")
+    sample_jobs = [
+        # USA
+        {'company': 'Microsoft', 'title': 'Senior IAM Engineer', 'location': 'Redmond, WA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Google', 'title': 'Staff Security Engineer - Identity', 'location': 'Mountain View, CA', 'type': 'security', 'level': 'principal', 'locationType': 'hybrid'},
+        {'company': 'AWS', 'title': 'Senior IAM Engineer', 'location': 'Seattle, WA', 'type': 'iam', 'level': 'senior', 'locationType': 'remote'},
+        {'company': 'Okta', 'title': 'Principal IAM Architect', 'location': 'San Francisco, CA', 'type': 'architect', 'level': 'principal', 'locationType': 'remote'},
+        {'company': 'Northeastern University', 'title': 'Senior IAM Engineer', 'location': 'Boston, MA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'JPMorgan Chase', 'title': 'IAM Engineer', 'location': 'New York, NY', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'Capital One', 'title': 'Senior IAM Engineer', 'location': 'McLean, VA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Cisco', 'title': 'Principal IAM Engineer', 'location': 'San Jose, CA', 'type': 'iam', 'level': 'principal', 'locationType': 'hybrid'},
+        {'company': 'Raytheon', 'title': 'Cybersecurity IAM Engineer', 'location': 'Arlington, VA', 'type': 'iam', 'level': 'mid', 'locationType': 'onsite'},
+        {'company': 'Lockheed Martin', 'title': 'Security Engineer - IAM', 'location': 'Fort Worth, TX', 'type': 'security', 'level': 'mid', 'locationType': 'onsite'},
+        
+        # UK
+        {'company': 'HSBC', 'title': 'Senior IAM Engineer', 'location': 'London, United Kingdom', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Barclays', 'title': 'IAM Architect', 'location': 'London, UK', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Lloyds Banking Group', 'title': 'IAM Security Engineer', 'location': 'Edinburgh, United Kingdom', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'BBC', 'title': 'Cybersecurity IAM Specialist', 'location': 'Manchester, UK', 'type': 'security', 'level': 'mid', 'locationType': 'hybrid'},
+        
+        # Canada
+        {'company': 'Shopify', 'title': 'Senior Security Engineer - Identity', 'location': 'Toronto, Canada', 'type': 'security', 'level': 'senior', 'locationType': 'remote'},
+        {'company': 'RBC', 'title': 'IAM Architect', 'location': 'Toronto, ON', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'TD Bank', 'title': 'Identity Management Engineer', 'location': 'Vancouver, BC', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        
+        # Germany
+        {'company': 'SAP', 'title': 'IAM Solutions Architect', 'location': 'Berlin, Germany', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Siemens', 'title': 'Cybersecurity IAM Engineer', 'location': 'Munich, Germany', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        
+        # France
+        {'company': 'BNP Paribas', 'title': 'IAM Security Specialist', 'location': 'Paris, France', 'type': 'security', 'level': 'mid', 'locationType': 'hybrid'},
+        
+        # India
+        {'company': 'Tata Consultancy Services', 'title': 'Senior IAM Consultant', 'location': 'Mumbai, India', 'type': 'consultant', 'level': 'senior', 'locationType': 'onsite'},
+        {'company': 'Infosys', 'title': 'IAM Lead', 'location': 'Bangalore, India', 'type': 'lead', 'level': 'lead', 'locationType': 'hybrid'},
+        {'company': 'Wipro', 'title': 'Cybersecurity IAM Engineer', 'location': 'Hyderabad, India', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        
+        # Singapore
+        {'company': 'DBS Bank', 'title': 'Principal IAM Architect', 'location': 'Singapore', 'type': 'architect', 'level': 'principal', 'locationType': 'hybrid'},
+        {'company': 'Grab', 'title': 'Senior Security Engineer', 'location': 'Singapore', 'type': 'security', 'level': 'senior', 'locationType': 'hybrid'},
+        
+        # Australia
+        {'company': 'Commonwealth Bank', 'title': 'IAM Security Engineer', 'location': 'Sydney, Australia', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'ANZ Bank', 'title': 'Senior Identity Engineer', 'location': 'Melbourne, Australia', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
+        
+        # Spain
+        {'company': 'Banco Santander', 'title': 'IAM Solutions Architect', 'location': 'Madrid, Spain', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
+        
+        # Netherlands
+        {'company': 'ING Group', 'title': 'Cybersecurity IAM Engineer', 'location': 'Amsterdam, Netherlands', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        
+        # Switzerland
+        {'company': 'Credit Suisse', 'title': 'Senior IAM Engineer', 'location': 'Zurich, Switzerland', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'}
+    ]
     
-    print("\nScraping complete!")
+    jobs = []
+    for i, base in enumerate(sample_jobs):
+        job = {
+            'company': base['company'],
+            'title': base['title'],
+            'location': base['location'],
+            'locationType': base['locationType'],
+            'type': base['type'],
+            'level': base['level'],
+            'clearance': 'ts' if 'Arlington' in base['location'] or 'Fort Worth' in base['location'] else 'none',
+            'posted': (datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d'),
+            'url': f'https://careers.example.com/job/{i}',
+            'description': f'Great opportunity at {base["company"]}'
+        }
+        jobs.append(job)
+    
+    return jobs
 
 if __name__ == '__main__':
     main()
+    
