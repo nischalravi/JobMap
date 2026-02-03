@@ -6,7 +6,7 @@ Pulls real jobs from Adzuna API across multiple countries
 
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 import os
 from typing import List, Dict
@@ -36,16 +36,6 @@ ADZUNA_COUNTRIES = {
     'it': 'Italy',
     'es': 'Spain'
 }
-
-# Search keywords for IAM and Cybersecurity jobs
-SEARCH_KEYWORDS = [
-    'IAM engineer',
-    'identity access management',
-    'security engineer',
-    'cybersecurity',
-    'identity engineer',
-    'access management'
-]
 
 def classify_job(title: str, description: str = '') -> Dict[str, str]:
     """Classify job by type and level"""
@@ -214,87 +204,8 @@ def deduplicate_jobs(jobs: List[Dict]) -> List[Dict]:
     
     return unique_jobs
 
-def main():
-    """Main scraping function"""
-    print("=" * 60)
-    print("IAM & Cybersecurity Job Scraper - Global Edition")
-    print("Powered by Adzuna API")
-    print("=" * 60)
-    
-    # Check API keys
-    if not ADZUNA_APP_ID or not ADZUNA_APP_KEY:
-        print("\n⚠️  WARNING: Adzuna API keys not configured!")
-        print("Set these environment variables:")
-        print("  - ADZUNA_APP_ID")
-        print("  - ADZUNA_APP_KEY")
-        print("\nGet free API keys at: https://developer.adzuna.com/signup")
-        print("\nUsing fallback: generating sample international jobs...")
-        print("=" * 60)
-        
-        # Use sample data if no API keys
-        all_jobs = generate_sample_international_jobs()
-    else:
-        print(f"\n✓ API Keys configured")
-        print(f"  App ID: {ADZUNA_APP_ID[:8]}...")
-        
-        # Search all countries
-        all_jobs = search_all_countries()
-    
-    # Deduplicate
-    print(f"\n📊 Results:")
-    print(f"  Total jobs found: {len(all_jobs)}")
-    
-    unique_jobs = deduplicate_jobs(all_jobs)
-    print(f"  After deduplication: {len(unique_jobs)}")
-    
-    # Sort by posted date (newest first)
-    unique_jobs.sort(key=lambda x: x.get('posted', ''), reverse=True)
-    
-    # Create output
-    output = {
-        'lastUpdate': datetime.now().isoformat() + 'Z',
-        'jobs': unique_jobs
-    }
-    
-    # Write to file
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(script_dir)
-    output_file = os.path.join(project_root, 'data', 'jobs.json')
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-    
-    print(f"\n✓ Jobs written to: {output_file}")
-    
-    # Print summary by country
-    country_counts = {}
-    for job in unique_jobs:
-        # Extract country for stats
-        location = job.get('location', 'Unknown')
-        country_counts[location] = country_counts.get(location, 0) + 1
-    
-    print("\n📍 Jobs by Location (top 10):")
-    sorted_countries = sorted(country_counts.items(), key=lambda x: x[1], reverse=True)[:10]
-    for location, count in sorted_countries:
-        print(f"  {location}: {count}")
-    
-    # Print by type
-    type_counts = {}
-    for job in unique_jobs:
-        job_type = job.get('type', 'unknown')
-        type_counts[job_type] = type_counts.get(job_type, 0) + 1
-    
-    print("\n🔷 Jobs by Type:")
-    for job_type, count in sorted(type_counts.items()):
-        print(f"  {job_type}: {count}")
-    
-    print("\n" + "=" * 60)
-    print("✓ Scraping complete!")
-    print("=" * 60)
-
 def generate_sample_international_jobs() -> List[Dict]:
     """Fallback: Generate sample jobs if API keys not available"""
-    from datetime import timedelta
     
     sample_jobs = [
         # USA
@@ -367,6 +278,83 @@ def generate_sample_international_jobs() -> List[Dict]:
         jobs.append(job)
     
     return jobs
+
+def main():
+    """Main scraping function"""
+    print("=" * 60)
+    print("IAM & Cybersecurity Job Scraper - Global Edition")
+    print("Powered by Adzuna API")
+    print("=" * 60)
+    
+    # Check API keys
+    if not ADZUNA_APP_ID or not ADZUNA_APP_KEY:
+        print("\n⚠️  WARNING: Adzuna API keys not configured!")
+        print("Set these environment variables:")
+        print("  - ADZUNA_APP_ID")
+        print("  - ADZUNA_APP_KEY")
+        print("\nGet free API keys at: https://developer.adzuna.com/signup")
+        print("\nUsing fallback: generating sample international jobs...")
+        print("=" * 60)
+        
+        # Use sample data if no API keys
+        all_jobs = generate_sample_international_jobs()
+    else:
+        print(f"\n✓ API Keys configured")
+        print(f"  App ID: {ADZUNA_APP_ID[:8]}...")
+        
+        # Search all countries
+        all_jobs = search_all_countries()
+    
+    # Deduplicate
+    print(f"\n📊 Results:")
+    print(f"  Total jobs found: {len(all_jobs)}")
+    
+    unique_jobs = deduplicate_jobs(all_jobs)
+    print(f"  After deduplication: {len(unique_jobs)}")
+    
+    # Sort by posted date (newest first)
+    unique_jobs.sort(key=lambda x: x.get('posted', ''), reverse=True)
+    
+    # Create output
+    output = {
+        'lastUpdate': datetime.now().isoformat() + 'Z',
+        'jobs': unique_jobs
+    }
+    
+    # Write to file
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    output_file = os.path.join(project_root, 'data', 'jobs.json')
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+    
+    print(f"\n✓ Jobs written to: {output_file}")
+    
+    # Print summary by location
+    location_counts = {}
+    for job in unique_jobs:
+        location = job.get('location', 'Unknown')
+        location_counts[location] = location_counts.get(location, 0) + 1
+    
+    print("\n📍 Jobs by Location (top 15):")
+    sorted_locations = sorted(location_counts.items(), key=lambda x: x[1], reverse=True)[:15]
+    for location, count in sorted_locations:
+        print(f"  {location}: {count}")
+    
+    # Print by type
+    type_counts = {}
+    for job in unique_jobs:
+        job_type = job.get('type', 'unknown')
+        type_counts[job_type] = type_counts.get(job_type, 0) + 1
+    
+    print("\n🔷 Jobs by Type:")
+    for job_type, count in sorted(type_counts.items()):
+        print(f"  {job_type}: {count}")
+    
+    print("\n" + "=" * 60)
+    print("✓ Scraping complete!")
+    print("=" * 60)
 
 if __name__ == '__main__':
     main()
