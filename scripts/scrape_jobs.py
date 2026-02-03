@@ -209,56 +209,56 @@ def generate_sample_international_jobs() -> List[Dict]:
     
     sample_jobs = [
         # USA
-        {'company': 'Microsoft', 'title': 'Senior IAM Engineer', 'location': 'Redmond, WA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'Google', 'title': 'Staff Security Engineer - Identity', 'location': 'Mountain View, CA', 'type': 'security', 'level': 'principal', 'locationType': 'hybrid'},
-        {'company': 'AWS', 'title': 'Senior IAM Engineer', 'location': 'Seattle, WA', 'type': 'iam', 'level': 'senior', 'locationType': 'remote'},
-        {'company': 'Okta', 'title': 'Principal IAM Architect', 'location': 'San Francisco, CA', 'type': 'architect', 'level': 'principal', 'locationType': 'remote'},
-        {'company': 'Northeastern University', 'title': 'Senior IAM Engineer', 'location': 'Boston, MA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'JPMorgan Chase', 'title': 'IAM Engineer', 'location': 'New York, NY', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
-        {'company': 'Capital One', 'title': 'Senior IAM Engineer', 'location': 'McLean, VA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'Cisco', 'title': 'Principal IAM Engineer', 'location': 'San Jose, CA', 'type': 'iam', 'level': 'principal', 'locationType': 'hybrid'},
-        {'company': 'Raytheon', 'title': 'Cybersecurity IAM Engineer', 'location': 'Arlington, VA', 'type': 'iam', 'level': 'mid', 'locationType': 'onsite'},
-        {'company': 'Lockheed Martin', 'title': 'Security Engineer - IAM', 'location': 'Fort Worth, TX', 'type': 'security', 'level': 'mid', 'locationType': 'onsite'},
+        {'company': 'Microsoft', 'title': 'Senior IAM Engineer', 'location': 'Redmond, WA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://careers.microsoft.com/'},
+        {'company': 'Google', 'title': 'Staff Security Engineer - Identity', 'location': 'Mountain View, CA', 'type': 'security', 'level': 'principal', 'locationType': 'hybrid', 'url': 'https://careers.google.com/'},
+        {'company': 'AWS', 'title': 'Senior IAM Engineer', 'location': 'Seattle, WA', 'type': 'iam', 'level': 'senior', 'locationType': 'remote', 'url': 'https://www.amazon.jobs/'},
+        {'company': 'Okta', 'title': 'Principal IAM Architect', 'location': 'San Francisco, CA', 'type': 'architect', 'level': 'principal', 'locationType': 'remote', 'url': 'https://www.okta.com/company/careers/'},
+        {'company': 'Northeastern University', 'title': 'Senior IAM Engineer', 'location': 'Boston, MA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://northeastern.wd1.myworkdayjobs.com/careers'},
+        {'company': 'JPMorgan Chase', 'title': 'IAM Engineer', 'location': 'New York, NY', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://careers.jpmorgan.com/'},
+        {'company': 'Capital One', 'title': 'Senior IAM Engineer', 'location': 'McLean, VA', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://www.capitalonecareers.com/'},
+        {'company': 'Cisco', 'title': 'Principal IAM Engineer', 'location': 'San Jose, CA', 'type': 'iam', 'level': 'principal', 'locationType': 'hybrid', 'url': 'https://jobs.cisco.com/'},
+        {'company': 'Raytheon', 'title': 'Cybersecurity IAM Engineer', 'location': 'Arlington, VA', 'type': 'iam', 'level': 'mid', 'locationType': 'onsite', 'url': 'https://careers.rtx.com/'},
+        {'company': 'Lockheed Martin', 'title': 'Security Engineer - IAM', 'location': 'Fort Worth, TX', 'type': 'security', 'level': 'mid', 'locationType': 'onsite', 'url': 'https://www.lockheedmartinjobs.com/'},
         
         # UK
-        {'company': 'HSBC', 'title': 'Senior IAM Engineer', 'location': 'London, United Kingdom', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'Barclays', 'title': 'IAM Architect', 'location': 'London, UK', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'Lloyds Banking Group', 'title': 'IAM Security Engineer', 'location': 'Edinburgh, United Kingdom', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
-        {'company': 'BBC', 'title': 'Cybersecurity IAM Specialist', 'location': 'Manchester, UK', 'type': 'security', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'HSBC', 'title': 'Senior IAM Engineer', 'location': 'London, United Kingdom', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://www.hsbc.com/careers'},
+        {'company': 'Barclays', 'title': 'IAM Architect', 'location': 'London, UK', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://joinus.barclays/'},
+        {'company': 'Lloyds Banking Group', 'title': 'IAM Security Engineer', 'location': 'Edinburgh, United Kingdom', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://www.lloydsbankinggroup.com/careers.html'},
+        {'company': 'BBC', 'title': 'Cybersecurity IAM Specialist', 'location': 'Manchester, UK', 'type': 'security', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://careers.bbc.co.uk/'},
         
         # Canada
-        {'company': 'Shopify', 'title': 'Senior Security Engineer - Identity', 'location': 'Toronto, Canada', 'type': 'security', 'level': 'senior', 'locationType': 'remote'},
-        {'company': 'RBC', 'title': 'IAM Architect', 'location': 'Toronto, ON', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'TD Bank', 'title': 'Identity Management Engineer', 'location': 'Vancouver, BC', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'Shopify', 'title': 'Senior Security Engineer - Identity', 'location': 'Toronto, Canada', 'type': 'security', 'level': 'senior', 'locationType': 'remote', 'url': 'https://www.shopify.com/careers'},
+        {'company': 'RBC', 'title': 'IAM Architect', 'location': 'Toronto, ON', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://jobs.rbc.com/'},
+        {'company': 'TD Bank', 'title': 'Identity Management Engineer', 'location': 'Vancouver, BC', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://jobs.td.com/'},
         
         # Germany
-        {'company': 'SAP', 'title': 'IAM Solutions Architect', 'location': 'Berlin, Germany', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
-        {'company': 'Siemens', 'title': 'Cybersecurity IAM Engineer', 'location': 'Munich, Germany', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'SAP', 'title': 'IAM Solutions Architect', 'location': 'Berlin, Germany', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://jobs.sap.com/'},
+        {'company': 'Siemens', 'title': 'Cybersecurity IAM Engineer', 'location': 'Munich, Germany', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://www.siemens.com/global/en/company/jobs.html'},
         
         # France
-        {'company': 'BNP Paribas', 'title': 'IAM Security Specialist', 'location': 'Paris, France', 'type': 'security', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'BNP Paribas', 'title': 'IAM Security Specialist', 'location': 'Paris, France', 'type': 'security', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://group.bnpparibas/en/careers'},
         
         # India
-        {'company': 'Tata Consultancy Services', 'title': 'Senior IAM Consultant', 'location': 'Mumbai, India', 'type': 'consultant', 'level': 'senior', 'locationType': 'onsite'},
-        {'company': 'Infosys', 'title': 'IAM Lead', 'location': 'Bangalore, India', 'type': 'lead', 'level': 'lead', 'locationType': 'hybrid'},
-        {'company': 'Wipro', 'title': 'Cybersecurity IAM Engineer', 'location': 'Hyderabad, India', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'Tata Consultancy Services', 'title': 'Senior IAM Consultant', 'location': 'Mumbai, India', 'type': 'consultant', 'level': 'senior', 'locationType': 'onsite', 'url': 'https://www.tcs.com/careers'},
+        {'company': 'Infosys', 'title': 'IAM Lead', 'location': 'Bangalore, India', 'type': 'lead', 'level': 'lead', 'locationType': 'hybrid', 'url': 'https://www.infosys.com/careers/'},
+        {'company': 'Wipro', 'title': 'Cybersecurity IAM Engineer', 'location': 'Hyderabad, India', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://careers.wipro.com/'},
         
         # Singapore
-        {'company': 'DBS Bank', 'title': 'Principal IAM Architect', 'location': 'Singapore', 'type': 'architect', 'level': 'principal', 'locationType': 'hybrid'},
-        {'company': 'Grab', 'title': 'Senior Security Engineer', 'location': 'Singapore', 'type': 'security', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'DBS Bank', 'title': 'Principal IAM Architect', 'location': 'Singapore', 'type': 'architect', 'level': 'principal', 'locationType': 'hybrid', 'url': 'https://www.dbs.com/careers/'},
+        {'company': 'Grab', 'title': 'Senior Security Engineer', 'location': 'Singapore', 'type': 'security', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://grab.careers/'},
         
         # Australia
-        {'company': 'Commonwealth Bank', 'title': 'IAM Security Engineer', 'location': 'Sydney, Australia', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
-        {'company': 'ANZ Bank', 'title': 'Senior Identity Engineer', 'location': 'Melbourne, Australia', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Commonwealth Bank', 'title': 'IAM Security Engineer', 'location': 'Sydney, Australia', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://www.commbank.com.au/about-us/careers.html'},
+        {'company': 'ANZ Bank', 'title': 'Senior Identity Engineer', 'location': 'Melbourne, Australia', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://www.anz.com/about-us/careers/'},
         
         # Spain
-        {'company': 'Banco Santander', 'title': 'IAM Solutions Architect', 'location': 'Madrid, Spain', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid'},
+        {'company': 'Banco Santander', 'title': 'IAM Solutions Architect', 'location': 'Madrid, Spain', 'type': 'architect', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://www.santander.com/en/careers'},
         
         # Netherlands
-        {'company': 'ING Group', 'title': 'Cybersecurity IAM Engineer', 'location': 'Amsterdam, Netherlands', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid'},
+        {'company': 'ING Group', 'title': 'Cybersecurity IAM Engineer', 'location': 'Amsterdam, Netherlands', 'type': 'iam', 'level': 'mid', 'locationType': 'hybrid', 'url': 'https://www.ing.jobs/'},
         
         # Switzerland
-        {'company': 'Credit Suisse', 'title': 'Senior IAM Engineer', 'location': 'Zurich, Switzerland', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid'}
+        {'company': 'Credit Suisse', 'title': 'Senior IAM Engineer', 'location': 'Zurich, Switzerland', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://www.credit-suisse.com/careers'}
     ]
     
     jobs = []
@@ -272,7 +272,7 @@ def generate_sample_international_jobs() -> List[Dict]:
             'level': base['level'],
             'clearance': 'ts' if 'Arlington' in base['location'] or 'Fort Worth' in base['location'] else 'none',
             'posted': (datetime.now() - timedelta(days=i)).strftime('%Y-%m-%d'),
-            'url': f'https://careers.example.com/job/{i}',
+            'url': base['url'],
             'description': f'Great opportunity at {base["company"]}'
         }
         jobs.append(job)
