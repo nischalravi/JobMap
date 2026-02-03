@@ -3,144 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAM & Cybersecurity Jobs Explorer</title>
+    <title>IAM & Cybersecurity Jobs Explorer - Global Map</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        .nav-tabs {
-            display: flex;
+        /* Map takes full prominent position */
+        .hero-map {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        #worldMap {
+            height: 500px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+        }
+        
+        .map-instructions {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .map-instructions strong {
+            color: #2c3e50;
+        }
+        
+        /* Global Statistics */
+        .global-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
             margin-bottom: 2rem;
         }
         
-        .nav-tab {
-            padding: 0.8rem 1.5rem;
+        .stat-card {
             background: white;
-            border: 2px solid #ddd;
+            padding: 1.5rem;
             border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #2c3e50;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Selected Country Display */
+        .selected-country {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+        
+        .selected-country.active {
+            display: block;
+        }
+        
+        .selected-country h2 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.8rem;
+        }
+        
+        .selected-country p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        
+        .clear-selection {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: transform 0.2s;
         }
         
-        .nav-tab:hover {
-            background: #f8f9fa;
-            border-color: #3498db;
+        .clear-selection:hover {
+            transform: scale(1.05);
         }
         
-        .nav-tab.active {
+        /* Jobs Grid - Shows after country selection */
+        .jobs-grid {
+            display: none;
+        }
+        
+        .jobs-grid.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .job-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .job-card-header {
+            margin-bottom: 1rem;
+        }
+        
+        .job-company {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0.5rem 0;
+        }
+        
+        .job-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .job-badge {
+            padding: 0.3rem 0.7rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-location {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .badge-remote {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .badge-hybrid {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .badge-onsite {
+            background: #95a5a6;
+            color: white;
+        }
+        
+        .badge-type {
             background: #3498db;
             color: white;
-            border-color: #3498db;
+        }
+        
+        .badge-clearance {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .job-posted {
+            color: #95a5a6;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        .job-apply {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        
+        .job-apply:hover {
+            background: #2980b9;
+        }
+        
+        .no-jobs {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+        }
+        
+        /* Country hover effect on map */
+        .leaflet-interactive:hover {
+            stroke-width: 3;
+            cursor: pointer;
+        }
+        
+        /* Legend */
+        .map-legend {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 0.5rem;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>IAM & Cybersecurity Jobs Explorer</h1>
-            <p class="subtitle">Aggregated job listings for Identity & Access Management and Cybersecurity professionals</p>
+            <h1>🌍 IAM & Cybersecurity Jobs - Global Explorer</h1>
+            <p class="subtitle">Click any country on the map to explore job opportunities</p>
         </div>
     </header>
 
     <main class="container">
-        <nav class="nav-tabs">
-            <a href="index.html" class="nav-tab active">📋 Job Listings</a>
-            <a href="map.html" class="nav-tab">🗺️ Interactive Map</a>
-        </nav>
-
-        <section class="filters">
-            <div class="filter-group">
-                <label for="search">Search:</label>
-                <input type="text" id="search" placeholder="Search by title, company, or keywords...">
+        <!-- Global Statistics -->
+        <div class="global-stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalJobs">0</div>
+                <div class="stat-label">Total Jobs Worldwide</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalCountries">0</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="remoteJobs">0</div>
+                <div class="stat-label">Remote Positions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="companiesHiring">0</div>
+                <div class="stat-label">Companies Hiring</div>
+            </div>
+        </div>
+
+        <!-- Main World Map -->
+        <div class="hero-map">
+            <h2 style="margin-top: 0;">🗺️ Interactive World Map</h2>
+            <div class="map-instructions">
+                <strong>👆 Click on any country</strong> to see IAM and cybersecurity job opportunities in that region
+            </div>
+            <div id="worldMap"></div>
             
-            <div class="filter-group">
-                <label for="jobType">Job Type:</label>
-                <select id="jobType">
-                    <option value="">All Types</option>
-                    <option value="iam">IAM Engineer</option>
-                    <option value="security">Security Engineer</option>
-                    <option value="architect">Security Architect</option>
-                    <option value="analyst">Security Analyst</option>
-                    <option value="consultant">Consultant</option>
-                </select>
+            <div class="map-legend">
+                <div class="legend-title">Job Availability</div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #27ae60;"></div>
+                    <span>High (10+ jobs)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <span>Medium (5-9 jobs)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3498db;"></div>
+                    <span>Low (1-4 jobs)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ecf0f1;"></div>
+                    <span>No jobs available</span>
+                </div>
             </div>
+        </div>
 
-            <div class="filter-group">
-                <label for="level">Experience Level:</label>
-                <select id="level">
-                    <option value="">All Levels</option>
-                    <option value="junior">Junior</option>
-                    <option value="mid">Mid-Level</option>
-                    <option value="senior">Senior</option>
-                    <option value="principal">Principal/Staff</option>
-                    <option value="lead">Lead/Manager</option>
-                </select>
-            </div>
+        <!-- Selected Country Display -->
+        <div class="selected-country" id="selectedCountryBanner">
+            <h2 id="countryName">United States</h2>
+            <p><span id="countryJobCount">0</span> job opportunities available</p>
+            <button class="clear-selection" onclick="clearCountrySelection()">🌍 View All Countries</button>
+        </div>
 
-            <div class="filter-group">
-                <label for="location">Location:</label>
-                <select id="location">
-                    <option value="">All Locations</option>
-                    <option value="remote">Remote</option>
-                    <option value="hybrid">Hybrid</option>
-                    <option value="onsite">Onsite</option>
-                </select>
-            </div>
+        <!-- Jobs Grid (appears when country selected) -->
+        <div class="jobs-grid" id="jobsGrid">
+            <!-- Job cards will be inserted here dynamically -->
+        </div>
 
-            <div class="filter-group">
-                <label for="clearance">Clearance:</label>
-                <select id="clearance">
-                    <option value="">Any</option>
-                    <option value="none">No Clearance Required</option>
-                    <option value="secret">Secret</option>
-                    <option value="ts">Top Secret</option>
-                    <option value="ts-sci">TS/SCI</option>
-                </select>
-            </div>
-
-            <button id="clearFilters" class="btn-secondary">Clear Filters</button>
-        </section>
-
-        <section class="stats">
-            <p>Showing <strong id="resultCount">0</strong> jobs | Last updated: <strong id="lastUpdate">Loading...</strong></p>
-        </section>
-
-        <section class="jobs-table">
-            <table id="jobsTable">
-                <thead>
-                    <tr>
-                        <th class="sortable" data-sort="company">Company</th>
-                        <th class="sortable" data-sort="title">Job Title</th>
-                        <th class="sortable" data-sort="location">Location</th>
-                        <th class="sortable" data-sort="type">Type</th>
-                        <th class="sortable" data-sort="level">Level</th>
-                        <th class="sortable" data-sort="clearance">Clearance</th>
-                        <th class="sortable" data-sort="posted">Posted</th>
-                        <th>Link</th>
-                    </tr>
-                </thead>
-                <tbody id="jobsBody">
-                    <tr>
-                        <td colspan="8" class="loading">Loading job listings...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
+        <!-- About Section -->
         <section class="info">
-            <h2>About This Site</h2>
-            <p>This site aggregates IAM and cybersecurity job listings from various sources including Indeed, LinkedIn, Dice, and specialized job boards. Jobs are updated automatically every 6 hours.</p>
+            <h2>About This Platform</h2>
+            <p>Explore IAM (Identity & Access Management) and cybersecurity job opportunities worldwide. Click on any country to discover available positions, or browse all listings.</p>
             
-            <h3>Features</h3>
+            <h3>How It Works</h3>
             <ul>
-                <li><strong>Interactive Map</strong>: Visualize job locations on a world map</li>
-                <li><strong>Advanced Filtering</strong>: Search and filter by type, level, location, and clearance</li>
-                <li><strong>Automated Updates</strong>: Fresh job listings every 6 hours</li>
-                <li><strong>Sortable Columns</strong>: Click headers to sort data</li>
+                <li><strong>Interactive Map:</strong> Click any country to filter jobs by location</li>
+                <li><strong>Color Coding:</strong> Countries are colored by number of available jobs</li>
+                <li><strong>Automatic Updates:</strong> Job listings refresh every 6 hours</li>
+                <li><strong>Multiple Sources:</strong> Jobs aggregated from Indeed, LinkedIn, Dice, and more</li>
             </ul>
             
             <h3>Job Sources</h3>
@@ -149,12 +354,12 @@
                 <li>LinkedIn Jobs</li>
                 <li>Dice Technology Jobs</li>
                 <li>CyberSecJobs.com</li>
-                <li>ClearedJobs.net (for clearance-required positions)</li>
+                <li>ClearedJobs.net (clearance-required positions)</li>
                 <li>Direct company career pages</li>
             </ul>
 
             <h3>Feedback</h3>
-            <p>Found an issue or have a suggestion? Please <a href="https://github.com/nischalravi/iam-jobs/issues" target="_blank">open an issue on GitHub</a>.</p>
+            <p>Have suggestions or found an issue? <a href="https://github.com/nischalravi/iam-jobs/issues" target="_blank">Open an issue on GitHub</a>.</p>
         </section>
     </main>
 
@@ -164,6 +369,7 @@
         </div>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/world-map.js"></script>
 </body>
 </html>
