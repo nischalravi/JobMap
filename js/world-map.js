@@ -1,46 +1,312 @@
-// World Map with Country Selection
+// World Map with Country Selection - Global Edition
 let map;
 let allJobs = [];
 let selectedCountry = null;
 let countryLayers = {};
 
-// Country to ISO code mapping
+// Comprehensive country mapping - maps job location formats to GeoJSON country names
 const countryMapping = {
-    'United States': 'USA',
-    'United Kingdom': 'GBR',
-    'UK': 'GBR',
-    'Canada': 'CAN',
-    'Germany': 'DEU',
-    'France': 'FRA',
-    'India': 'IND',
-    'China': 'CHN',
-    'Japan': 'JPN',
-    'Australia': 'AUS',
-    'Brazil': 'BRA',
-    'Netherlands': 'NLD',
-    'Singapore': 'SGP',
-    'Ireland': 'IRL',
-    'Switzerland': 'CHE',
-    'Sweden': 'SWE',
-    'Norway': 'NOR',
-    'Denmark': 'DNK',
-    'Finland': 'FIN',
-    'Spain': 'ESP',
-    'Italy': 'ITA'
+    // United States
+    'United States': 'United States of America',
+    'USA': 'United States of America',
+    'US': 'United States of America',
+    'U.S.': 'United States of America',
+    'U.S.A.': 'United States of America',
+    
+    // United Kingdom
+    'United Kingdom': 'United Kingdom',
+    'UK': 'United Kingdom',
+    'Great Britain': 'United Kingdom',
+    'England': 'United Kingdom',
+    'Scotland': 'United Kingdom',
+    'Wales': 'United Kingdom',
+    'Northern Ireland': 'United Kingdom',
+    
+    // Canada
+    'Canada': 'Canada',
+    
+    // Europe
+    'Germany': 'Germany',
+    'France': 'France',
+    'Spain': 'Spain',
+    'Italy': 'Italy',
+    'Netherlands': 'Netherlands',
+    'Belgium': 'Belgium',
+    'Switzerland': 'Switzerland',
+    'Austria': 'Austria',
+    'Sweden': 'Sweden',
+    'Norway': 'Norway',
+    'Denmark': 'Denmark',
+    'Finland': 'Finland',
+    'Poland': 'Poland',
+    'Portugal': 'Portugal',
+    'Ireland': 'Ireland',
+    'Greece': 'Greece',
+    'Czech Republic': 'Czech Republic',
+    'Czechia': 'Czech Republic',
+    'Hungary': 'Hungary',
+    'Romania': 'Romania',
+    
+    // Asia
+    'India': 'India',
+    'China': 'China',
+    'Japan': 'Japan',
+    'South Korea': 'South Korea',
+    'Singapore': 'Singapore',
+    'Hong Kong': 'Hong Kong',
+    'Taiwan': 'Taiwan',
+    'Thailand': 'Thailand',
+    'Vietnam': 'Vietnam',
+    'Philippines': 'Philippines',
+    'Indonesia': 'Indonesia',
+    'Malaysia': 'Malaysia',
+    'Pakistan': 'Pakistan',
+    'Bangladesh': 'Bangladesh',
+    
+    // Middle East
+    'Israel': 'Israel',
+    'UAE': 'United Arab Emirates',
+    'United Arab Emirates': 'United Arab Emirates',
+    'Dubai': 'United Arab Emirates',
+    'Abu Dhabi': 'United Arab Emirates',
+    'Saudi Arabia': 'Saudi Arabia',
+    'Qatar': 'Qatar',
+    'Kuwait': 'Kuwait',
+    'Turkey': 'Turkey',
+    
+    // Oceania
+    'Australia': 'Australia',
+    'New Zealand': 'New Zealand',
+    
+    // Americas
+    'Mexico': 'Mexico',
+    'Brazil': 'Brazil',
+    'Argentina': 'Argentina',
+    'Chile': 'Chile',
+    'Colombia': 'Colombia',
+    'Peru': 'Peru',
+    
+    // Africa
+    'South Africa': 'South Africa',
+    'Egypt': 'Egypt',
+    'Nigeria': 'Nigeria',
+    'Kenya': 'Kenya',
+    'Morocco': 'Morocco',
+    
+    // Eastern Europe
+    'Russia': 'Russia',
+    'Ukraine': 'Ukraine',
+    'Belarus': 'Belarus',
+    'Estonia': 'Estonia',
+    'Latvia': 'Latvia',
+    'Lithuania': 'Lithuania'
+};
+
+// US States
+const usStates = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','DC'];
+
+// Canadian Provinces
+const canadianProvinces = ['AB','BC','MB','NB','NL','NS','NT','NU','ON','PE','QC','SK','YT'];
+
+// Major cities by country
+const cityToCountry = {
+    // US Cities
+    'New York': 'United States of America',
+    'Los Angeles': 'United States of America',
+    'Chicago': 'United States of America',
+    'Houston': 'United States of America',
+    'Phoenix': 'United States of America',
+    'Philadelphia': 'United States of America',
+    'San Antonio': 'United States of America',
+    'San Diego': 'United States of America',
+    'Dallas': 'United States of America',
+    'San Jose': 'United States of America',
+    'Austin': 'United States of America',
+    'Jacksonville': 'United States of America',
+    'San Francisco': 'United States of America',
+    'Seattle': 'United States of America',
+    'Denver': 'United States of America',
+    'Washington': 'United States of America',
+    'Boston': 'United States of America',
+    'Nashville': 'United States of America',
+    'Detroit': 'United States of America',
+    'Portland': 'United States of America',
+    'Las Vegas': 'United States of America',
+    'Memphis': 'United States of America',
+    'Baltimore': 'United States of America',
+    'Atlanta': 'United States of America',
+    'Miami': 'United States of America',
+    'Minneapolis': 'United States of America',
+    'Cleveland': 'United States of America',
+    'Arlington': 'United States of America',
+    'Raleigh': 'United States of America',
+    'Tampa': 'United States of America',
+    'Pittsburgh': 'United States of America',
+    'Cincinnati': 'United States of America',
+    'Redmond': 'United States of America',
+    'Mountain View': 'United States of America',
+    'Palo Alto': 'United States of America',
+    'Cambridge': 'United States of America',
+    'Ann Arbor': 'United States of America',
+    'Malden': 'United States of America',
+    'Bedford': 'United States of America',
+    'McLean': 'United States of America',
+    'Fort Worth': 'United States of America',
+    
+    // UK Cities
+    'London': 'United Kingdom',
+    'Manchester': 'United Kingdom',
+    'Birmingham': 'United Kingdom',
+    'Leeds': 'United Kingdom',
+    'Glasgow': 'United Kingdom',
+    'Edinburgh': 'United Kingdom',
+    'Liverpool': 'United Kingdom',
+    'Bristol': 'United Kingdom',
+    'Cambridge': 'United Kingdom', // Can be UK or US - check context
+    'Oxford': 'United Kingdom',
+    
+    // Canadian Cities
+    'Toronto': 'Canada',
+    'Montreal': 'Canada',
+    'Vancouver': 'Canada',
+    'Calgary': 'Canada',
+    'Ottawa': 'Canada',
+    'Edmonton': 'Canada',
+    'Winnipeg': 'Canada',
+    
+    // European Cities
+    'Berlin': 'Germany',
+    'Munich': 'Germany',
+    'Frankfurt': 'Germany',
+    'Hamburg': 'Germany',
+    'Paris': 'France',
+    'Lyon': 'France',
+    'Marseille': 'France',
+    'Madrid': 'Spain',
+    'Barcelona': 'Spain',
+    'Rome': 'Italy',
+    'Milan': 'Italy',
+    'Amsterdam': 'Netherlands',
+    'Rotterdam': 'Netherlands',
+    'Brussels': 'Belgium',
+    'Zurich': 'Switzerland',
+    'Geneva': 'Switzerland',
+    'Vienna': 'Austria',
+    'Stockholm': 'Sweden',
+    'Oslo': 'Norway',
+    'Copenhagen': 'Denmark',
+    'Helsinki': 'Finland',
+    'Warsaw': 'Poland',
+    'Lisbon': 'Portugal',
+    'Dublin': 'Ireland',
+    'Athens': 'Greece',
+    'Prague': 'Czech Republic',
+    'Budapest': 'Hungary',
+    'Bucharest': 'Romania',
+    
+    // Asian Cities
+    'Tokyo': 'Japan',
+    'Osaka': 'Japan',
+    'Kyoto': 'Japan',
+    'Seoul': 'South Korea',
+    'Busan': 'South Korea',
+    'Singapore': 'Singapore',
+    'Hong Kong': 'Hong Kong',
+    'Taipei': 'Taiwan',
+    'Bangkok': 'Thailand',
+    'Mumbai': 'India',
+    'Delhi': 'India',
+    'Bangalore': 'India',
+    'Hyderabad': 'India',
+    'Chennai': 'India',
+    'Pune': 'India',
+    'Kolkata': 'India',
+    'Beijing': 'China',
+    'Shanghai': 'China',
+    'Shenzhen': 'China',
+    'Guangzhou': 'China',
+    'Manila': 'Philippines',
+    'Jakarta': 'Indonesia',
+    'Kuala Lumpur': 'Malaysia',
+    
+    // Middle East Cities
+    'Tel Aviv': 'Israel',
+    'Jerusalem': 'Israel',
+    'Dubai': 'United Arab Emirates',
+    'Abu Dhabi': 'United Arab Emirates',
+    'Riyadh': 'Saudi Arabia',
+    'Doha': 'Qatar',
+    'Istanbul': 'Turkey',
+    'Ankara': 'Turkey',
+    
+    // Oceania Cities
+    'Sydney': 'Australia',
+    'Melbourne': 'Australia',
+    'Brisbane': 'Australia',
+    'Perth': 'Australia',
+    'Auckland': 'New Zealand',
+    'Wellington': 'New Zealand',
+    
+    // Latin America Cities
+    'Mexico City': 'Mexico',
+    'Guadalajara': 'Mexico',
+    'Monterrey': 'Mexico',
+    'São Paulo': 'Brazil',
+    'Rio de Janeiro': 'Brazil',
+    'Buenos Aires': 'Argentina',
+    'Santiago': 'Chile',
+    'Bogotá': 'Colombia',
+    'Lima': 'Peru',
+    
+    // African Cities
+    'Cape Town': 'South Africa',
+    'Johannesburg': 'South Africa',
+    'Cairo': 'Egypt',
+    'Lagos': 'Nigeria',
+    'Nairobi': 'Kenya',
+    'Casablanca': 'Morocco'
 };
 
 // Extract country from location string
 function extractCountry(location) {
-    if (!location) return 'United States';
+    if (!location) return 'United States of America';
     
-    if (location.toLowerCase().includes('remote')) return 'Remote';
-    if (location.toLowerCase().includes('multiple')) return 'United States';
+    const locationLower = location.toLowerCase();
     
-    for (const [country, code] of Object.entries(countryMapping)) {
-        if (location.includes(country)) return country;
+    // Handle remote/multiple
+    if (locationLower.includes('remote')) return 'Remote';
+    if (locationLower.includes('multiple')) return 'United States of America';
+    
+    // Check for US state abbreviations (highest priority for US)
+    for (const state of usStates) {
+        if (location.includes(', ' + state)) {
+            return 'United States of America';
+        }
     }
     
-    return 'United States';
+    // Check for Canadian provinces
+    for (const province of canadianProvinces) {
+        if (location.includes(', ' + province)) {
+            return 'Canada';
+        }
+    }
+    
+    // Check for explicit country names in location
+    for (const [countryVariant, officialName] of Object.entries(countryMapping)) {
+        if (location.includes(countryVariant)) {
+            return officialName;
+        }
+    }
+    
+    // Check city to country mapping
+    for (const [city, country] of Object.entries(cityToCountry)) {
+        if (location.includes(city)) {
+            return country;
+        }
+    }
+    
+    // Default to US if nothing matched (most jobs without country are US)
+    return 'United States of America';
 }
 
 // Initialize map
@@ -110,6 +376,8 @@ async function loadCountryBoundaries() {
                 jobsByCountry[country] = (jobsByCountry[country] || 0) + 1;
             }
         });
+        
+        console.log('Jobs by country:', jobsByCountry);
         
         L.geoJSON(geojson, {
             style: function(feature) {
