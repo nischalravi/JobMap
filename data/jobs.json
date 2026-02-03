@@ -1,305 +1,356 @@
 {
-  "lastUpdate": "2026-02-03T04:58:19.404291Z",
+  "lastUpdate": "2026-02-03T05:00:00Z",
   "jobs": [
     {
-      "company": "Cisco",
-      "title": "Identity Security Analyst",
-      "location": "Denver, CO",
-      "locationType": "remote",
+      "company": "Microsoft",
+      "title": "Senior Identity & Access Management Engineer",
+      "location": "Redmond, WA",
+      "locationType": "hybrid",
       "type": "iam",
-      "level": "mid",
+      "level": "senior",
       "clearance": "none",
-      "posted": "2026-02-02",
-      "url": "https://careers.example.com/job/5",
-      "description": "Great opportunity for Identity Security Analyst at Cisco"
+      "posted": "2026-02-01",
+      "url": "https://careers.microsoft.com/",
+      "description": "Design and implement enterprise IAM solutions"
     },
     {
-      "company": "Raytheon",
-      "title": "Principal Security Engineer",
-      "location": "Chicago, IL",
-      "locationType": "hybrid",
-      "type": "security",
+      "company": "Okta",
+      "title": "Principal IAM Architect",
+      "location": "San Francisco, CA",
+      "locationType": "remote",
+      "type": "architect",
       "level": "principal",
       "clearance": "none",
       "posted": "2026-01-31",
-      "url": "https://careers.example.com/job/13",
-      "description": "Great opportunity for Principal Security Engineer at Raytheon"
+      "url": "https://www.okta.com/company/careers/"
     },
     {
-      "company": "Booz Allen",
-      "title": "Identity & Access Management Architect",
-      "location": "San Francisco, CA",
+      "company": "AWS",
+      "title": "Senior Security Engineer - Identity",
+      "location": "Seattle, WA",
+      "locationType": "hybrid",
+      "type": "security",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-29",
+      "url": "https://www.amazon.jobs/"
+    },
+    {
+      "company": "Google",
+      "title": "Staff Security Engineer, Identity & Access",
+      "location": "Mountain View, CA",
+      "locationType": "remote",
+      "type": "security",
+      "level": "principal",
+      "clearance": "none",
+      "posted": "2026-01-27",
+      "url": "https://careers.google.com/"
+    },
+    {
+      "company": "JPMorgan Chase",
+      "title": "IAM Engineer - Saviynt",
+      "location": "New York, NY",
       "locationType": "hybrid",
       "type": "iam",
       "level": "mid",
-      "clearance": "ts",
-      "posted": "2026-01-31",
-      "url": "https://careers.example.com/job/17",
-      "description": "Great opportunity for Identity & Access Management Architect at Booz Allen"
+      "clearance": "none",
+      "posted": "2026-01-26",
+      "url": "https://careers.jpmorgan.com/"
     },
     {
-      "company": "Cisco",
+      "company": "Northeastern University",
       "title": "Senior IAM Engineer",
+      "location": "Boston, MA",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-23",
+      "url": "https://northeastern.wd1.myworkdayjobs.com/careers"
+    },
+    {
+      "company": "Raytheon Technologies",
+      "title": "Cybersecurity Engineer (IAM)",
+      "location": "Arlington, VA",
+      "locationType": "onsite",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "ts",
+      "posted": "2026-01-30",
+      "url": "https://careers.rtx.com/"
+    },
+    {
+      "company": "Capital One",
+      "title": "Senior IAM Engineer",
+      "location": "McLean, VA",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-11",
+      "url": "https://www.capitalonecareers.com/"
+    },
+    {
+      "company": "CyberArk",
+      "title": "Privileged Access Management Engineer",
       "location": "Remote",
       "locationType": "remote",
       "type": "iam",
       "level": "senior",
-      "clearance": "secret",
-      "posted": "2026-01-29",
-      "url": "https://careers.example.com/job/4",
-      "description": "Great opportunity for Senior IAM Engineer at Cisco"
+      "clearance": "none",
+      "posted": "2026-01-19",
+      "url": "https://www.cyberark.com/careers/"
     },
     {
-      "company": "MIT",
-      "title": "Privileged Access Management Engineer",
-      "location": "Washington, DC",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "secret",
-      "posted": "2026-01-29",
-      "url": "https://careers.example.com/job/16",
-      "description": "Great opportunity for Privileged Access Management Engineer at MIT"
-    },
-    {
-      "company": "Booz Allen",
-      "title": "Identity Security Analyst",
-      "location": "Boston, MA",
+      "company": "Cisco",
+      "title": "Principal IAM Engineer",
+      "location": "San Jose, CA",
       "locationType": "hybrid",
       "type": "iam",
-      "level": "mid",
-      "clearance": "secret",
-      "posted": "2026-01-28",
-      "url": "https://careers.example.com/job/10",
-      "description": "Great opportunity for Identity Security Analyst at Booz Allen"
-    },
-    {
-      "company": "Raytheon",
-      "title": "Privileged Access Management Engineer",
-      "location": "Arlington, VA",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-28",
-      "url": "https://careers.example.com/job/12",
-      "description": "Great opportunity for Privileged Access Management Engineer at Raytheon"
-    },
-    {
-      "company": "KPMG",
-      "title": "IAM Technical Lead",
-      "location": "Arlington, VA",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "lead",
-      "clearance": "ts",
-      "posted": "2026-01-27",
-      "url": "https://careers.example.com/job/6",
-      "description": "Great opportunity for IAM Technical Lead at KPMG"
-    },
-    {
-      "company": "ForgeRock",
-      "title": "Senior IAM Engineer",
-      "location": "Seattle, WA",
-      "locationType": "remote",
-      "type": "iam",
-      "level": "senior",
-      "clearance": "none",
-      "posted": "2026-01-27",
-      "url": "https://careers.example.com/job/9",
-      "description": "Great opportunity for Senior IAM Engineer at ForgeRock"
-    },
-    {
-      "company": "Wells Fargo",
-      "title": "Identity Governance Engineer",
-      "location": "Seattle, WA",
-      "locationType": "remote",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-27",
-      "url": "https://careers.example.com/job/23",
-      "description": "Great opportunity for Identity Governance Engineer at Wells Fargo"
-    },
-    {
-      "company": "Raytheon",
-      "title": "Identity Security Analyst",
-      "location": "Boston, MA",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "secret",
-      "posted": "2026-01-21",
-      "url": "https://careers.example.com/job/7",
-      "description": "Great opportunity for Identity Security Analyst at Raytheon"
-    },
-    {
-      "company": "Google",
-      "title": "Identity Governance Engineer",
-      "location": "Seattle, WA",
-      "locationType": "remote",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-21",
-      "url": "https://careers.example.com/job/21",
-      "description": "Great opportunity for Identity Governance Engineer at Google"
-    },
-    {
-      "company": "JPMorgan Chase",
-      "title": "IAM Consultant",
-      "location": "Arlington, VA",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-17",
-      "url": "https://careers.example.com/job/0",
-      "description": "Great opportunity for IAM Consultant at JPMorgan Chase"
-    },
-    {
-      "company": "CyberArk",
-      "title": "Identity Security Analyst",
-      "location": "New York, NY",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-16",
-      "url": "https://careers.example.com/job/1",
-      "description": "Great opportunity for Identity Security Analyst at CyberArk"
-    },
-    {
-      "company": "Wells Fargo",
-      "title": "Identity Governance Engineer",
-      "location": "Chicago, IL",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-15",
-      "url": "https://careers.example.com/job/14",
-      "description": "Great opportunity for Identity Governance Engineer at Wells Fargo"
-    },
-    {
-      "company": "Auth0",
-      "title": "Identity Governance Engineer",
-      "location": "Chicago, IL",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "secret",
-      "posted": "2026-01-15",
-      "url": "https://careers.example.com/job/18",
-      "description": "Great opportunity for Identity Governance Engineer at Auth0"
-    },
-    {
-      "company": "Capital One",
-      "title": "Principal Security Engineer",
-      "location": "Seattle, WA",
-      "locationType": "remote",
-      "type": "security",
       "level": "principal",
       "clearance": "none",
-      "posted": "2026-01-14",
-      "url": "https://careers.example.com/job/22",
-      "description": "Great opportunity for Principal Security Engineer at Capital One"
+      "posted": "2026-01-21",
+      "url": "https://jobs.cisco.com/"
     },
+    
+    
     {
-      "company": "Harvard",
-      "title": "IAM Technical Lead",
-      "location": "New York, NY",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "lead",
-      "clearance": "none",
-      "posted": "2026-01-13",
-      "url": "https://careers.example.com/job/20",
-      "description": "Great opportunity for IAM Technical Lead at Harvard"
-    },
-    {
-      "company": "Northeastern University",
-      "title": "IAM Consultant",
-      "location": "San Francisco, CA",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-11",
-      "url": "https://careers.example.com/job/8",
-      "description": "Great opportunity for IAM Consultant at Northeastern University"
-    },
-    {
-      "company": "Google",
-      "title": "Identity Security Analyst",
-      "location": "Chicago, IL",
-      "locationType": "hybrid",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "posted": "2026-01-11",
-      "url": "https://careers.example.com/job/11",
-      "description": "Great opportunity for Identity Security Analyst at Google"
-    },
-    {
-      "company": "SailPoint",
+      "company": "HSBC",
       "title": "Senior IAM Engineer",
-      "location": "Seattle, WA",
-      "locationType": "remote",
+      "location": "London, United Kingdom",
+      "locationType": "hybrid",
       "type": "iam",
       "level": "senior",
       "clearance": "none",
-      "posted": "2026-01-11",
-      "url": "https://careers.example.com/job/19",
-      "description": "Great opportunity for Senior IAM Engineer at SailPoint"
+      "posted": "2026-02-01",
+      "url": "https://www.hsbc.com/careers"
     },
     {
-      "company": "Harvard",
+      "company": "Barclays",
       "title": "Identity & Access Management Architect",
-      "location": "Arlington, VA",
-      "locationType": "onsite",
+      "location": "London, UK",
+      "locationType": "hybrid",
+      "type": "architect",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-30",
+      "url": "https://joinus.barclays/careers"
+    },
+    {
+      "company": "Lloyds Banking Group",
+      "title": "IAM Security Engineer",
+      "location": "Edinburgh, United Kingdom",
+      "locationType": "hybrid",
       "type": "iam",
       "level": "mid",
       "clearance": "none",
-      "posted": "2026-01-09",
-      "url": "https://careers.example.com/job/3",
-      "description": "Great opportunity for Identity & Access Management Architect at Harvard"
+      "posted": "2026-01-28",
+      "url": "https://www.lloydsbankinggroup.com/careers.html"
     },
     {
-      "company": "Accenture",
-      "title": "Principal Security Engineer",
-      "location": "Arlington, VA",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "principal",
-      "clearance": "ts-sci",
-      "posted": "2026-01-08",
-      "url": "https://careers.example.com/job/15",
-      "description": "Great opportunity for Principal Security Engineer at Accenture"
-    },
-    {
-      "company": "Capital One",
-      "title": "Principal Security Engineer",
-      "location": "New York, NY",
+      "company": "BBC",
+      "title": "Cybersecurity IAM Specialist",
+      "location": "Manchester, UK",
       "locationType": "hybrid",
       "type": "security",
-      "level": "principal",
+      "level": "mid",
       "clearance": "none",
-      "posted": "2026-01-06",
-      "url": "https://careers.example.com/job/2",
-      "description": "Great opportunity for Principal Security Engineer at Capital One"
+      "posted": "2026-01-25",
+      "url": "https://careers.bbc.co.uk/"
     },
+    
+    
     {
-      "company": "Lockheed Martin",
-      "title": "Principal Security Engineer",
-      "location": "Austin, TX",
+      "company": "Shopify",
+      "title": "Senior Security Engineer - Identity",
+      "location": "Toronto, Canada",
       "locationType": "remote",
       "type": "security",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-02-01",
+      "url": "https://www.shopify.com/careers"
+    },
+    {
+      "company": "Royal Bank of Canada",
+      "title": "IAM Architect",
+      "location": "Toronto, ON",
+      "locationType": "hybrid",
+      "type": "architect",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-29",
+      "url": "https://jobs.rbc.com/"
+    },
+    {
+      "company": "TD Bank",
+      "title": "Identity Management Engineer",
+      "location": "Vancouver, BC",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "posted": "2026-01-27",
+      "url": "https://jobs.td.com/"
+    },
+    
+    
+    {
+      "company": "SAP",
+      "title": "IAM Solutions Architect",
+      "location": "Berlin, Germany",
+      "locationType": "hybrid",
+      "type": "architect",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-02-01",
+      "url": "https://jobs.sap.com/"
+    },
+    {
+      "company": "Siemens",
+      "title": "Cybersecurity IAM Engineer",
+      "location": "Munich, Germany",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "posted": "2026-01-30",
+      "url": "https://new.siemens.com/global/en/company/jobs.html"
+    },
+    
+    
+    {
+      "company": "BNP Paribas",
+      "title": "IAM Security Specialist",
+      "location": "Paris, France",
+      "locationType": "hybrid",
+      "type": "security",
+      "level": "mid",
+      "clearance": "none",
+      "posted": "2026-01-31",
+      "url": "https://group.bnpparibas/en/careers"
+    },
+    
+    
+    {
+      "company": "Tata Consultancy Services",
+      "title": "Senior IAM Consultant",
+      "location": "Mumbai, India",
+      "locationType": "onsite",
+      "type": "consultant",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-02-01",
+      "url": "https://www.tcs.com/careers"
+    },
+    {
+      "company": "Infosys",
+      "title": "Identity & Access Management Lead",
+      "location": "Bangalore, India",
+      "locationType": "hybrid",
+      "type": "lead",
+      "level": "lead",
+      "clearance": "none",
+      "posted": "2026-01-30",
+      "url": "https://www.infosys.com/careers/"
+    },
+    {
+      "company": "Wipro",
+      "title": "Cybersecurity IAM Engineer",
+      "location": "Hyderabad, India",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "posted": "2026-01-28",
+      "url": "https://careers.wipro.com/"
+    },
+    
+    
+    {
+      "company": "DBS Bank",
+      "title": "Principal IAM Architect",
+      "location": "Singapore",
+      "locationType": "hybrid",
+      "type": "architect",
       "level": "principal",
-      "clearance": "ts",
-      "posted": "2026-01-04",
-      "url": "https://careers.example.com/job/24",
-      "description": "Great opportunity for Principal Security Engineer at Lockheed Martin"
+      "clearance": "none",
+      "posted": "2026-02-01",
+      "url": "https://www.dbs.com/careers/"
+    },
+    {
+      "company": "Grab",
+      "title": "Senior Security Engineer - Identity",
+      "location": "Singapore",
+      "locationType": "hybrid",
+      "type": "security",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-29",
+      "url": "https://grab.careers/"
+    },
+    
+    
+    {
+      "company": "Commonwealth Bank",
+      "title": "IAM Security Engineer",
+      "location": "Sydney, Australia",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "posted": "2026-01-31",
+      "url": "https://www.commbank.com.au/about-us/careers.html"
+    },
+    {
+      "company": "ANZ Bank",
+      "title": "Senior Identity Engineer",
+      "location": "Melbourne, Australia",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-28",
+      "url": "https://www.anz.com/about-us/careers/"
+    },
+    
+    
+    {
+      "company": "Banco Santander",
+      "title": "IAM Solutions Architect",
+      "location": "Madrid, Spain",
+      "locationType": "hybrid",
+      "type": "architect",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-30",
+      "url": "https://www.santander.com/en/careers"
+    },
+    
+    
+    {
+      "company": "ING Group",
+      "title": "Cybersecurity IAM Engineer",
+      "location": "Amsterdam, Netherlands",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "posted": "2026-01-29",
+      "url": "https://www.ing.jobs/"
+    },
+    
+    
+    {
+      "company": "Credit Suisse",
+      "title": "Senior IAM Engineer",
+      "location": "Zurich, Switzerland",
+      "locationType": "hybrid",
+      "type": "iam",
+      "level": "senior",
+      "clearance": "none",
+      "posted": "2026-01-27",
+      "url": "https://www.credit-suisse.com/careers"
     }
   ]
 }
