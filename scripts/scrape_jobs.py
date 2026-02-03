@@ -119,13 +119,18 @@ def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10
                         result.get('description', '')
                     )
                     
-                    # Extract location
+                    # Extract location with country context
                     location_obj = result.get('location', {})
-                    location = location_obj.get('display_name', '') or location_obj.get('area', [''])[0]
+                    city = location_obj.get('display_name', '') or location_obj.get('area', [''])[0]
                     
-                    # If location empty, use country
-                    if not location:
-                        location = ADZUNA_COUNTRIES.get(country_code, 'Remote')
+                    # Get country name from the search country code
+                    country_name = ADZUNA_COUNTRIES.get(country_code, 'Unknown')
+                    
+                    # Format location properly: "City, Country"
+                    if city and city != country_name:
+                        location = f"{city}, {country_name}"
+                    else:
+                        location = country_name
                     
                     job = {
                         'company': result.get('company', {}).get('display_name', 'Unknown Company'),
