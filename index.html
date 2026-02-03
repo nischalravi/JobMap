@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAM & Cybersecurity Jobs Explorer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>IAM & Cybersecurity Jobs Explorer</h1>
+            <p class="subtitle">Aggregated job listings for Identity & Access Management and Cybersecurity professionals</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="filters">
+            <div class="filter-group">
+                <label for="search">Search:</label>
+                <input type="text" id="search" placeholder="Search by title, company, or keywords...">
+            </div>
+            
+            <div class="filter-group">
+                <label for="jobType">Job Type:</label>
+                <select id="jobType">
+                    <option value="">All Types</option>
+                    <option value="iam">IAM Engineer</option>
+                    <option value="security">Security Engineer</option>
+                    <option value="architect">Security Architect</option>
+                    <option value="analyst">Security Analyst</option>
+                    <option value="consultant">Consultant</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="level">Experience Level:</label>
+                <select id="level">
+                    <option value="">All Levels</option>
+                    <option value="junior">Junior</option>
+                    <option value="mid">Mid-Level</option>
+                    <option value="senior">Senior</option>
+                    <option value="principal">Principal/Staff</option>
+                    <option value="lead">Lead/Manager</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="location">Location:</label>
+                <select id="location">
+                    <option value="">All Locations</option>
+                    <option value="remote">Remote</option>
+                    <option value="hybrid">Hybrid</option>
+                    <option value="onsite">Onsite</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="clearance">Clearance:</label>
+                <select id="clearance">
+                    <option value="">Any</option>
+                    <option value="none">No Clearance Required</option>
+                    <option value="secret">Secret</option>
+                    <option value="ts">Top Secret</option>
+                    <option value="ts-sci">TS/SCI</option>
+                </select>
+            </div>
+
+            <button id="clearFilters" class="btn-secondary">Clear Filters</button>
+        </section>
+
+        <section class="stats">
+            <p>Showing <strong id="resultCount">0</strong> jobs | Last updated: <strong id="lastUpdate">Loading...</strong></p>
+        </section>
+
+        <section class="jobs-table">
+            <table id="jobsTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="company">Company</th>
+                        <th class="sortable" data-sort="title">Job Title</th>
+                        <th class="sortable" data-sort="location">Location</th>
+                        <th class="sortable" data-sort="type">Type</th>
+                        <th class="sortable" data-sort="level">Level</th>
+                        <th class="sortable" data-sort="clearance">Clearance</th>
+                        <th class="sortable" data-sort="posted">Posted</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody id="jobsBody">
+                    <tr>
+                        <td colspan="8" class="loading">Loading job listings...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="info">
+            <h2>About This Site</h2>
+            <p>This site aggregates IAM and cybersecurity job listings from various sources including Indeed, LinkedIn, Dice, and specialized job boards. Jobs are updated automatically every 6 hours.</p>
+            
+            <h3>Job Sources</h3>
+            <ul>
+                <li>Indeed API</li>
+                <li>LinkedIn Jobs</li>
+                <li>Dice Technology Jobs</li>
+                <li>CyberSecJobs.com</li>
+                <li>ClearedJobs.net (for clearance-required positions)</li>
+                <li>Direct company career pages</li>
+            </ul>
+
+            <h3>Feedback</h3>
+            <p>Found an issue or have a suggestion? Please <a href="https://github.com/nischalravi/iam-jobs/issues" target="_blank">open an issue on GitHub</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 IAM & Cybersecurity Jobs Explorer | <a href="https://github.com/nischalravi/iam-jobs" target="_blank">GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
