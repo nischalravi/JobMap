@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* Map takes full prominent position */
+        /* Map styles */
         .hero-map {
             background: white;
             padding: 2rem;
@@ -70,10 +70,6 @@
             border: 2px solid #3498db;
         }
         
-        .stat-card[onclick]:active {
-            transform: translateY(-2px);
-        }
-        
         .stat-number {
             font-size: 2.5rem;
             font-weight: bold;
@@ -100,6 +96,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         
         .selected-country-info h2 {
@@ -116,6 +114,7 @@
             display: flex;
             gap: 1rem;
             align-items: center;
+            flex-wrap: wrap;
         }
         
         .clear-selection {
@@ -158,11 +157,7 @@
             color: white;
         }
         
-        .view-toggle-btn:hover:not(.active) {
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        /* Jobs Grid - Card View */
+        /* Jobs Grid */
         .jobs-grid {
             display: none;
         }
@@ -197,7 +192,6 @@
             color: #7f8c8d;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
         .job-title {
@@ -251,6 +245,16 @@
             color: white;
         }
         
+        .badge-visa-yes {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .badge-visa-no {
+            background: #e74c3c;
+            color: white;
+        }
+        
         .job-posted {
             color: #95a5a6;
             font-size: 0.85rem;
@@ -290,18 +294,22 @@
         .jobs-table {
             width: 100%;
             border-collapse: collapse;
+            font-size: 0.85rem;
         }
         
         .jobs-table thead {
             background: #34495e;
             color: white;
+            position: sticky;
+            top: 0;
         }
         
         .jobs-table th {
-            padding: 1rem;
+            padding: 0.8rem 0.5rem;
             text-align: left;
             font-weight: 600;
             white-space: nowrap;
+            font-size: 0.8rem;
         }
         
         .jobs-table tbody tr {
@@ -313,7 +321,14 @@
         }
         
         .jobs-table td {
-            padding: 0.8rem 1rem;
+            padding: 0.7rem 0.5rem;
+            vertical-align: middle;
+        }
+        
+        .jobs-table .job-badge {
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            white-space: nowrap;
         }
         
         .table-job-link {
@@ -323,7 +338,8 @@
             color: white;
             text-decoration: none;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
+            font-weight: 600;
             transition: background 0.2s;
         }
         
@@ -338,18 +354,13 @@
             font-size: 1.2rem;
         }
         
-        /* Country hover effect on map */
-        .leaflet-interactive:hover {
-            stroke-width: 3;
-            cursor: pointer;
-        }
-        
-        /* Legend */
+        /* Map legend */
         .map-legend {
             background: white;
             padding: 1rem;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: 1rem;
         }
         
         .legend-title {
@@ -372,25 +383,9 @@
             margin-right: 0.5rem;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .selected-country.active {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .selected-country-actions {
-                margin-top: 1rem;
-                width: 100%;
-            }
-            
-            .view-toggle {
-                width: 100%;
-                justify-content: stretch;
-            }
-            
-            .view-toggle-btn {
-                flex: 1;
+            .jobs-table {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -406,7 +401,7 @@
     <main class="container">
         <!-- Global Statistics -->
         <div class="global-stats">
-            <div class="stat-card" onclick="showAllJobs()" style="cursor: pointer;" title="Click to view all jobs">
+            <div class="stat-card" onclick="showAllJobs()" title="Click to view all jobs">
                 <div class="stat-number" id="totalJobs">0</div>
                 <div class="stat-label">Total Jobs Worldwide</div>
             </div>
@@ -414,7 +409,7 @@
                 <div class="stat-number" id="totalCountries">0</div>
                 <div class="stat-label">Countries</div>
             </div>
-            <div class="stat-card" onclick="showRemoteJobs()" style="cursor: pointer;" title="Click to view remote jobs">
+            <div class="stat-card" onclick="showRemoteJobs()" title="Click to view remote jobs">
                 <div class="stat-number" id="remoteJobs">0</div>
                 <div class="stat-label">Remote Positions</div>
             </div>
@@ -453,29 +448,23 @@
             </div>
         </div>
 
-        <!-- Selected Country Display with View Toggle -->
+        <!-- Selected Country Banner -->
         <div class="selected-country" id="selectedCountryBanner">
             <div class="selected-country-info">
-                <h2 id="countryName">United States</h2>
+                <h2 id="countryName">Country</h2>
                 <p><span id="countryJobCount">0</span> job opportunities available</p>
             </div>
             <div class="selected-country-actions">
                 <div class="view-toggle">
-                    <button class="view-toggle-btn active" onclick="switchView('card')">
-                        🎴 Cards
-                    </button>
-                    <button class="view-toggle-btn" onclick="switchView('list')">
-                        📋 List
-                    </button>
+                    <button class="view-toggle-btn active" onclick="switchView('card')">🎴 Cards</button>
+                    <button class="view-toggle-btn" onclick="switchView('list')">📋 List</button>
                 </div>
                 <button class="clear-selection" onclick="clearCountrySelection()">🌍 View All Countries</button>
             </div>
         </div>
 
         <!-- Jobs Grid (Card View) -->
-        <div class="jobs-grid" id="jobsGrid">
-            <!-- Job cards will be inserted here dynamically -->
-        </div>
+        <div class="jobs-grid" id="jobsGrid"></div>
 
         <!-- Jobs List (Table View) -->
         <div class="jobs-list" id="jobsList">
@@ -487,50 +476,50 @@
                         <th>Location</th>
                         <th>Type</th>
                         <th>Level</th>
-                        <th>Work Mode</th>
+                        <th>Mode</th>
+                        <th>Visa</th>
                         <th>Clearance</th>
                         <th>Posted</th>
                         <th>Apply</th>
                     </tr>
                 </thead>
-                <tbody id="jobsTableBody">
-                    <!-- Table rows will be inserted here -->
-                </tbody>
+                <tbody id="jobsTableBody"></tbody>
             </table>
         </div>
 
         <!-- About Section -->
         <section class="info">
             <h2>About JOBMAP</h2>
-            <p><strong>JOBMAP</strong> is a global platform for exploring IAM (Identity & Access Management) and cybersecurity job opportunities worldwide. Our interactive map makes it easy to discover positions across 18+ countries.</p>
+            <p><strong>JOBMAP</strong> is a global platform for exploring IAM (Identity & Access Management) and cybersecurity job opportunities worldwide. Our interactive map makes it easy to discover positions across 18+ countries, with information about visa sponsorship and work authorization.</p>
             
-            <h3>How It Works</h3>
+            <h3>Key Features</h3>
             <ul>
-                <li><strong>Interactive Map:</strong> Click any country to filter jobs by location</li>
-                <li><strong>Color Coding:</strong> Countries are colored by number of available jobs</li>
-                <li><strong>View Options:</strong> Switch between card view and list view</li>
-                <li><strong>Automatic Updates:</strong> Job listings refresh every 6 hours via Adzuna API</li>
-                <li><strong>Multiple Sources:</strong> Jobs aggregated from 18+ countries</li>
+                <li><strong>Interactive Map:</strong> Click any country to filter jobs</li>
+                <li><strong>Visa Sponsorship Info:</strong> See which companies sponsor work visas</li>
+                <li><strong>Multiple Views:</strong> Switch between card and list views</li>
+                <li><strong>Auto-Updates:</strong> Fresh jobs every 12 hours</li>
+                <li><strong>18 Countries:</strong> USA, UK, Canada, Australia, Germany, France, and more</li>
             </ul>
             
             <h3>Supported Countries</h3>
             <p>🇺🇸 USA | 🇬🇧 UK | 🇨🇦 Canada | 🇦🇺 Australia | 🇩🇪 Germany | 🇫🇷 France | 🇳🇱 Netherlands | 🇮🇳 India | 🇸🇬 Singapore | 🇪🇸 Spain | 🇮🇹 Italy | 🇨🇭 Switzerland | 🇦🇹 Austria | 🇵🇱 Poland | 🇳🇿 New Zealand | 🇿🇦 South Africa | 🇧🇷 Brazil | 🇲🇽 Mexico</p>
             
-            <h3>Job Sources</h3>
+            <h3>Job Data Sources</h3>
             <ul>
-                <li>Adzuna API (18+ countries)</li>
+                <li>Adzuna API (18 countries)</li>
                 <li>Real-time job aggregation</li>
-                <li>Direct company career pages</li>
+                <li>Direct from company career pages</li>
+                <li>Updated twice daily</li>
             </ul>
 
             <h3>Feedback</h3>
-            <p>Have suggestions or found an issue? <a href="https://github.com/nischalravi/iam-jobs/issues" target="_blank">Open an issue on GitHub</a>.</p>
+            <p>Suggestions or issues? <a href="https://github.com/nischalravi/iam-jobs/issues" target="_blank">Open an issue on GitHub</a></p>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 JOBMAP - Global IAM & Cybersecurity Jobs | <a href="https://github.com/nischalravi/iam-jobs" target="_blank">GitHub Repository</a></p>
+            <p>&copy; 2026 JOBMAP - Global IAM & Cybersecurity Jobs | <a href="https://github.com/nischalravi/iam-jobs" target="_blank">GitHub</a></p>
         </div>
     </footer>
 
