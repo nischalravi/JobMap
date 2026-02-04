@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOBMAP - Global IAM & Cybersecurity Jobs</title>
     <style>
+<<<<<<< HEAD
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -344,10 +346,444 @@
                     const normalized = COUNTRY_NORMALIZE[country] || country;
                     countries.add(normalized);
                 }
-            });
-            document.getElementById('totalCountries').textContent = countries.size;
+=======
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+```
+    body {
+        font-family: 'Arial', sans-serif;
+        background: #000000;
+        color: #ffffff;
+        overflow: hidden;
+    }
+    
+    #globeViz {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Header */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem 3rem;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+    }
+    
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #dc2626;
+        letter-spacing: 3px;
+    }
+    
+    /* Stats Panel */
+    .stats-panel {
+        position: fixed;
+        top: 50%;
+        left: 2rem;
+        transform: translateY(-50%);
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        background: rgba(10, 10, 10, 0.9);
+        border: 2px solid rgba(220, 38, 38, 0.5);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+        min-width: 180px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .stat-card:hover {
+        border-color: rgba(220, 38, 38, 0.9);
+        box-shadow: 0 0 40px rgba(220, 38, 38, 0.6);
+        transform: scale(1.05);
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #ff6b6b, #ffa500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.3rem;
+    }
+    
+    .stat-label {
+        color: #aaa;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    /* Legend */
+    .legend {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        background: rgba(10, 10, 10, 0.9);
+        border: 1px solid rgba(220, 38, 38, 0.3);
+        border-radius: 10px;
+        padding: 1rem;
+        backdrop-filter: blur(20px);
+        z-index: 50;
+    }
+    
+    .legend-title {
+        color: #ff6b6b;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+        margin: 0.3rem 0;
+        font-size: 0.8rem;
+    }
+    
+    .legend-color {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+    }
+    
+    /* Instructions */
+    .instructions {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        color: #888;
+        text-align: right;
+        z-index: 50;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        animation: pulse 3s infinite;
+    }
+    
+    @keyframes pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+    }
+    
+    /* Jobs View */
+    #jobs-view {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000000;
+        z-index: 200;
+        overflow-y: auto;
+        display: none;
+        padding: 6rem 2rem 2rem;
+    }
+    
+    #jobs-view.active {
+        display: block;
+    }
+    
+    .jobs-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .jobs-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding: 2rem;
+        background: rgba(20, 20, 20, 0.9);
+        border: 1px solid rgba(220, 38, 38, 0.4);
+        border-radius: 12px;
+    }
+    
+    .jobs-header h2 {
+        color: #ff6b6b;
+        font-size: 2.5rem;
+    }
+    
+    .back-btn {
+        padding: 0.8rem 1.5rem;
+        background: linear-gradient(135deg, #dc2626, #ef4444);
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .back-btn:hover {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.7);
+    }
+    
+    .jobs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .job-card {
+        background: rgba(15, 15, 15, 0.95);
+        border: 1px solid rgba(220, 38, 38, 0.3);
+        border-left: 4px solid #dc2626;
+        border-radius: 10px;
+        padding: 1.5rem;
+        transition: all 0.3s;
+    }
+    
+    .job-card:hover {
+        border-color: rgba(220, 38, 38, 0.7);
+        box-shadow: 0 8px 30px rgba(220, 38, 38, 0.4);
+        transform: translateY(-5px);
+    }
+    
+    .job-company {
+        color: #888;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+    
+    .job-title {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .job-meta {
+        color: #666;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+    
+    .job-apply {
+        display: inline-block;
+        padding: 0.7rem 1.5rem;
+        background: linear-gradient(135deg, #dc2626, #ef4444);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .job-apply:hover {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.7);
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">🗺️ JOBMAP</div>
+    </div>
+
+```
+<!-- Globe Container -->
+<div id="globeViz"></div>
+
+<!-- Stats Panel -->
+<div class="stats-panel">
+    <div class="stat-card" onclick="showAllJobs()">
+        <div class="stat-number" id="totalJobs">148</div>
+        <div class="stat-label">Jobs Worldwide</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number" id="totalCountries">16</div>
+        <div class="stat-label">Countries</div>
+    </div>
+    <div class="stat-card" onclick="showRemoteJobs()">
+        <div class="stat-number" id="remoteJobs">7</div>
+        <div class="stat-label">Remote</div>
+    </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+    <div class="legend-title">Job Density</div>
+    <div class="legend-item">
+        <div class="legend-color" style="background: #22c55e;"></div>
+        <span>High (10+)</span>
+    </div>
+    <div class="legend-item">
+        <div class="legend-color" style="background: #f59e0b;"></div>
+        <span>Medium (5-9)</span>
+    </div>
+    <div class="legend-item">
+        <div class="legend-color" style="background: #3b82f6;"></div>
+        <span>Low (1-4)</span>
+    </div>
+</div>
+
+<!-- Instructions -->
+<div class="instructions">
+    🖱️ Click and drag to rotate<br>
+    🌍 Click any country to view jobs<br>
+    📊 Click stats to filter
+</div>
+
+<!-- Jobs View -->
+<div id="jobs-view">
+    <div class="jobs-container">
+        <div class="jobs-header">
+            <div>
+                <h2 id="jobsTitle">Jobs</h2>
+                <p style="color: #888;"><span id="jobsCount">0</span> positions</p>
+            </div>
+            <button class="back-btn" onclick="backToGlobe()">🌍 Back to Globe</button>
+        </div>
         
+        <div class="jobs-grid" id="jobsGrid"></div>
+    </div>
+</div>
+
+<!-- Globe.GL Library -->
+<script src="//unpkg.com/globe.gl"></script>
+
+<script>
+    let myGlobe;
+    let allJobs = [];
+    
+    async function init() {
+        await loadJobs();
+        createInteractiveGlobe();
+    }
+    
+    async function loadJobs() {
+        try {
+            const response = await fetch('data/jobs.json');
+            const data = await response.json();
+            allJobs = data.jobs;
+            updateStats();
+        } catch (error) {
+            console.error('Error loading jobs:', error);
+        }
+    }
+    
+    function updateStats() {
+        document.getElementById('totalJobs').textContent = allJobs.length;
+        document.getElementById('remoteJobs').textContent = allJobs.filter(j => j.locationType === 'remote').length;
+        document.getElementById('companiesHiring').textContent = new Set(allJobs.map(j => j.company)).size;
+        
+        const countries = new Set();
+        allJobs.forEach(job => {
+            const parts = job.location.split(', ');
+            if (!parts[parts.length - 1].includes('Remote')) {
+                countries.add(parts[parts.length - 1]);
+            }
+        });
+        document.getElementById('totalCountries').textContent = countries.size;
+    }
+    
+    function createInteractiveGlobe() {
+        // Prepare country polygons data
+        fetch('https://raw.githubusercontent.com/vasturiano/globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson')
+            .then(res => res.json())
+            .then(countries => {
+                // Count jobs per country
+                const jobsByCountry = countJobsByCountry();
+                
+                // Add job count to country data
+                countries.features.forEach(d => {
+                    const countryName = d.properties.NAME || d.properties.ADMIN;
+                    d.properties.jobs = jobsByCountry[countryName] || 0;
+                });
+                
+                // Create globe
+                myGlobe = Globe()
+                    (document.getElementById('globeViz'))
+                    .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                    .bumpImageUrl('//unpkg.com/three-globe/example/img/earth-topology.png')
+                    .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+                    
+                    // Countries as polygons
+                    .polygonsData(countries.features)
+                    .polygonAltitude(0.01)
+                    .polygonCapColor(d => {
+                        const jobs = d.properties.jobs || 0;
+                        if (jobs === 0) return 'rgba(100, 100, 100, 0.3)';
+                        if (jobs >= 10) return 'rgba(34, 197, 94, 0.7)';  // Green
+                        if (jobs >= 5) return 'rgba(245, 158, 11, 0.7)';   // Orange
+                        return 'rgba(59, 130, 246, 0.7)';                   // Blue
+                    })
+                    .polygonSideColor(() => 'rgba(220, 38, 38, 0.2)')
+                    .polygonStrokeColor(() => 'rgba(220, 38, 38, 0.4)')
+                    .polygonLabel(d => {
+                        const name = d.properties.NAME || d.properties.ADMIN;
+                        const jobs = d.properties.jobs || 0;
+                        return `<div style="background: rgba(0,0,0,0.9); padding: 10px; border-radius: 8px; border: 1px solid #dc2626;">
+                            <b style="color: #ff6b6b; font-size: 16px;">${name}</b><br/>
+                            <span style="color: #aaa;">${jobs} job${jobs !== 1 ? 's' : ''} available</span>
+                        </div>`;
+                    })
+                    .onPolygonClick(d => {
+                        const countryName = d.properties.NAME || d.properties.ADMIN;
+                        const jobs = d.properties.jobs || 0;
+                        if (jobs > 0) {
+                            selectCountry(countryName);
+                        }
+                    })
+                    .onPolygonHover(d => {
+                        document.body.style.cursor = (d && d.properties.jobs > 0) ? 'pointer' : 'grab';
+                    })
+                    
+                    // Atmosphere
+                    .atmosphereColor('#ff4444')
+                    .atmosphereAltitude(0.15)
+                    
+                    // Animation
+                    .pointOfView({ altitude: 2.5 })
+                    .width(window.innerWidth)
+                    .height(window.innerHeight);
+                
+                // Auto-rotate
+                myGlobe.controls().autoRotate = true;
+                myGlobe.controls().autoRotateSpeed = 0.5;
+                myGlobe.controls().enableZoom = true;
+>>>>>>> 2eb26c9610428bb18eb9cb602a93094d8a87b744
+            });
+    }
+    
+    function countJobsByCountry() {
+        const jobCounts = {};
+        const countryMapping = {
+            'United States of America': 'United States',
+            'USA': 'United States',
+            'UK': 'United Kingdom',
+            'United Kingdom': 'United Kingdom'
+        };
+        
+<<<<<<< HEAD
         function extractCountryFromLocation(location) {
             if (!location) return null;
             if (location.toLowerCase().includes('remote')) return 'Remote';
@@ -460,12 +896,32 @@
         function showAllJobs() {
             displayJobs(allJobs, 'All Global Opportunities');
         }
+=======
+        allJobs.forEach(job => {
+            const parts = job.location.split(', ');
+            let country = parts[parts.length - 1];
+            
+            // Normalize country name
+            country = countryMapping[country] || country;
+            
+            if (!country.includes('Remote')) {
+                jobCounts[country] = (jobCounts[country] || 0) + 1;
+            }
+        });
+>>>>>>> 2eb26c9610428bb18eb9cb602a93094d8a87b744
         
-        function showRemoteJobs() {
-            const remoteJobs = allJobs.filter(j => j.locationType === 'remote');
-            displayJobs(remoteJobs, 'Remote Positions Worldwide');
-        }
+        return jobCounts;
+    }
+    
+    function selectCountry(countryName) {
+        const countryJobs = allJobs.filter(job => {
+            const parts = job.location.split(', ');
+            const jobCountry = parts[parts.length - 1];
+            return jobCountry === countryName || 
+                   (countryName === 'United States' && (jobCountry === 'United States of America' || jobCountry === 'USA'));
+        });
         
+<<<<<<< HEAD
         function displayJobs(jobs, title) {
             document.getElementById('jobsTitle').textContent = title;
             document.getElementById('jobsCount').textContent = jobs.length;
@@ -509,5 +965,68 @@
         
         window.addEventListener('load', init);
     </script>
+=======
+        if (countryJobs.length > 0) {
+            displayJobs(countryJobs, countryName);
+        }
+    }
+    
+    function showAllJobs() {
+        displayJobs(allJobs, 'All Global Opportunities');
+    }
+    
+    function showRemoteJobs() {
+        const remoteJobs = allJobs.filter(j => j.locationType === 'remote');
+        displayJobs(remoteJobs, 'Remote Positions Worldwide');
+    }
+    
+    function displayJobs(jobs, title) {
+        document.getElementById('jobsTitle').textContent = title;
+        document.getElementById('jobsCount').textContent = jobs.length;
+        
+        const grid = document.getElementById('jobsGrid');
+        grid.innerHTML = jobs.map(job => `
+            <div class="job-card">
+                <div class="job-company">${escapeHtml(job.company)}</div>
+                <div class="job-title">${escapeHtml(job.title)}</div>
+                <div class="job-meta">
+                    📍 ${escapeHtml(job.location)} • 
+                    ${job.locationType === 'remote' ? '🏠 Remote' : job.locationType === 'hybrid' ? '🔄 Hybrid' : '🏢 Onsite'}
+                    ${job.visaSponsorship === 'available' ? ' • 🛂 Sponsors Visa' : ''}
+                    ${job.clearance && job.clearance !== 'none' ? ` • 🔒 ${job.clearance.toUpperCase()}` : ''}
+                </div>
+                <a href="${escapeHtml(job.url)}" target="_blank" class="job-apply">Apply Now →</a>
+            </div>
+        `).join('');
+        
+        document.getElementById('jobs-view').classList.add('active');
+    }
+    
+    function backToGlobe() {
+        document.getElementById('jobs-view').classList.remove('active');
+        if (myGlobe) {
+            myGlobe.controls().autoRotate = true;
+        }
+    }
+    
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (myGlobe) {
+            myGlobe.width(window.innerWidth).height(window.innerHeight);
+        }
+    });
+    
+    // Initialize
+    window.addEventListener('load', init);
+</script>
+```
+
+>>>>>>> 2eb26c9610428bb18eb9cb602a93094d8a87b744
 </body>
 </html>
