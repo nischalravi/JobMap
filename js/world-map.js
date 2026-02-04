@@ -3,6 +3,7 @@ let map;
 let allJobs = [];
 let selectedCountry = null;
 let countryLayers = {};
+let currentView = 'card'; // 'card' or 'list'
 
 // Comprehensive country mapping - maps job location formats to GeoJSON country names
 const countryMapping = {
@@ -502,10 +503,48 @@ function clearCountrySelection() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Switch between card and list view
+function switchView(view) {
+    currentView = view;
+    
+    // Update toggle buttons
+    document.querySelectorAll('.view-toggle-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    
+    // Get current jobs being displayed
+    const countryJobs = allJobs.filter(job => {
+        const jobCountry = extractCountry(job.location);
+        return jobCountry === selectedCountry;
+    });
+    
+    // Display in selected view
+    if (view === 'card') {
+        document.getElementById('jobsGrid').classList.add('active');
+        document.getElementById('jobsList').classList.remove('active');
+        displayJobsGrid(countryJobs);
+    } else {
+        document.getElementById('jobsGrid').classList.remove('active');
+        document.getElementById('jobsList').classList.add('active');
+        displayJobsList(countryJobs);
+    }
+}
+
 // Display jobs in grid
 function displayJobs(jobs) {
+    if (currentView === 'card') {
+        displayJobsGrid(jobs);
+    } else {
+        displayJobsList(jobs);
+    }
+}
+
+// Display jobs in card grid
+function displayJobsGrid(jobs) {
     const grid = document.getElementById('jobsGrid');
     grid.classList.add('active');
+    document.getElementById('jobsList').classList.remove('active');
     
     if (jobs.length === 0) {
         grid.innerHTML = '<div class="no-jobs">No jobs found for this country.</div>';
@@ -535,6 +574,48 @@ function displayJobs(jobs) {
             </a>
         </div>
     `).join('');
+}
+
+// Display jobs in list/table view
+function displayJobsList(jobs) {
+    const list = document.getElementById('jobsList');
+    const tbody = document.getElementById('jobsTableBody');
+    
+    document.getElementById('jobsGrid').classList.remove('active');
+    list.classList.add('active');
+    
+    if (jobs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" class="no-jobs">No jobs found for this country.</td></tr>';
+        return;
+    }
+    
+    tbody.innerHTML = jobs.map(job => `
+        <tr>
+            <td>${escapeHtml(job.company)}</td>
+            <td><strong>${escapeHtml(job.title)}</strong></td>
+            <td>${escapeHtml(job.location)}</td>
+            <td><span class="job-badge badge-type">${formatJobType(job.type)}</span></td>
+            <td>${formatLevel(job.level)}</td>
+            <td><span class="job-badge badge-${job.locationType}">${formatLocationType(job.locationType)}</span></td>
+            <td>${job.clearance && job.clearance !== 'none' ? 
+                `<span class="job-badge badge-clearance">${formatClearance(job.clearance)}</span>` : 
+                '<span class="job-badge badge-location">None</span>'}</td>
+            <td>${formatDate(job.posted)}</td>
+            <td><a href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer" class="table-job-link">Apply</a></td>
+        </tr>
+    `).join('');
+}
+
+// Format level for table
+function formatLevel(level) {
+    const levels = {
+        'junior': 'Junior',
+        'mid': 'Mid-Level',
+        'senior': 'Senior',
+        'principal': 'Principal',
+        'lead': 'Lead'
+    };
+    return levels[level] || level;
 }
 
 // Format functions

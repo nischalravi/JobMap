@@ -78,22 +78,30 @@
             color: white;
             padding: 1.5rem;
             border-radius: 8px;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             display: none;
         }
         
         .selected-country.active {
-            display: block;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .selected-country h2 {
+        .selected-country-info h2 {
             margin: 0 0 0.5rem 0;
             font-size: 1.8rem;
         }
         
-        .selected-country p {
+        .selected-country-info p {
             margin: 0;
             opacity: 0.9;
+        }
+        
+        .selected-country-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
         }
         
         .clear-selection {
@@ -104,7 +112,6 @@
             border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 1rem;
             transition: transform 0.2s;
         }
         
@@ -112,7 +119,36 @@
             transform: scale(1.05);
         }
         
-        /* Jobs Grid - Shows after country selection */
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.3rem;
+            border-radius: 8px;
+        }
+        
+        .view-toggle-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #667eea;
+            transition: all 0.2s;
+        }
+        
+        .view-toggle-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .view-toggle-btn:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        /* Jobs Grid - Card View */
         .jobs-grid {
             display: none;
         }
@@ -223,6 +259,64 @@
             background: #2980b9;
         }
         
+        /* Jobs List/Table View */
+        .jobs-list {
+            display: none;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+        
+        .jobs-list.active {
+            display: block;
+        }
+        
+        .jobs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .jobs-table thead {
+            background: #34495e;
+            color: white;
+        }
+        
+        .jobs-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        .jobs-table tbody tr {
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .jobs-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .jobs-table td {
+            padding: 0.8rem 1rem;
+        }
+        
+        .table-job-link {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .table-job-link:hover {
+            background: #2980b9;
+        }
+        
         .no-jobs {
             text-align: center;
             padding: 3rem;
@@ -262,6 +356,28 @@
             height: 20px;
             border-radius: 3px;
             margin-right: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .selected-country.active {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .selected-country-actions {
+                margin-top: 1rem;
+                width: 100%;
+            }
+            
+            .view-toggle {
+                width: 100%;
+                justify-content: stretch;
+            }
+            
+            .view-toggle-btn {
+                flex: 1;
+            }
         }
     </style>
 </head>
@@ -323,16 +439,50 @@
             </div>
         </div>
 
-        <!-- Selected Country Display -->
+        <!-- Selected Country Display with View Toggle -->
         <div class="selected-country" id="selectedCountryBanner">
-            <h2 id="countryName">United States</h2>
-            <p><span id="countryJobCount">0</span> job opportunities available</p>
-            <button class="clear-selection" onclick="clearCountrySelection()">🌍 View All Countries</button>
+            <div class="selected-country-info">
+                <h2 id="countryName">United States</h2>
+                <p><span id="countryJobCount">0</span> job opportunities available</p>
+            </div>
+            <div class="selected-country-actions">
+                <div class="view-toggle">
+                    <button class="view-toggle-btn active" onclick="switchView('card')">
+                        🎴 Cards
+                    </button>
+                    <button class="view-toggle-btn" onclick="switchView('list')">
+                        📋 List
+                    </button>
+                </div>
+                <button class="clear-selection" onclick="clearCountrySelection()">🌍 View All Countries</button>
+            </div>
         </div>
 
-        <!-- Jobs Grid (appears when country selected) -->
+        <!-- Jobs Grid (Card View) -->
         <div class="jobs-grid" id="jobsGrid">
             <!-- Job cards will be inserted here dynamically -->
+        </div>
+
+        <!-- Jobs List (Table View) -->
+        <div class="jobs-list" id="jobsList">
+            <table class="jobs-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Job Title</th>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th>Level</th>
+                        <th>Work Mode</th>
+                        <th>Clearance</th>
+                        <th>Posted</th>
+                        <th>Apply</th>
+                    </tr>
+                </thead>
+                <tbody id="jobsTableBody">
+                    <!-- Table rows will be inserted here -->
+                </tbody>
+            </table>
         </div>
 
         <!-- About Section -->
@@ -344,17 +494,18 @@
             <ul>
                 <li><strong>Interactive Map:</strong> Click any country to filter jobs by location</li>
                 <li><strong>Color Coding:</strong> Countries are colored by number of available jobs</li>
-                <li><strong>Automatic Updates:</strong> Job listings refresh every 6 hours</li>
-                <li><strong>Multiple Sources:</strong> Jobs aggregated from Indeed, LinkedIn, Dice, and more</li>
+                <li><strong>View Options:</strong> Switch between card view and list view</li>
+                <li><strong>Automatic Updates:</strong> Job listings refresh every 6 hours via Adzuna API</li>
+                <li><strong>Multiple Sources:</strong> Jobs aggregated from 18+ countries</li>
             </ul>
+            
+            <h3>Supported Countries</h3>
+            <p>🇺🇸 USA | 🇬🇧 UK | 🇨🇦 Canada | 🇦🇺 Australia | 🇩🇪 Germany | 🇫🇷 France | 🇳🇱 Netherlands | 🇮🇳 India | 🇸🇬 Singapore | 🇪🇸 Spain | 🇮🇹 Italy | 🇨🇭 Switzerland | 🇦🇹 Austria | 🇵🇱 Poland | 🇳🇿 New Zealand | 🇿🇦 South Africa | 🇧🇷 Brazil | 🇲🇽 Mexico</p>
             
             <h3>Job Sources</h3>
             <ul>
-                <li>Indeed API</li>
-                <li>LinkedIn Jobs</li>
-                <li>Dice Technology Jobs</li>
-                <li>CyberSecJobs.com</li>
-                <li>ClearedJobs.net (clearance-required positions)</li>
+                <li>Adzuna API (18+ countries)</li>
+                <li>Real-time job aggregation</li>
                 <li>Direct company career pages</li>
             </ul>
 

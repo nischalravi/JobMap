@@ -9,7 +9,7 @@ import requests
 from datetime import datetime, timedelta
 import time
 import os
-from typing import List, Dict
+from typing import List, Dict, Any
 
 # Adzuna API Configuration
 ADZUNA_APP_ID = os.getenv('ADZUNA_APP_ID', '')
@@ -88,9 +88,9 @@ def classify_job(title: str, description: str = '') -> Dict[str, str]:
         'clearance': clearance
     }
 
-def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10) -> List[Dict]:
+def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10) -> List[Dict[str, Any]]:
     """Search jobs in a specific country via Adzuna API"""
-    jobs = []
+    jobs: List[Dict[str, Any]] = []
     
     if not ADZUNA_APP_ID or not ADZUNA_APP_KEY:
         print(f"  Skipping {country_code} - API keys not configured")
@@ -98,7 +98,7 @@ def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10
     
     try:
         url = f"https://api.adzuna.com/v1/api/jobs/{country_code}/search/1"
-        params = {
+        params: Dict[str, Any] = {
             'app_id': ADZUNA_APP_ID,
             'app_key': ADZUNA_APP_KEY,
             'results_per_page': max_results,
@@ -132,7 +132,7 @@ def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10
                     else:
                         location = country_name
                     
-                    job = {
+                    job: Dict[str, Any] = {
                         'company': result.get('company', {}).get('display_name', 'Unknown Company'),
                         'title': result.get('title', 'Untitled Position'),
                         'location': location,
@@ -162,9 +162,9 @@ def search_adzuna_country(country_code: str, keyword: str, max_results: int = 10
     
     return jobs
 
-def search_all_countries() -> List[Dict]:
+def search_all_countries() -> List[Dict[str, Any]]:
     """Search for jobs across all supported countries"""
-    all_jobs = []
+    all_jobs: List[Dict[str, Any]] = []
     
     print("\n🌍 Searching jobs globally via Adzuna API...")
     print("=" * 60)
@@ -195,10 +195,10 @@ def search_all_countries() -> List[Dict]:
     
     return all_jobs
 
-def deduplicate_jobs(jobs: List[Dict]) -> List[Dict]:
+def deduplicate_jobs(jobs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """Remove duplicate jobs"""
-    seen = set()
-    unique_jobs = []
+    seen: set[tuple[str, str]] = set()
+    unique_jobs: List[Dict[str, Any]] = []
     
     for job in jobs:
         # Create unique key from company + title
@@ -209,7 +209,7 @@ def deduplicate_jobs(jobs: List[Dict]) -> List[Dict]:
     
     return unique_jobs
 
-def generate_sample_international_jobs() -> List[Dict]:
+def generate_sample_international_jobs() -> List[Dict[str, Any]]:
     """Fallback: Generate sample jobs if API keys not available"""
     
     sample_jobs = [
@@ -266,7 +266,7 @@ def generate_sample_international_jobs() -> List[Dict]:
         {'company': 'Credit Suisse', 'title': 'Senior IAM Engineer', 'location': 'Zurich, Switzerland', 'type': 'iam', 'level': 'senior', 'locationType': 'hybrid', 'url': 'https://www.credit-suisse.com/careers'}
     ]
     
-    jobs = []
+    jobs: List[Dict[str, Any]] = []
     for i, base in enumerate(sample_jobs):
         job = {
             'company': base['company'],
@@ -302,7 +302,7 @@ def main():
         print("=" * 60)
         
         # Use sample data if no API keys
-        all_jobs = generate_sample_international_jobs()
+        all_jobs: List[Dict[str, Any]] = generate_sample_international_jobs()
     else:
         print(f"\n✓ API Keys configured")
         print(f"  App ID: {ADZUNA_APP_ID[:8]}...")
@@ -314,14 +314,14 @@ def main():
     print(f"\n📊 Results:")
     print(f"  Total jobs found: {len(all_jobs)}")
     
-    unique_jobs = deduplicate_jobs(all_jobs)
+    unique_jobs: List[Dict[str, Any]] = deduplicate_jobs(all_jobs)
     print(f"  After deduplication: {len(unique_jobs)}")
     
     # Sort by posted date (newest first)
     unique_jobs.sort(key=lambda x: x.get('posted', ''), reverse=True)
     
     # Create output
-    output = {
+    output: Dict[str, Any] = {
         'lastUpdate': datetime.now().isoformat() + 'Z',
         'jobs': unique_jobs
     }
@@ -337,7 +337,7 @@ def main():
     print(f"\n✓ Jobs written to: {output_file}")
     
     # Print summary by location
-    location_counts = {}
+    location_counts: Dict[str, int] = {}
     for job in unique_jobs:
         location = job.get('location', 'Unknown')
         location_counts[location] = location_counts.get(location, 0) + 1
@@ -348,7 +348,7 @@ def main():
         print(f"  {location}: {count}")
     
     # Print by type
-    type_counts = {}
+    type_counts: Dict[str, int] = {}
     for job in unique_jobs:
         job_type = job.get('type', 'unknown')
         type_counts[job_type] = type_counts.get(job_type, 0) + 1
