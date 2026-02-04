@@ -560,8 +560,8 @@ function displayJobsGrid(jobs) {
             
             <div class="job-details">
                 <span class="job-badge badge-location">📍 ${escapeHtml(job.location)}</span>
-                <span class="job-badge badge-${job.locationType}">${formatLocationType(job.locationType)}</span>
-                <span class="job-badge badge-type">${formatJobType(job.type)}</span>
+                <span class="job-badge badge-${job.locationType}">${job.locationType === 'remote' ? '🏠' : job.locationType === 'hybrid' ? '🔄' : '🏢'} ${formatLocationType(job.locationType)}</span>
+                <span class="job-badge badge-type">${formatJobTypeCard(job.type)}</span>
                 ${job.clearance && job.clearance !== 'none' ? 
                     `<span class="job-badge badge-clearance">🔒 ${formatClearance(job.clearance)}</span>` : 
                     ''}
@@ -574,6 +574,18 @@ function displayJobsGrid(jobs) {
             </a>
         </div>
     `).join('');
+}
+
+// Format job type for cards (fuller names)
+function formatJobTypeCard(type) {
+    const types = {
+        'iam': 'IAM Engineer',
+        'security': 'Security',
+        'architect': 'Architect',
+        'analyst': 'Analyst',
+        'consultant': 'Consultant'
+    };
+    return types[type] || type;
 }
 
 // Display jobs in list/table view
@@ -618,22 +630,22 @@ function formatLevel(level) {
     return levels[level] || level;
 }
 
-// Format functions
+// Format functions for table (short, no icons)
 function formatLocationType(type) {
     const types = {
-        'remote': '🏠 Remote',
-        'hybrid': '🔄 Hybrid',
-        'onsite': '🏢 Onsite'
+        'remote': 'Remote',
+        'hybrid': 'Hybrid',
+        'onsite': 'Onsite'
     };
     return types[type] || type;
 }
 
 function formatJobType(type) {
     const types = {
-        'iam': 'IAM Engineer',
-        'security': 'Security Engineer',
-        'architect': 'Security Architect',
-        'analyst': 'Security Analyst',
+        'iam': 'IAM',
+        'security': 'Security',
+        'architect': 'Architect',
+        'analyst': 'Analyst',
         'consultant': 'Consultant'
     };
     return types[type] || type;
@@ -642,7 +654,7 @@ function formatJobType(type) {
 function formatClearance(clearance) {
     const clearances = {
         'secret': 'Secret',
-        'ts': 'Top Secret',
+        'ts': 'TS',
         'ts-sci': 'TS/SCI'
     };
     return clearances[clearance] || clearance;
