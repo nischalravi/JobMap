@@ -52,12 +52,26 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         
         .stat-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .stat-card[onclick] {
+            cursor: pointer;
+        }
+        
+        .stat-card[onclick]:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.2);
+            border: 2px solid #3498db;
+        }
+        
+        .stat-card[onclick]:active {
+            transform: translateY(-2px);
         }
         
         .stat-number {
@@ -392,7 +406,7 @@
     <main class="container">
         <!-- Global Statistics -->
         <div class="global-stats">
-            <div class="stat-card">
+            <div class="stat-card" onclick="showAllJobs()" style="cursor: pointer;" title="Click to view all jobs">
                 <div class="stat-number" id="totalJobs">0</div>
                 <div class="stat-label">Total Jobs Worldwide</div>
             </div>
@@ -400,7 +414,7 @@
                 <div class="stat-number" id="totalCountries">0</div>
                 <div class="stat-label">Countries</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card" onclick="showRemoteJobs()" style="cursor: pointer;" title="Click to view remote jobs">
                 <div class="stat-number" id="remoteJobs">0</div>
                 <div class="stat-label">Remote Positions</div>
             </div>

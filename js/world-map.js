@@ -683,5 +683,86 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// Show all jobs (when clicking total jobs stat)
+function showAllJobs() {
+    selectedCountry = 'All Countries';
+    
+    document.getElementById('countryName').textContent = 'All Countries';
+    document.getElementById('countryJobCount').textContent = allJobs.length;
+    document.getElementById('selectedCountryBanner').classList.add('active');
+    
+    // Reset map view
+    map.setView([30, 0], 2);
+    
+    // Reset all country styles
+    Object.entries(countryLayers).forEach(([name, layer]) => {
+        const jobCount = allJobs.filter(job => 
+            extractCountry(job.location) === name
+        ).length;
+        
+        layer.setStyle({
+            fillColor: getCountryColor(jobCount),
+            weight: 1,
+            color: 'white',
+            fillOpacity: 0.7
+        });
+    });
+    
+    // Display all jobs
+    displayJobs(allJobs);
+    
+    // Scroll to jobs
+    document.getElementById('selectedCountryBanner').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
+// Show only remote jobs (when clicking remote positions stat)
+function showRemoteJobs() {
+    selectedCountry = 'Remote Positions';
+    
+    const remoteJobs = allJobs.filter(job => job.locationType === 'remote');
+    
+    document.getElementById('countryName').textContent = 'Remote Positions Worldwide';
+    document.getElementById('countryJobCount').textContent = remoteJobs.length;
+    document.getElementById('selectedCountryBanner').classList.add('active');
+    
+    // Reset map view
+    map.setView([30, 0], 2);
+    
+    // Highlight countries with remote jobs
+    Object.entries(countryLayers).forEach(([name, layer]) => {
+        const countryRemoteJobs = remoteJobs.filter(job => 
+            extractCountry(job.location) === name
+        ).length;
+        
+        if (countryRemoteJobs > 0) {
+            layer.setStyle({
+                fillColor: '#27ae60',
+                weight: 2,
+                color: 'white',
+                fillOpacity: 0.8
+            });
+        } else {
+            layer.setStyle({
+                fillColor: '#ecf0f1',
+                weight: 1,
+                color: 'white',
+                fillOpacity: 0.3
+            });
+        }
+    });
+    
+    // Display remote jobs
+    displayJobs(remoteJobs);
+    
+    // Scroll to jobs
+    document.getElementById('selectedCountryBanner').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', initMap);
