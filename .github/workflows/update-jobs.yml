@@ -2,8 +2,7 @@ name: Update Job Listings
 
 on:
   schedule:
-    # Run every 6 hours
-    - cron: '0 */6 * * *'
+    - cron: '0 */12 * * *'  # Every 12 hours
   # Allow manual trigger
   workflow_dispatch:
   # Run on push to main (for testing)
