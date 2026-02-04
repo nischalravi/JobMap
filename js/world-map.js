@@ -510,24 +510,35 @@ function switchView(view) {
     // Update toggle buttons
     document.querySelectorAll('.view-toggle-btn').forEach(btn => {
         btn.classList.remove('active');
+        if ((view === 'card' && btn.textContent.includes('Cards')) ||
+            (view === 'list' && btn.textContent.includes('List'))) {
+            btn.classList.add('active');
+        }
     });
-    event.target.classList.add('active');
     
-    // Get current jobs being displayed
-    const countryJobs = allJobs.filter(job => {
-        const jobCountry = extractCountry(job.location);
-        return jobCountry === selectedCountry;
-    });
+    // Determine which jobs to display
+    let jobsToDisplay = [];
+    
+    if (selectedCountry === 'All Countries') {
+        jobsToDisplay = allJobs;
+    } else if (selectedCountry === 'Remote Positions') {
+        jobsToDisplay = allJobs.filter(job => job.locationType === 'remote');
+    } else {
+        jobsToDisplay = allJobs.filter(job => {
+            const jobCountry = extractCountry(job.location);
+            return jobCountry === selectedCountry;
+        });
+    }
     
     // Display in selected view
     if (view === 'card') {
         document.getElementById('jobsGrid').classList.add('active');
         document.getElementById('jobsList').classList.remove('active');
-        displayJobsGrid(countryJobs);
+        displayJobsGrid(jobsToDisplay);
     } else {
         document.getElementById('jobsGrid').classList.remove('active');
         document.getElementById('jobsList').classList.add('active');
-        displayJobsList(countryJobs);
+        displayJobsList(jobsToDisplay);
     }
 }
 
