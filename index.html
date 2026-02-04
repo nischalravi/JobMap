@@ -4,95 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JOBMAP - Global IAM & Cybersecurity Jobs</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        /* Map styles */
-        .hero-map {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        #worldMap {
-            height: 500px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 1rem 2rem;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #dc2626, #ef4444, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-left: 2rem;
+        }
+        
+        /* Globe Container */
+        .globe-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+        
+        #globe-container {
             width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            margin-bottom: 1rem;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         
-        .map-instructions {
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+        /* Stats Overlay */
+        .stats-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            pointer-events: none;
         }
         
-        .map-instructions strong {
-            color: #2c3e50;
-        }
-        
-        /* Global Statistics */
-        .global-stats {
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 2rem;
         }
         
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .stat-box {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        .stat-card[onclick] {
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
+            pointer-events: auto;
             cursor: pointer;
+            transition: all 0.3s;
         }
         
-        .stat-card[onclick]:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.2);
-            border: 2px solid #3498db;
+        .stat-box:hover {
+            border-color: rgba(220, 38, 38, 0.8);
+            box-shadow: 0 0 40px rgba(220, 38, 38, 0.4);
+            transform: scale(1.05);
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             font-weight: bold;
-            color: #3498db;
+            background: linear-gradient(135deg, #dc2626, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
         }
         
         .stat-label {
-            color: #7f8c8d;
-            margin-top: 0.5rem;
+            color: #9ca3af;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        /* Selected Country Display */
-        .selected-country {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
+        /* Center Title */
+        .center-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        .center-title h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #dc2626, #ef4444, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+        }
+        
+        .center-title p {
+            color: #9ca3af;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        
+        /* Instruction */
+        .instruction {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #9ca3af;
+            font-size: 1.1rem;
+            z-index: 10;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        /* Jobs Section */
+        .jobs-section {
+            min-height: 100vh;
+            background: #0a0a0a;
+            padding: 4rem 2rem;
             display: none;
         }
         
-        .selected-country.active {
+        .jobs-section.active {
+            display: block;
+        }
+        
+        .jobs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -100,430 +202,521 @@
             gap: 1rem;
         }
         
-        .selected-country-info h2 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.8rem;
+        .section-header h2 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #dc2626, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .selected-country-info p {
-            margin: 0;
-            opacity: 0.9;
+        .section-header p {
+            color: #9ca3af;
         }
         
-        .selected-country-actions {
+        .controls {
             display: flex;
             gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
         }
         
-        .clear-selection {
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .clear-selection:hover {
-            transform: scale(1.05);
-        }
-        
-        /* View Toggle */
-        .view-toggle {
-            display: flex;
-            gap: 0.5rem;
-            background: white;
-            padding: 0.3rem;
+        .btn {
+            padding: 0.7rem 1.5rem;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            color: #ffffff;
             border-radius: 8px;
-        }
-        
-        .view-toggle-btn {
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: none;
-            border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            color: #667eea;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
         
-        .view-toggle-btn.active {
-            background: #667eea;
-            color: white;
+        .btn:hover {
+            background: rgba(220, 38, 38, 0.4);
+            border-color: rgba(220, 38, 38, 0.8);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
         }
         
-        /* Jobs Grid */
+        .btn.active {
+            background: #dc2626;
+            border-color: #dc2626;
+        }
+        
+        /* Job Cards */
         .jobs-grid {
-            display: none;
-        }
-        
-        .jobs-grid.active {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2rem;
         }
         
         .job-card {
-            background: white;
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 12px;
             padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            border-left: 4px solid #3498db;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #dc2626, #f59e0b);
         }
         
         .job-card:hover {
+            border-color: rgba(220, 38, 38, 0.6);
+            box-shadow: 0 8px 30px rgba(220, 38, 38, 0.2);
             transform: translateY(-4px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-        
-        .job-card-header {
-            margin-bottom: 1rem;
         }
         
         .job-company {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            font-weight: 600;
+            color: #9ca3af;
+            font-size: 0.85rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
         
         .job-title {
             font-size: 1.3rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin: 0.5rem 0;
-        }
-        
-        .job-details {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-        
-        .job-badge {
-            padding: 0.3rem 0.7rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
         
-        .badge-location {
-            background: #ecf0f1;
-            color: #2c3e50;
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
         
-        .badge-remote {
-            background: #27ae60;
-            color: white;
+        .tag {
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid;
         }
         
-        .badge-hybrid {
-            background: #f39c12;
-            color: white;
+        .tag-location {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            color: #60a5fa;
         }
         
-        .badge-onsite {
-            background: #95a5a6;
-            color: white;
+        .tag-remote {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
+            color: #4ade80;
         }
         
-        .badge-type {
-            background: #3498db;
-            color: white;
+        .tag-hybrid {
+            background: rgba(251, 146, 60, 0.2);
+            border-color: rgba(251, 146, 60, 0.5);
+            color: #fb923c;
         }
         
-        .badge-clearance {
-            background: #e74c3c;
-            color: white;
+        .tag-visa-yes {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
+            color: #4ade80;
         }
         
-        .badge-visa-yes {
-            background: #27ae60;
-            color: white;
+        .tag-visa-no {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: rgba(220, 38, 38, 0.5);
+            color: #ef4444;
         }
         
-        .badge-visa-no {
-            background: #e74c3c;
-            color: white;
-        }
-        
-        .job-posted {
-            color: #95a5a6;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
+        .tag-clearance {
+            background: rgba(220, 38, 38, 0.2);
+            border-color: rgba(220, 38, 38, 0.5);
+            color: #ef4444;
         }
         
         .job-apply {
             display: inline-block;
-            margin-top: 1rem;
-            padding: 0.6rem 1.2rem;
-            background: #3498db;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #dc2626, #ef4444);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
-            transition: background 0.2s;
+            margin-top: 1rem;
+            transition: all 0.3s;
         }
         
         .job-apply:hover {
-            background: #2980b9;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+            transform: translateY(-2px);
         }
         
-        /* Jobs List/Table View */
-        .jobs-list {
-            display: none;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            overflow-x: auto;
-            margin-bottom: 2rem;
+        /* Back to Globe Button */
+        .back-to-globe {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
         }
         
-        .jobs-list.active {
-            display: block;
-        }
-        
-        .jobs-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-        }
-        
-        .jobs-table thead {
-            background: #34495e;
-            color: white;
-            position: sticky;
-            top: 0;
-        }
-        
-        .jobs-table th {
-            padding: 0.8rem 0.5rem;
-            text-align: left;
-            font-weight: 600;
-            white-space: nowrap;
-            font-size: 0.8rem;
-        }
-        
-        .jobs-table tbody tr {
-            border-bottom: 1px solid #ecf0f1;
-        }
-        
-        .jobs-table tbody tr:hover {
-            background: #f8f9fa;
-        }
-        
-        .jobs-table td {
-            padding: 0.7rem 0.5rem;
-            vertical-align: middle;
-        }
-        
-        .jobs-table .job-badge {
-            padding: 0.2rem 0.5rem;
-            font-size: 0.7rem;
-            white-space: nowrap;
-        }
-        
-        .table-job-link {
-            display: inline-block;
-            padding: 0.4rem 0.8rem;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        
-        .table-job-link:hover {
-            background: #2980b9;
-        }
-        
-        .no-jobs {
-            text-align: center;
-            padding: 3rem;
-            color: #7f8c8d;
+        /* Loading */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #9ca3af;
             font-size: 1.2rem;
+            z-index: 100;
         }
         
-        /* Map legend */
-        .map-legend {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-top: 1rem;
-        }
-        
-        .legend-title {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin: 0.3rem 0;
-            font-size: 0.9rem;
-        }
-        
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 3px;
-            margin-right: 0.5rem;
-        }
-        
+        /* Mobile */
         @media (max-width: 768px) {
-            .jobs-table {
-                font-size: 0.75rem;
+            .center-title h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .stat-box {
+                padding: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>🗺️ JOBMAP - IAM & Cybersecurity Jobs</h1>
-            <p class="subtitle">Click any country on the map to explore job opportunities worldwide</p>
+    <div class="loading" id="loading">Loading JOBMAP...</div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🗺️ JOBMAP</div>
+            <div class="tagline">Global IAM & Cybersecurity Opportunities</div>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Global Statistics -->
-        <div class="global-stats">
-            <div class="stat-card" onclick="showAllJobs()" title="Click to view all jobs">
-                <div class="stat-number" id="totalJobs">0</div>
-                <div class="stat-label">Total Jobs Worldwide</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="totalCountries">0</div>
-                <div class="stat-label">Countries</div>
-            </div>
-            <div class="stat-card" onclick="showRemoteJobs()" title="Click to view remote jobs">
-                <div class="stat-number" id="remoteJobs">0</div>
-                <div class="stat-label">Remote Positions</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="companiesHiring">0</div>
-                <div class="stat-label">Companies Hiring</div>
+    <!-- 3D Globe Section -->
+    <section class="globe-section" id="globeSection">
+        <div id="globe-container"></div>
+        
+        <!-- Center Title -->
+        <div class="center-title">
+            <h1>JOBMAP</h1>
+            <p>EXPLORE GLOBAL OPPORTUNITIES</p>
+        </div>
+        
+        <!-- Stats Overlay -->
+        <div class="stats-overlay">
+            <div class="stats-grid">
+                <div class="stat-box" onclick="showAllJobs()" title="Click to browse all jobs">
+                    <div class="stat-number" id="totalJobs">0</div>
+                    <div class="stat-label">Global Opportunities</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="totalCountries">0</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-box" onclick="showRemoteJobs()" title="Click to view remote jobs">
+                    <div class="stat-number" id="remoteJobs">0</div>
+                    <div class="stat-label">Remote Positions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="companiesHiring">0</div>
+                    <div class="stat-label">Companies Hiring</div>
+                </div>
             </div>
         </div>
+        
+        <!-- Instruction -->
+        <div class="instruction">
+            👆 Click on the globe to explore • Drag to rotate
+        </div>
+    </section>
 
-        <!-- Main World Map -->
-        <div class="hero-map">
-            <h2 style="margin-top: 0;">🗺️ Interactive World Map</h2>
-            <div class="map-instructions">
-                <strong>👆 Click on any country</strong> to see IAM and cybersecurity job opportunities in that region
+    <!-- Jobs Section -->
+    <section class="jobs-section" id="jobsSection">
+        <div class="jobs-container">
+            <div class="section-header">
+                <div>
+                    <h2 id="sectionTitle">All Opportunities</h2>
+                    <p><span id="jobCount">0</span> positions available</p>
+                </div>
+                <div class="controls">
+                    <button class="btn" onclick="showCardView()">🎴 Cards</button>
+                    <button class="btn active" onclick="showListView()">📋 List</button>
+                </div>
             </div>
-            <div id="worldMap"></div>
             
-            <div class="map-legend">
-                <div class="legend-title">Job Availability</div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #27ae60;"></div>
-                    <span>High (10+ jobs)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #f39c12;"></div>
-                    <span>Medium (5-9 jobs)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #3498db;"></div>
-                    <span>Low (1-4 jobs)</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #ecf0f1;"></div>
-                    <span>No jobs available</span>
-                </div>
+            <div class="jobs-grid" id="jobsGrid">
+                <!-- Jobs will be inserted here -->
             </div>
         </div>
+        
+        <button class="btn back-to-globe" onclick="backToGlobe()">
+            🌍 Back to Globe
+        </button>
+    </section>
 
-        <!-- Selected Country Banner -->
-        <div class="selected-country" id="selectedCountryBanner">
-            <div class="selected-country-info">
-                <h2 id="countryName">Country</h2>
-                <p><span id="countryJobCount">0</span> job opportunities available</p>
-            </div>
-            <div class="selected-country-actions">
-                <div class="view-toggle">
-                    <button class="view-toggle-btn active" onclick="switchView('card')">🎴 Cards</button>
-                    <button class="view-toggle-btn" onclick="switchView('list')">📋 List</button>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, globe, particles;
+        let allJobs = [];
+        let mouseX = 0, mouseY = 0;
+        let targetRotationX = 0, targetRotationY = 0;
+        
+        // Initialize 3D Globe
+        function init3DGlobe() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 2.5;
+            
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x0a0a0a, 1);
+            document.getElementById('globe-container').appendChild(renderer.domElement);
+            
+            // Create Earth
+            const geometry = new THREE.SphereGeometry(1, 64, 64);
+            
+            // Earth texture (using simple color with wireframe)
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x1a4d7a,
+                emissive: 0x0a1a2a,
+                wireframe: false,
+                transparent: true,
+                opacity: 0.9
+            });
+            
+            globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+            
+            // Wireframe overlay
+            const wireframeGeo = new THREE.SphereGeometry(1.01, 32, 32);
+            const wireframeMat = new THREE.MeshBasicMaterial({
+                color: 0xdc2626,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.3
+            });
+            const wireframe = new THREE.Mesh(wireframeGeo, wireframeMat);
+            scene.add(wireframe);
+            
+            // Atmosphere glow
+            const glowGeo = new THREE.SphereGeometry(1.15, 64, 64);
+            const glowMat = new THREE.ShaderMaterial({
+                uniforms: {},
+                vertexShader: `
+                    varying vec3 vNormal;
+                    void main() {
+                        vNormal = normalize(normalMatrix * normal);
+                        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                    }
+                `,
+                fragmentShader: `
+                    varying vec3 vNormal;
+                    void main() {
+                        float intensity = pow(0.6 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.0);
+                        gl_FragColor = vec4(0.86, 0.15, 0.15, 1.0) * intensity;
+                    }
+                `,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending,
+                transparent: true
+            });
+            const glow = new THREE.Mesh(glowGeo, glowMat);
+            scene.add(glow);
+            
+            // Particles (stars)
+            const particlesGeo = new THREE.BufferGeometry();
+            const particleCount = 1000;
+            const positions = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 10;
+            }
+            
+            particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const particlesMat = new THREE.PointsMaterial({
+                color: 0xdc2626,
+                size: 0.02,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            particles = new THREE.Points(particlesGeo, particlesMat);
+            scene.add(particles);
+            
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0x404040, 2);
+            scene.add(ambientLight);
+            
+            const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+            pointLight.position.set(5, 3, 5);
+            scene.add(pointLight);
+            
+            const redLight = new THREE.PointLight(0xdc2626, 0.5, 100);
+            redLight.position.set(-5, 0, 3);
+            scene.add(redLight);
+            
+            // Mouse interaction
+            document.addEventListener('mousemove', onMouseMove);
+            document.getElementById('globe-container').addEventListener('click', onGlobeClick);
+            
+            // Resize handler
+            window.addEventListener('resize', onWindowResize);
+            
+            animate();
+        }
+        
+        function onMouseMove(event) {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+        
+        function onGlobeClick() {
+            // Randomly show a country's jobs for demo
+            const countries = ['United States of America', 'United Kingdom', 'Germany', 'India'];
+            const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+            selectCountry(randomCountry);
+        }
+        
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Auto-rotate globe
+            globe.rotation.y += 0.001;
+            
+            // Mouse interaction
+            targetRotationX = mouseX * 0.3;
+            targetRotationY = mouseY * 0.3;
+            
+            globe.rotation.x += (targetRotationY - globe.rotation.x) * 0.05;
+            globe.rotation.y += (targetRotationX - globe.rotation.y) * 0.05;
+            
+            // Rotate particles slowly
+            particles.rotation.y += 0.0002;
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Load jobs data
+        async function loadJobs() {
+            try {
+                const response = await fetch('data/jobs.json');
+                const data = await response.json();
+                allJobs = data.jobs;
+                
+                updateStats();
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Error loading jobs:', error);
+                document.getElementById('loading').textContent = 'Error loading jobs';
+            }
+        }
+        
+        function updateStats() {
+            document.getElementById('totalJobs').textContent = allJobs.length;
+            document.getElementById('remoteJobs').textContent = allJobs.filter(j => j.locationType === 'remote').length;
+            document.getElementById('companiesHiring').textContent = new Set(allJobs.map(j => j.company)).size;
+            
+            const countries = new Set();
+            allJobs.forEach(job => {
+                const parts = job.location.split(', ');
+                const country = parts[parts.length - 1];
+                if (!country.includes('Remote')) countries.add(country);
+            });
+            document.getElementById('totalCountries').textContent = countries.size;
+        }
+        
+        function showAllJobs() {
+            displayJobs(allJobs, 'All Opportunities');
+        }
+        
+        function showRemoteJobs() {
+            const remoteJobs = allJobs.filter(j => j.locationType === 'remote');
+            displayJobs(remoteJobs, 'Remote Positions Worldwide');
+        }
+        
+        function selectCountry(countryName) {
+            const countryJobs = allJobs.filter(job => job.location.includes(countryName));
+            displayJobs(countryJobs, countryName);
+        }
+        
+        function displayJobs(jobs, title) {
+            document.getElementById('globeSection').style.display = 'none';
+            document.getElementById('jobsSection').classList.add('active');
+            document.getElementById('sectionTitle').textContent = title;
+            document.getElementById('jobCount').textContent = jobs.length;
+            
+            const grid = document.getElementById('jobsGrid');
+            grid.innerHTML = jobs.map(job => `
+                <div class="job-card">
+                    <div class="job-company">${escapeHtml(job.company)}</div>
+                    <div class="job-title">${escapeHtml(job.title)}</div>
+                    <div class="job-tags">
+                        <span class="tag tag-location">📍 ${escapeHtml(job.location)}</span>
+                        <span class="tag tag-${job.locationType}">${job.locationType === 'remote' ? '🏠' : job.locationType === 'hybrid' ? '🔄' : '🏢'} ${job.locationType}</span>
+                        ${job.visaSponsorship === 'available' ? '<span class="tag tag-visa-yes">🛂 Visa Sponsor</span>' : ''}
+                        ${job.visaSponsorship === 'not_available' ? '<span class="tag tag-visa-no">❌ No Visa</span>' : ''}
+                        ${job.clearance && job.clearance !== 'none' ? `<span class="tag tag-clearance">🔒 ${job.clearance.toUpperCase()}</span>` : ''}
+                    </div>
+                    <a href="${escapeHtml(job.url)}" target="_blank" class="job-apply">Apply Now →</a>
                 </div>
-                <button class="clear-selection" onclick="clearCountrySelection()">🌍 View All Countries</button>
-            </div>
-        </div>
-
-        <!-- Jobs Grid (Card View) -->
-        <div class="jobs-grid" id="jobsGrid"></div>
-
-        <!-- Jobs List (Table View) -->
-        <div class="jobs-list" id="jobsList">
-            <table class="jobs-table">
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Job Title</th>
-                        <th>Location</th>
-                        <th>Type</th>
-                        <th>Level</th>
-                        <th>Mode</th>
-                        <th>Visa</th>
-                        <th>Clearance</th>
-                        <th>Posted</th>
-                        <th>Apply</th>
-                    </tr>
-                </thead>
-                <tbody id="jobsTableBody"></tbody>
-            </table>
-        </div>
-
-        <!-- About Section -->
-        <section class="info">
-            <h2>About JOBMAP</h2>
-            <p><strong>JOBMAP</strong> is a global platform for exploring IAM (Identity & Access Management) and cybersecurity job opportunities worldwide. Our interactive map makes it easy to discover positions across 18+ countries, with information about visa sponsorship and work authorization.</p>
-            
-            <h3>Key Features</h3>
-            <ul>
-                <li><strong>Interactive Map:</strong> Click any country to filter jobs</li>
-                <li><strong>Visa Sponsorship Info:</strong> See which companies sponsor work visas</li>
-                <li><strong>Multiple Views:</strong> Switch between card and list views</li>
-                <li><strong>Auto-Updates:</strong> Fresh jobs every 12 hours</li>
-                <li><strong>18 Countries:</strong> USA, UK, Canada, Australia, Germany, France, and more</li>
-            </ul>
-            
-            <h3>Supported Countries</h3>
-            <p>🇺🇸 USA | 🇬🇧 UK | 🇨🇦 Canada | 🇦🇺 Australia | 🇩🇪 Germany | 🇫🇷 France | 🇳🇱 Netherlands | 🇮🇳 India | 🇸🇬 Singapore | 🇪🇸 Spain | 🇮🇹 Italy | 🇨🇭 Switzerland | 🇦🇹 Austria | 🇵🇱 Poland | 🇳🇿 New Zealand | 🇿🇦 South Africa | 🇧🇷 Brazil | 🇲🇽 Mexico</p>
-            
-            <h3>Job Data Sources</h3>
-            <ul>
-                <li>Adzuna API (18 countries)</li>
-                <li>Real-time job aggregation</li>
-                <li>Direct from company career pages</li>
-                <li>Updated twice daily</li>
-            </ul>
-
-            <h3>Feedback</h3>
-            <p>Suggestions or issues? <a href="https://github.com/nischalravi/iam-jobs/issues" target="_blank">Open an issue on GitHub</a></p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 JOBMAP - Global IAM & Cybersecurity Jobs | <a href="https://github.com/nischalravi/iam-jobs" target="_blank">GitHub</a></p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/world-map.js"></script>
+            `).join('');
+        }
+        
+        function backToGlobe() {
+            document.getElementById('jobsSection').classList.remove('active');
+            document.getElementById('globeSection').style.display = 'flex';
+        }
+        
+        function showCardView() {
+            // Already in card view
+            document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        function showListView() {
+            document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            // TODO: Implement table view
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            init3DGlobe();
+            loadJobs();
+        });
+    </script>
 </body>
 </html>
