@@ -1,9 +1,39 @@
 {
-  "lastUpdate": "2026-11-23T06:35:14.975636Z",
+  "lastUpdate": "2026-11-23T23:35:54.731710Z",
   "jobs": [
     {
-      "company": "Placements24",
-      "title": "Remote Information Security Engineer - Cloud Security Specialist",
+      "company": "Job-Room",
+      "title": "Leiter*in Cyber Security & IAM 80 – 100%",
+      "location": "Teufen, Mittelland, Switzerland",
+      "locationType": "onsite",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T18:37:56Z",
+      "url": "https://www.adzuna.ch/details/5976295950?utm_medium=api&utm_source=b0e6829d",
+      "description": "Leiter\\\\*in Cyber Security \\\\& IAM 80 – 100% Leiter\\\\*in Cyber Security \\\\& IAM 80 – 100%  «Wir begeistern unsere Kundinnen und Kunden – mit Kompetenz und Erfahrung.» \\\\[A1\\\\.1\\\\]Hast du Lust, die operative Cyber Security unserer Bank zu verantworten und unsere IT\\\\-Sicherheit weiterzuentwickeln? Als Leiter\\\\*in Cyber Security \\\\& IAM an unserem Hauptsitz in St. Gallen führst du ein fünfköpfiges Team und sorgst für den Schutz unserer Systeme und Daten. Dabei übernimmst du eine zentrale in der 1…"
+    },
+    {
+      "company": "Job-Room",
+      "title": "Senior Enterprise & IT Solution Architect",
+      "location": "Solothurn, Switzerland",
+      "locationType": "onsite",
+      "type": "architect",
+      "level": "senior",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T18:34:24Z",
+      "url": "https://www.adzuna.ch/details/5976292989?utm_medium=api&utm_source=b0e6829d",
+      "description": " base: meta-keywords: meta-viewport: width=device-width, initial-scale=1.0 title: Senior Enterprise & IT Solution Architect  Senior Enterprise \\\\& IT Solution Architect  Was dich erwartet Als Senior Enterprise \\\\& IT Solution Architect gestaltest du die technologische Zukunft der Centris aktiv mit. Gemeinsam mit dem Head of Architecture \\\\& AI entwickelst du unsere Enterprise Architektur weiter und treibst Standardisierung und Automatisierung konsequent voran. Gleichzeitig übernimmst du die tec…"
+    },
+    {
+      "company": "Sabenza IT",
+      "title": "AWS DevSecOps Engineer",
       "location": "Johannesburg, Gauteng, South Africa",
       "locationType": "remote",
       "type": "security",
@@ -12,14 +42,74 @@
       "visaSponsorship": "unknown",
       "workAuthRequired": false,
       "locationRestrictions": [],
-      "posted": "2026-11-23T01:29:44Z",
-      "url": "https://www.adzuna.co.za/details/5975601474?utm_medium=api&utm_source=b0e6829d",
-      "description": "About the Role This is a fully remote position for a highly skilled Information Security Engineer specializing in cloud security. Our client is a rapidly expanding enterprise seeking to bolster its cloud infrastructure security posture. You will be at the forefront of designing, implementing, and managing robust security solutions across our client's cloud environments (AWS, Azure, GCP). This role demands a proactive approach to identifying and mitigating cloud-specific threats and vulnerabilit…"
+      "posted": "2026-11-23T16:55:18Z",
+      "url": "https://www.adzuna.co.za/details/5976207810?utm_medium=api&utm_source=b0e6829d",
+      "description": "This is a remote position. We are seeking a skilled AWS DevSecOps Engineers to join our technology team. The ideal candidates will have strong experience in AWS cloud environments , combined with hands-on Security Operations (SecOps) expertise. This role focuses on securing, maintaining, and optimizing AWS infrastructure while ensuring compliance with security best practices and operational standards. The successful candidates will play a key role in implementing security controls, managing vul…"
     },
     {
-      "company": "IDMe",
-      "title": "Account Executive, Healthcare (DC/NY/Chicago)",
-      "location": "New York City, New York, United States",
+      "company": "Sabenza IT",
+      "title": "Remote AWS DevSecOps Engineer: Cloud Security & IaC",
+      "location": "Stellenbosch, Cape Winelands, South Africa",
+      "locationType": "remote",
+      "type": "security",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T16:54:43Z",
+      "url": "https://www.adzuna.co.za/details/5976206478?utm_medium=api&utm_source=b0e6829d",
+      "description": "Sabenza IT is seeking a skilled AWS DevSecOps Engineer for a remote role. The engineer will secure, maintain, and optimize AWS infrastructure, implementing security controls, vulnerability management, and ongoing cloud security improvements. Responsibilities include hardening AWS environments, managing WAF policies, patch management, and enabling IAM, Security Hub, GuardDuty, and other AWS security services. Collaboration with Dev and SecOps teams is essential. J-18808-Ljbffr"
+    },
+    {
+      "company": "Placements24",
+      "title": "Remote Cloud Security Architect - Lead & Innovate",
+      "location": "Polokwane, Capricorn, South Africa",
+      "locationType": "remote",
+      "type": "architect",
+      "level": "lead",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T16:54:33Z",
+      "url": "https://www.adzuna.co.za/details/5976206035?utm_medium=api&utm_source=b0e6829d",
+      "description": "Placements24 is seeking a highly experienced Cloud Security Architect to join our fully remote technology team. You will design secure cloud environments across AWS, Azure, and GCP, shaping security strategy and controls to protect data and applications in the cloud. As a remote-first role, you will collaborate with distributed teams, implement IAM, network security, encryption, and threat detection, and guide compliance with frameworks such as NIST and ISO 27001. J-18808-Ljbffr"
+    },
+    {
+      "company": "Placements24",
+      "title": "Cloud Security Architect (Remote)",
+      "location": "Polokwane, Capricorn, South Africa",
+      "locationType": "remote",
+      "type": "architect",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T16:50:15Z",
+      "url": "https://www.adzuna.co.za/details/5976194880?utm_medium=api&utm_source=b0e6829d",
+      "description": "About the Role Our client is seeking a highly experienced and visionary Cloud Security Architect to join their fully remote technology team. This pivotal role is responsible for designing, implementing, and managing secure cloud environments across major platforms like AWS, Azure, and GCP. You will be instrumental in developing cloud security strategies, defining security controls, and ensuring the protection of sensitive data and applications in the cloud. As a remote-first position, you'll co…"
+    },
+    {
+      "company": "Neotecra, Inc",
+      "title": "Senior IAM Security Architect (MFA, SSO & AI Security)",
+      "location": "Grand Central, Manhattan, United States",
+      "locationType": "onsite",
+      "type": "iam",
+      "level": "senior",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T16:15:50Z",
+      "url": "https://www.adzuna.com/land/ad/5976477230?se=FplikJbn8RGCSsN2jRBeTA&utm_medium=api&utm_source=b0e6829d&v=FA4B5519EACD952B4D8A63AD2A54306D903BB5EE",
+      "description": "Job Description We are seeking an experienced Senior IAM Security Architect to lead enterprise Identity and Access Management (IAM) architecture, Multifactor Authentication (MFA) implementation, Single Sign-On (SSO), and emerging AI identity security initiatives. The ideal candidate will have strong experience designing and implementing enterprise authentication and identity security solutions across cloud and on-premises environments. This individual will also contribute to AI governance, non-…"
+    },
+    {
+      "company": "Stöcklin Logistik AG",
+      "title": "Security/DevOps Engineer (a)",
+      "location": "Laufen, Switzerland",
       "locationType": "onsite",
       "type": "security",
       "level": "mid",
@@ -27,9 +117,114 @@
       "visaSponsorship": "unknown",
       "workAuthRequired": false,
       "locationRestrictions": [],
-      "posted": "2026-11-23T00:27:18Z",
-      "url": "https://www.adzuna.com/land/ad/5975781936?se=NF47-gfn8RGxaphH8dh4sw&utm_medium=api&utm_source=b0e6829d&v=704C7E0191826DC6AA1643E56C7A1940790B8A0A",
-      "description": "Job Description Job Description \\n Company Overview \\n IDMe is the next-generation digital identity wallet that simplifies how individuals securely prove their identity online. Consumers can verify their identity with IDMe once and seamlessly login across websites without having to create a new login and verify their identity again. Over 175 million users experience streamlined login and identity verification with IDMe at 22 federal agencies, 50 state government agencies, and more than 100 heal…"
+      "posted": "2026-11-23T14:16:19Z",
+      "url": "https://www.adzuna.ch/details/5976126913?utm_medium=api&utm_source=b0e6829d",
+      "description": "Salary: CHF 85'000 - 130'000 per year Requirements: Bachelor- oder Masterabschluss in Informatik oder einem ähnlichen Fachgebiet, idealerweise mit Spezialisierung in IT/OT-Security; alternativ 1–2 Jahre Erfahrung in DevOps-, WMS- oder Intralogistik-Umgebungen Grundkenntnisse in Java/Spring Boot, relationalen Datenbanken und Betriebssystemen (Linux, Cloud, Windows Server) Interesse an Security-Themen wie Secure Coding, IAM und OT-Netzwerksicherheit Analytisches Denken und Teamfähigkeit in agilen…"
+    },
+    {
+      "company": "T-Systems Iberia",
+      "title": "Senior Cloud Architect – T-Cloud Public Cloud Professional Services (m/f/d)",
+      "location": "Barcelona, Cataluña, Spain",
+      "locationType": "onsite",
+      "type": "architect",
+      "level": "senior",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T12:59:20Z",
+      "url": "https://www.adzuna.es/details/5976069286?utm_medium=api&utm_source=b0e6829d",
+      "description": "Senior Cloud Architect – T-Cloud Public Cloud Professional Services (m/f/d) T‑Systems is part of the Deutsche Telekom Group, with around 30.000 employees worldwide. We create technology with purpose to generate a positive impact on society. We are looking for curious talent, eager to learn, take on challenges, and contribute ideas that transform our customers’ experience. We trust people: we offer autonomy, continuous support, and a collaborative environment where you can grow without limits. W…"
+    },
+    {
+      "company": "Hitachi, Ltd.",
+      "title": "Azure DevSecOps Engineer – Cloud Security & Automation",
+      "location": "Madrid, Comunidad de Madrid, Spain",
+      "locationType": "onsite",
+      "type": "security",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T12:52:44Z",
+      "url": "https://www.adzuna.es/details/5976066978?utm_medium=api&utm_source=b0e6829d",
+      "description": "Hitachi Energy Spain, S.A.U. is seeking DevSecOps Engineers to design, secure and operate a global Azure-based cloud platform. The role emphasizes IaC with Terraform, Azure DevOps pipelines and secure networking in a collaborative, security-driven environment. You will partner with Cyber Security, IAM and Network teams to deliver scalable, highly available cloud services for manufacturing operations worldwide. Fluent English and cross‑team collaboration are essential. J-18808-Ljbffr"
+    },
+    {
+      "company": "Ingram Micro",
+      "title": "Senior Consultant: AWS App Modernisation (German Speaker)",
+      "location": "Santander, Cantabria, Spain",
+      "locationType": "onsite",
+      "type": "consultant",
+      "level": "senior",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T12:51:16Z",
+      "url": "https://www.adzuna.es/details/5976058635?utm_medium=api&utm_source=b0e6829d",
+      "description": "The Ingram Micro Difference Ingram Micro is a leading technology company for the global information technology ecosystem. With the ability to reach nearly 90% of the global population, we play a vital role in the worldwide IT sales channel, connecting technology manufacturers and cloud providers with businesses around the world. Our market reach, diverse solutions portfolio, and digital platform Ingram Micro Xvantage™ help us deliver innovation at scale. Here, purpose starts with you, creating …"
+    },
+    {
+      "company": "Leonardo",
+      "title": "CYS_Project Engineer Manager_DGB",
+      "location": "Genova, Provincia di Genova, Italy",
+      "locationType": "onsite",
+      "type": "security",
+      "level": "lead",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T12:48:50Z",
+      "url": "https://www.adzuna.it/details/5976050140?utm_medium=api&utm_source=b0e6829d",
+      "description": "Job Description: Leonardo è un gruppo industriale internazionale, tra le principali realtà mondiali nell’Aerospazio, Difesa e Sicurezza che realizza capacità tecnologiche multidominio in ambito Elicotteri, Velivoli, Aerostrutture, Elettronica, Cyber Security e Spazio. Con oltre 60.000 dipendenti nel mondo, l’azienda ha una solida presenza industriale in Italia, Regno Unito, Polonia, Stati Uniti, e opera in 150 paesi anche attraverso aziende controllate, joint venture e partecipazioni. Protagoni…"
+    },
+    {
+      "company": "Grafana Labs",
+      "title": "Engineering Manager - Grafana Infrastructure (Remote, Spain)",
+      "location": "España, Spain",
+      "locationType": "remote",
+      "type": "security",
+      "level": "lead",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T12:31:53Z",
+      "url": "https://www.adzuna.es/details/5976001191?utm_medium=api&utm_source=b0e6829d",
+      "description": "Engineering Manager - Grafana Infrastructure (Remote, Spain) Spain (Remote) Grafana Labs is the company behind Grafana Cloud, the fully managed observability platform trusted by more than 10,000 organizations to ensure reliability, resolve incidents faster, and optimize telemetry at scale. Built on open source and open standards and designed for interoperability across any stack, Grafana Cloud brings AI to observability and observability to AI, giving teams (and their agents) unified visibility…"
+    },
+    {
+      "company": "St. Galler Kantonalbank",
+      "title": "Leiter*in Cyber Security & IAM 80 – 100%",
+      "location": "Sankt Gallen, St. Gallen, Switzerland",
+      "locationType": "onsite",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T12:28:01Z",
+      "url": "https://www.adzuna.ch/land/ad/5975998264?se=srWzmpbn8RGBUuiRoBjMvg&utm_medium=api&utm_source=b0e6829d&v=B519C1B6F84CA75D3ACA62754250FB45B8C711FA",
+      "description": "Leiter*in Cyber Security & IAM 80 – 100% Leiter*in Cyber Security & IAM 80 – 100% «Wir begeistern unsere Kundinnen und Kunden – mit Kompetenz und Erfahrung.» [A1.1]Hast du Lust, die operative Cyber Security unserer Bank zu verantworten und unsere IT-Sicherheit weiterzuentwickeln? Als Leiter*in Cyber Security & IAM an unserem Hauptsitz in St. Gallen führst du ein fünfköpfiges Team und sorgst für den Schutz unserer Systeme und Daten. Dabei übernimmst du eine zentrale in der 1st of Defense und tre…"
+    },
+    {
+      "company": "Alstom",
+      "title": "IAM Specialist",
+      "location": "Polska, Poland",
+      "locationType": "onsite",
+      "type": "iam",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-23T10:53:53Z",
+      "url": "https://www.adzuna.pl/details/5975970912?utm_medium=api&utm_source=b0e6829d",
+      "description": "At Alstom, we understand transport networks and what moves people. From high-speed trains, metros, monorails, and trams, to turnkey systems, services, infrastructure, signalling and digital mobility, we offer our diverse customers the broadest portfolio in the industry. Every day, 80,000 colleagues lead the way to greener and smarter mobility worldwide, connecting cities as we reduce carbon and replace cars. Could you be the full-time IAM Specialist in Bangalore we’re looking for? Your future r…"
     },
     {
       "company": "COHERENT SOLUTIONS sp. z o.o.",
@@ -47,21 +242,6 @@
       "description": "Cloud Security Engineer (Travel and Transportation) Miejsce pracy: Wrocław Technologies we use Expected Google Cloud Platform AWS Wiz Terraform Optional Python Bash Cloudflare Jira Slack About the project You will contribute to a large-scale greenfield travel-technology initiative supporting the launch of a new airline operation. The project uses a modern commercial platform to enable flexible retailing, pricing, and digital shopping experiences across travel products and ancillary services. Ou…"
     },
     {
-      "company": "DCV Sabenza IT and Recruitment",
-      "title": "AWS DevSecOps Engineer at Sabenza IT & Recruitment - Gauteng, Johannesburg",
-      "location": "Johannesburg, Gauteng, South Africa",
-      "locationType": "remote",
-      "type": "security",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T21:11:14Z",
-      "url": "https://www.adzuna.co.za/details/5975309589?utm_medium=api&utm_source=b0e6829d",
-      "description": "This is a remote position. We are seeking a skilled AWS DevSecOps Engineers to join our technology team. The ideal candidates will have strong experience in AWS cloud environments, combined with hands-on Security Operations (SecOps) expertise. This role focuses on securing, maintaining, and optimizing AWS infrastructure while ensuring compliance with security best practices and operational standards. The successful candidates will play a key role in implementing security controls, managing vuln…"
-    },
-    {
       "company": "NLwerkt",
       "title": "Functioneel ontwerper ict",
       "location": "Oudewater, Provincie Utrecht, Netherlands",
@@ -73,7 +253,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-22T20:11:20Z",
-      "url": "https://www.adzuna.nl/land/ad/5975309629?se=PnV8AQjn8RGuPayoyp3FzQ&utm_medium=api&utm_source=b0e6829d&v=364289B79CBE39C8C1BC077BC98EB16770C8AFB3",
+      "url": "https://www.adzuna.nl/land/ad/5975309629?se=YsJKl5bn8RGBUuiRoBjMvg&utm_medium=api&utm_source=b0e6829d&v=364289B79CBE39C8C1BC077BC98EB16770C8AFB3",
       "description": "Draag bij aan de toekomst van mobiliteit in Nederland. Werk aan innovatieve cloudoplossingen binnen een complexe IT-omgeving, samen met platform- en ontwikkelteams. Bij NS krijg je de ruimte om impact te maken in een open techcultuur die volop in ontwikkeling is. Jij zorgt voor de mobiliteit van Nederland Veel ontwikkel-mogelijkheden Goede arbeidsvoorwaarden Daarom wil je als Solution Architect AWS Infrastructuur & Security bij NS werken Je werkt aan de AWS-landing zone die het fundament vormt …"
     },
     {
@@ -135,81 +315,6 @@
       "posted": "2026-11-22T17:52:36Z",
       "url": "https://www.adzuna.fr/details/5975252249?utm_medium=api&utm_source=b0e6829d",
       "description": "This position is listed on behalf of a partner company, who manages all applications and next steps. Our partner is looking for an IAM Engineer based in France. We are looking for a detail-oriented IAM Engineer to strengthen a Security team in a fully remote, international environment. In this role, you will help protect company systems and information by ensuring that employees have the right access at the right time. You will manage identity and access processes throughout the employee lifecy…"
-    },
-    {
-      "company": "Yellow Card",
-      "title": "Security Operations Engineer",
-      "location": "Stellenbosch, Cape Winelands, South Africa",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T16:58:17Z",
-      "url": "https://www.adzuna.co.za/details/5975200827?utm_medium=api&utm_source=b0e6829d",
-      "description": "Who We Are Yellow Card is the largest licensed Stablecoin-based infrastructure provider operating across over 60 countries. From Stablecoin payment infrastructure to fiat settlement rails, wallet services, and custom local Stablecoin issuance, Yellow Card provides the complete infrastructure businesses need to manage Stablecoins, payments, and operations across 50 emerging markets. Yellow Card operates with a substantial global team spanning 24 countries. This workforce is characterized by its …"
-    },
-    {
-      "company": "Placements24",
-      "title": "Remote Cloud Security Architect - Lead & Innovate",
-      "location": "Johannesburg, Gauteng, South Africa",
-      "locationType": "remote",
-      "type": "architect",
-      "level": "lead",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T16:58:03Z",
-      "url": "https://www.adzuna.co.za/details/5975198401?utm_medium=api&utm_source=b0e6829d",
-      "description": "Placements24 is seeking a highly experienced Cloud Security Architect to join our fully remote technology team. You will design secure cloud environments across AWS, Azure, and GCP, shaping security strategy and controls to protect data and applications in the cloud. As a remote-first role, you will collaborate with distributed teams, implement IAM, network security, encryption, and threat detection, and guide compliance with frameworks such as NIST and ISO 27001. J-18808-Ljbffr"
-    },
-    {
-      "company": "Standard Bank",
-      "title": "Graduate Security Engineer — Personal & Private Banking",
-      "location": "Johannesburg, Gauteng, South Africa",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "junior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T16:58:00Z",
-      "url": "https://www.adzuna.co.za/details/5975197964?utm_medium=api&utm_source=b0e6829d",
-      "description": "Standard Bank's PPB Technology Security Engineering Graduate Programme aims to attract talented graduates with strong technical knowledge who can become thought leaders and trusted advisors. The programme combines theoretical learning and practical experience. Participants work on monitoring cybersecurity threats, securing banking applications, APIs and digital platforms, support IAM processes, and help implement security controls across systems and cloud environments. J-18808-Ljbffr"
-    },
-    {
-      "company": "Placements24",
-      "title": "Cloud Security Architect (Remote)",
-      "location": "Cape Town City Centre, Cape Town Region, South Africa",
-      "locationType": "remote",
-      "type": "architect",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T16:57:59Z",
-      "url": "https://www.adzuna.co.za/details/5975197874?utm_medium=api&utm_source=b0e6829d",
-      "description": "About the Role Our client is seeking a highly experienced and visionary Cloud Security Architect to join their fully remote technology team. This pivotal role is responsible for designing, implementing, and managing secure cloud environments across major platforms like AWS, Azure, and GCP. You will be instrumental in developing cloud security strategies, defining security controls, and ensuring the protection of sensitive data and applications in the cloud. As a remote-first position, you'll co…"
-    },
-    {
-      "company": "Placements24",
-      "title": "Senior Aws Cloud Engineer: Infra, Ci/Cd & Kubernetes",
-      "location": "South Africa",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T16:57:52Z",
-      "url": "https://www.adzuna.co.za/details/5975196403?utm_medium=api&utm_source=b0e6829d",
-      "description": "Senior Cloud Engineer – Soweto, Gauteng Our client, a leader in cloud-native application development, is seeking a highly skilled Senior Cloud Engineer with a specialization in Amazon Web Services (AWS). This role is pivotal in designing, implementing, and managing scalable, secure, and highly available cloud infrastructure. You will be responsible for leveraging the full suite of AWS services to optimize performance, cost, and reliability for our client's cutting‑edge applications. The ideal c…"
     },
     {
       "company": "Stöcklin Logistik AG",
@@ -377,66 +482,6 @@
       "description": "Excelia, firma multinacional de Consultoría, Tecnología y Servicios, busca un/a Security Architect – Sector Bancario para impulsar proyectos de transformación tecnológica en entornos bancarios. Ofrecemos modalidad híbrida con 1-2 días en Las Tablas (Madrid) y un equipo dinámico. Se requiere al menos 3 años de experiencia en ciberseguridad, diseño de arquitecturas seguras y conocimientos en AWS, APIs y Cloud. J-18808-Ljbffr"
     },
     {
-      "company": "Avanade Inc.",
-      "title": "MWP – Técnico/a de Soporte Modern Workplace – Microsoft 365 & Migraciones, Analyst",
-      "location": "Madrid, Comunidad de Madrid, Spain",
-      "locationType": "onsite",
-      "type": "analyst",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T12:47:14Z",
-      "url": "https://www.adzuna.es/details/5974967245?utm_medium=api&utm_source=b0e6829d",
-      "description": "Rejoignez Avanade France, leader de la création et de la mise en œuvre de solutions Microsoft. Au sein de notre practice Cybersécurité, vous accompagnerez des organisations complexes dans la définition et le déploiement de leur stratégie de protection des données, depuis le cadrage de la gouvernance jusqu’à l’industrialisation des contrôles techniques. Ce poste cible un profil senior, polyvalent et proche du terrain : capable de conseiller les décideurs, d’animer des ateliers métiers et conform…"
-    },
-    {
-      "company": "Lingokids",
-      "title": "Information Security Lead",
-      "location": "Madrid, Comunidad de Madrid, Spain",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "lead",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T12:43:48Z",
-      "url": "https://www.adzuna.es/details/5974961978?utm_medium=api&utm_source=b0e6829d",
-      "description": "We've set the standard in kids entertainment. Come help us raise it. We're Lingokids, the 1 entertainment platform for young kids. Most kids content is designed to capture attention. We create experiences little ones genuinely love. Everything we make is created in-house to be seriously fun, with the good stuff built in from the very beginning. We're KidSAFE certified, completely ad-free, and committed to giving families entertainment they can trust, with no compromise. Ever. 20 million kids co…"
-    },
-    {
-      "company": "Nextail",
-      "title": "Senior Platform Engineer",
-      "location": "Madrid, Comunidad de Madrid, Spain",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T12:43:46Z",
-      "url": "https://www.adzuna.es/details/5974961819?utm_medium=api&utm_source=b0e6829d",
-      "description": "Mission Nextail is a SaaS company that optimizes inventory for fashion retailers. The Platform team runs the infrastructure, cloud and security that all other teams build on.Your mission is to keep that infrastructure reliable, secure and maintainable. You will own day-to-day operations across AWS, Kubernetes, Terraform, Snowflake and our databases. You will also support other teams with deployments, the infrastructure their applications need, and security questions. Expected outcomes At 6 mont…"
-    },
-    {
-      "company": "Jobgether",
-      "title": "Remote IAM Engineer: Access Governance & SSO",
-      "location": "España, Spain",
-      "locationType": "remote",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T12:30:16Z",
-      "url": "https://www.adzuna.es/details/5974942634?utm_medium=api&utm_source=b0e6829d",
-      "description": "Jobgether is seeking a detail-oriented IAM Engineer to strengthen a Security team in a fully remote, international environment. You will manage identity and access processes throughout the employee lifecycle, ensure least-privilege access, and contribute to automation and documentation to improve operational efficiency. The role focuses on Google Workspace administration, SSO, password management, and access governance. J-18808-Ljbffr"
-    },
-    {
       "company": "JumpCloud",
       "title": "Product Marketing Manager - Mexico",
       "location": "México, Mexico",
@@ -523,7 +568,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-22T09:08:14Z",
-      "url": "https://www.adzuna.com/land/ad/5975127695?se=NF47-gfn8RGxaphH8dh4sw&utm_medium=api&utm_source=b0e6829d&v=4123EFD603BA19C56CB5D61B948515E0DFAB6F5D",
+      "url": "https://www.adzuna.com/land/ad/5975127695?se=FplikJbn8RGCSsN2jRBeTA&utm_medium=api&utm_source=b0e6829d&v=4123EFD603BA19C56CB5D61B948515E0DFAB6F5D",
       "description": "Practice - CIS - Cloud, Infrastructure, and Security Services About Cloud Infrastructure & Security Services: Cognizant's Cloud, Infrastructure, and Security Services Practice (CIS), is all about embracing digital transformation by driving core modernization holistically across layers. We help customers transform infrastructure and workplace to meet the rapidly evolving needs of the digital era. Our holistic approach delivers key results for our customers by achieving cloud driven modernization…"
     },
     {
@@ -538,7 +583,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-22T08:30:08Z",
-      "url": "https://www.adzuna.com/land/ad/5975101910?se=NF47-gfn8RGxaphH8dh4sw&utm_medium=api&utm_source=b0e6829d&v=745BAC081E04F27F23EEE8983DED9FA6FA38912B",
+      "url": "https://www.adzuna.com/land/ad/5975101910?se=FplikJbn8RGCSsN2jRBeTA&utm_medium=api&utm_source=b0e6829d&v=745BAC081E04F27F23EEE8983DED9FA6FA38912B",
       "description": "The Identity Security Architect & Product Engineering Lead drives the design, engineering, and deployment of next-generation identity security capabilities across a large banking client. The role leads initiatives in attack path analysis, identity threat protection, behavioral analytics, authentication modernization, policy-based access control (PBAC), and identity-driven attack containment. It combines deep IAM architecture and Zero Trust expertise with hands-on product engineering on Sgnl.ai,…"
     },
     {
@@ -553,7 +598,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-22T08:20:28Z",
-      "url": "https://www.adzuna.com/land/ad/5975083976?se=NF47-gfn8RGxaphH8dh4sw&utm_medium=api&utm_source=b0e6829d&v=24F9040B4204F2A75683126DDCD25C3BA247D4B7",
+      "url": "https://www.adzuna.com/land/ad/5975083976?se=FplikJbn8RGCSsN2jRBeTA&utm_medium=api&utm_source=b0e6829d&v=24F9040B4204F2A75683126DDCD25C3BA247D4B7",
       "description": "Title: Program Manager - Core Technology Location: Hybrid 3 days a week Golden Valley, MN Max Pay Rate: $70/hr - $80/hr Contract length: 6 Month (long term contractor) Program Manager - Core Technology & Infrastructure Portfolio The Role As a Program Manager within the Transformation Office, you will lead strategic enterprise technology initiatives supporting the Core Portfolio. This portfolio includes infrastructure modernization, cybersecurity, digital resilience, identity and access manageme…"
     },
     {
@@ -570,21 +615,6 @@
       "posted": "2026-11-22T08:02:07Z",
       "url": "https://www.adzuna.fr/details/5974795442?utm_medium=api&utm_source=b0e6829d",
       "description": "Votre objectif : développer l'activité cybersécurité d'Avanade France, accompagner les clients de la stratégie à l'exécution et fédérer une équipe d'experts autour des solutions de sécurité Microsoft.IntroductionRejoignez Avanade France, acteur majeur de la transformation numérique et partenaire stratégique de Microsoft. Nous combinons expertise sectorielle, maîtrise des technologies Microsoft et culture collaborative pour aider nos clients à renforcer durablement leur résilience numérique.Rejo…"
-    },
-    {
-      "company": "Rocken®",
-      "title": "IAM Engineer",
-      "location": "Kirchberg, Emmental, Switzerland",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-22T06:24:29Z",
-      "url": "https://www.adzuna.ch/land/ad/5974689609?se=wjg7BQjn8RGuPayoyp3FzQ&utm_medium=api&utm_source=b0e6829d&v=0E3662D5B8CE16976C4FDA16A91013D1DF5D44FE",
-      "description": "IAM Engineer (m/w/d) IAM Engineer (m/w/d) Rocken® ist ein Schweizer Unternehmen mit dem Sitz in Zürich. Wir haben eine webbasierte Online- Plattform zur Jobsuche und Talentgewinnung entwickelt, die den Bewerbungsprozess digitalisiert und die Unternehmung dabei unterstützt, Talente am Markt rasch zu erkennen und langfristig für sich zu gewinnen. Mit einem digitalen Rocken Profil kann sich jeder Bewerber schnell und unkompliziert mit marktführenden Firmen verbinden und das Profil teilen. Unsere A…"
     },
     {
       "company": "Comgent",
@@ -707,24 +737,9 @@
       "description": "Introduction to the job As a Computer Systems and Linux Engineer, you will play a key role in Software Infrastructure and Computer Systems (SICS), the department that provides the software and hardware platform for ASML’s lithography systems. Using your expertise in Linux, computer systems, security, virtualization, and automation, you will contribute to reliable, secure, and scalable platforms that support multiple product lines and must remain operational for more than 40 years. In this role,…"
     },
     {
-      "company": "Leonardo SpA",
-      "title": "Cys - Solution Architect - Seu",
-      "location": "Genova, Provincia di Genova, Italy",
-      "locationType": "onsite",
-      "type": "architect",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-21T18:15:02Z",
-      "url": "https://www.adzuna.it/details/5974366509?utm_medium=api&utm_source=b0e6829d",
-      "description": "Leonardo è un gruppo industriale internazionale, tra le principali realtà mondiali nell’Aerospazio, Difesa e Sicurezza che realizza capacità tecnologiche multidominio in ambito Elicotteri, Velivoli, Aerostrutture, Elettronica, Cyber Security e Spazio. Con oltre 60.000 dipendenti nel mondo, l’azienda ha una solida presenza industriale in Italia, Regno Unito, Polonia, Stati Uniti, e opera in 150 paesi anche attraverso aziende controllate, joint venture e partecipazioni. Protagonista dei principal…"
-    },
-    {
       "company": "Stefanini EMEA",
       "title": "Senior IAM & PAM Security Engineer",
-      "location": "France",
+      "location": "Paris, Ile-de-France, France",
       "locationType": "hybrid",
       "type": "iam",
       "level": "senior",
@@ -902,21 +917,6 @@
       "description": "Bachelor's or advanced degree in Computer Science, Data Science or a related field. 5 years of experience in data engineering, cloud engineering or AI/ML engineering roles. Strong Python software engineering skills. Proven experience delivering AI/LLM-based solutions to production. Proven experiences in Agentic Engineering practices, either personal projects or professionally. Hands-on experience with cloud platforms, preferably GCP. Strong grasp of data warehouse principles, SQL and cloud-base…"
     },
     {
-      "company": "Ncsaustralia",
-      "title": "Senior CIAM Technical Delivery Lead (Ping Identity)",
-      "location": "The Rocks, Sydney, Australia",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-21T01:23:04Z",
-      "url": "https://www.adzuna.com.au/details/5972988171?utm_medium=api&utm_source=b0e6829d",
-      "description": "We're looking for a Senior CIAM Technical Delivery Lead (Ping Identity) to provide technical leadership, architecture assurance and implementation oversight for a large-scale customer identity and access management transformation. This is a senior technical role for someone who can get into the detail - reviewing architecture and designs, challenging technical decisions, validating Ping Identity configurations and integrations, and ensuring the solution is secure, scalable, resilient and produc…"
-    },
-    {
       "company": "IVM Technical Consultants",
       "title": "DevOps & Cloud Engineer (m/w/d)",
       "location": "Klagenfurt, Kärnten, Austria",
@@ -928,7 +928,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-21T00:15:58Z",
-      "url": "https://www.adzuna.at/land/ad/5973286236?se=1oQ2BAjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=2709B2CD1F7999DF435F7BB900E75F42AE1A0264",
+      "url": "https://www.adzuna.at/details/5973286236?utm_medium=api&utm_source=b0e6829d",
       "description": "IVM spezialisiert sich seit 40 Jahren auf die Ziele ihrer Projektpartner*innen und ihrer Kunden im technischen Umfeld. Mit Hilfe unserer technisch affinen Wissensträger*innen schaffen wir jeden Wunsch zu erfüllen. Werden Sie Consultant bei IVM und arbeiten Sie an spannenden Projekten bei den Top Unternehmen Österreichs! Job-Nr.: 107413 Einsatzort: Klagenfurt Fachbereich: Software & IT Art der Anstellung: Vollzeit Gehalt (Brutto/Monat): ab € 4.200,- Betrieb, Optimierung und kontinuierliche Weite…"
     },
     {
@@ -960,21 +960,6 @@
       "posted": "2026-11-20T20:23:37Z",
       "url": "https://www.adzuna.at/details/5973211777?utm_medium=api&utm_source=b0e6829d",
       "description": "Wer wir sind Specific-Group ist eine 100% eigentümergeführte IT-Dienstleistungsfirma. Seit über 25 Jahren am Markt, mit rund 550 IT-Expert:innen an über 14 internationalen Standorten, von Software Engineering über Data & AI, Microsoft, Infrastructure und ERP bis zu Consulting und Information Security. Gegründet in Wien, wo wir heute mit 260 Mitarbeitenden vertreten sind. Etwa 80% unserer IT-Expert:innen bringen Senior-Erfahrung mit. In den letzten Jahren sind wir jährlich um rund 25% gewachsen.…"
-    },
-    {
-      "company": "Free-Work",
-      "title": "CloudOps / SysOps AWS Senior – Landing Zone & Terraform H/F (CDI)",
-      "location": "Hauts-de-Seine, Ile-de-France, France",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-20T20:09:39Z",
-      "url": "https://www.adzuna.fr/details/5973202138?utm_medium=api&utm_source=b0e6829d",
-      "description": "Free-Work est une plateforme qui s'adresse à tous les professionnels des métiers de l'informatique. Ses contenus et son jobboard IT sont mis à disposition 100% gratuitement pour les indépendants et les salariés du secteur. Dans le secteur de l?énergie, nous recherchons un CloudOps / SysOps AWS expérimenté pour intervenir sur une Landing Zone AWS et un socle multi-comptes déjà en production. La prestation est réalisée au forfait avec engagement de résultats et s?inscrit dans une organisation SAF…"
     },
     {
       "company": "SEB",
@@ -1112,21 +1097,6 @@
       "description": "Description Buscamos pessoas que sejam movidas a desafios técnicos, que se identifiquem com um ambiente dinâmico e diverso, e que combinem profundidade técnica com visão de negócio para atuar como referência especializada na operação de segurança de uma instituição financeira S2. A posição atua como referência técnica (trilha de especialista) na Gerência de Operações de Segurança (SecOps), liderando tecnicamente projetos complexos, definindo padrões, arquiteturas e estratégias de proteção ciber…"
     },
     {
-      "company": "RevStar",
-      "title": "Devops Forward Deployed Engineer",
-      "location": "Brasilia, Distrito Federal, Brazil",
-      "locationType": "remote",
-      "type": "security",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-20T09:48:27Z",
-      "url": "https://www.adzuna.com.br/details/5972852655?utm_medium=api&utm_source=b0e6829d",
-      "description": "Build What Matters at RevStar Position: DevOps Forward Deployed Engineer (FDE) Reports To: DevOps Lead/Migrations Lead Location: Remote Employment Type: Contract Job Summary At RevStar, we are a dynamic team of engineers, UX designers, and product managers committed to putting business first in the pursuit of excellence. As an Advanced Technology Partner, we deliver cloud-native web and mobile applications, building modern data and AI solutions that drive tangible value. We foster a remote-firs…"
-    },
-    {
       "company": "Collective.work",
       "title": "Architecte Lead Cloud – Transformation et migration multi-cloud - Nantes (44) - Freelance",
       "location": "Loire-Atlantique, Pays de la Loire, France",
@@ -1202,21 +1172,6 @@
       "description": "Solution Architect Miejsce pracy: Warszawa Technologies we use Expected AWS AWS Redshift Lambda SQL Python Apache Airflow ETL/ELT Data Warehouse GenAI Large Language Models (LLM) Retrieval-Augmented Generation (RAG) Model Context Protocol (MCP) Prompt & Model Evaluation MLOps / LLMOps Infrastructure as Code (IaC) Optional Google Cloud Platform (GCP) Amazon SageMaker Google BigQuery About the project The role focuses on providing architecture leadership across an international portfolio of IT pr…"
     },
     {
-      "company": "Intetics",
-      "title": "1220 | Solution Architect",
-      "location": "Polska, Poland",
-      "locationType": "onsite",
-      "type": "architect",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-19T18:16:43Z",
-      "url": "https://www.adzuna.pl/details/5971913065?utm_medium=api&utm_source=b0e6829d",
-      "description": "Intetics Inc. , a global technology company providing custom software application development, distributed professional teams, software product quality assessment, and “all-things-digital” solutions, is seeking a Solution Architect to join our dynamic team on a part time basis. We are looking for an experienced Solution Architect to design and oversee complex digital and enterprise IT solutions within a large-scale international environment. The ideal candidate will have strong expertise in end…"
-    },
-    {
       "company": "ABN AMRO International Services B.V.",
       "title": "Senior IAM Engineer (Ping Identity)",
       "location": "Amstelveen, Noord-Holland, Netherlands",
@@ -1260,6 +1215,21 @@
       "posted": "2026-11-19T14:14:52Z",
       "url": "https://www.adzuna.ch/details/5971653871?utm_medium=api&utm_source=b0e6829d",
       "description": "Salary: CHF 125'000 - 155'000 per year Requirements: Mehrjährige praktische Erfahrung in einer vergleichbaren Funktion im IAM-Umfeld. Fundierte Kenntnisse in Berechtigungsmanagement, Rollenmodellen, Identity Governance und IAM-Security-Prinzipien. Erfahrung im Betrieb und in der Weiterentwicklung geschäftskritischer Plattformen. Praxis in der strukturierten Bearbeitung von Incidents und Supportfällen. Fähigkeit, komplexe technische und fachliche Zusammenhänge zu analysieren und verständlich zu …"
+    },
+    {
+      "company": "Audemars Piguet  SA",
+      "title": "Information Security Engineering Manager - Jura-Nord vaudois",
+      "location": "Le Chenit, Jura-Nord vaudois, Switzerland",
+      "locationType": "onsite",
+      "type": "security",
+      "level": "lead",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-19T14:14:52Z",
+      "url": "https://www.adzuna.ch/details/5971653976?utm_medium=api&utm_source=b0e6829d",
+      "description": "Salary: CHF 95'000 - 125'000 per year Requirements: 5 years of higher education in IT, an engineering school, or university, and proven experience in IT security and technical team management Knowledge of data protection and identity solutions and principles, including PAM, IAM, and CIAM solutions Expertise in email filtering solutions and workplace security, including EDR, XDR, and hardening Mastery of cybersecurity solutions, methods, and standards, including firewalls, antivirus, cryptograph…"
     },
     {
       "company": "Rockstar Recruiting AG",
@@ -1337,51 +1307,6 @@
       "description": "Salary: CHF 125'000 - 140'000 per year Requirements: Das bringst du mit Abgeschlossenes Studium (Informatik, Wirtschaftsinformatik, Mathematik, Elektrotechnik, Physik o.ä.) 2-3 Jahre Erfahrung im Azure Engineering Leidenschaft an innovativen Technologien, Methoden und Themen wie Cloud, DevOps, Security, IaC und Container Offenheit für andere Cloud-Technologien wie AWS oder GCP Teamplayer und gute kommunikative Fähigkeiten Professionelles Auftreten und fliessende Deutsch- und Englischkenntnisse …"
     },
     {
-      "company": "Innovation Process Technology AG",
-      "title": "Cloud Engineer im IT-Consulting",
-      "location": "Bern, Bern-Mittelland, Switzerland",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "mid",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-19T14:14:50Z",
-      "url": "https://www.adzuna.ch/details/5971653438?utm_medium=api&utm_source=b0e6829d",
-      "description": "Salary: CHF 90'000 - 105'000 per year Requirements: Erfolgreich abgeschlossenes Studium in Informatik oder Wirtschaftsinformatik Erste Erfahrung im Software Engineering in einem komplexen IT-Umfeld (mind. 1 Jahr, auch Teilzeit möglich) Leidenschaft an innovativen Technologien, Methoden und Themen wie Cloud, DevOps, Security, IaC und Container Teamplayer und gute kommunikative Fähigkeiten Professionelles Auftreten und fliessende Deutsch- und Englischkenntnisse Responsibilities: In einem 3-5-köpf…"
-    },
-    {
-      "company": "Ergon Informatik AG",
-      "title": "Senior Enterprise Architect (m/w/d) 80-100%",
-      "location": "Zollikon, Meilen, Switzerland",
-      "locationType": "onsite",
-      "type": "architect",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-19T14:14:50Z",
-      "url": "https://www.adzuna.ch/details/5971653535?utm_medium=api&utm_source=b0e6829d",
-      "description": "Salary: CHF 110'000 - 140'000 per year Requirements: • Masterabschluss in einem MINT-Fach oder in Wirtschaftsinformatik • Ausgewiesene mehrjährige Erfahrung (mindestens drei Jahre) in der Beratung oder in einer Anwenderorganisation als Enterprise Architect • Fundierte theoretische und praktische Kenntnisse von Enterprise Architecture (nach TOGAF) • Vertiefte Erfahrungen in spezifischen Architekturdimensionen (z.B. der Geschäfts- oder Datenarchitektur) • Verständnisse für aktuelle Enterprise IT-…"
-    },
-    {
-      "company": "Rockstar Recruiting AG",
-      "title": "Senior IAM Engineer",
-      "location": "Zürich, Switzerland",
-      "locationType": "onsite",
-      "type": "iam",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-19T14:14:50Z",
-      "url": "https://www.adzuna.ch/details/5971653609?utm_medium=api&utm_source=b0e6829d",
-      "description": "Salary: CHF 120'000 - 135'000 per year Requirements: 5 years of experience in Identity & Access Management Hands-on experience with Okta, Auth0, Entra ID, Keycloak, or similar IAM platforms Strong knowledge of SSO, SAML, OAuth2, OIDC, MFA, and Zero Trust principles Experience with Terraform, CI/CD pipelines, and scripting (PowerShell or Python) Strong understanding of authentication, authorization, and role-based access models German fluency B2 Responsibilities: Design, build, and operate a cen…"
-    },
-    {
       "company": "Banco",
       "title": "Especialista em Cloud Security Engineering",
       "location": "São Paulo, Estado de São Paulo, Brazil",
@@ -1438,7 +1363,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:07:18Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971426285?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=44BBDF29F1252A34508E228775B4EDC9353D7C73",
+      "url": "https://www.adzuna.com.br/details/5971426285?utm_medium=api&utm_source=b0e6829d",
       "description": "CLOUDMANAGER - AZURE, TERRAFORM & LANDING ZONE (HYBRID OR REMOTE BRAZIL) Company hires for hybrid or remote position ?? Location: Brazil —candidates from any region are welcome ?? Only candidates already basedin Brazil will be considered ?? Work Model: Hybridfor candidates living in state capitals and Remote forcandidates living in countryside/cities outside the state capitals ??? Language Requirements:Advanced or Fluent English for communication with US-based stakeholders ?? Seniority: Senior …"
     },
     {
@@ -1453,7 +1378,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:07:07Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971425100?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=ADC641440C0EC30738652B642BBA0950D3DA77E3",
+      "url": "https://www.adzuna.com.br/details/5971425100?utm_medium=api&utm_source=b0e6829d",
       "description": "Nosso time de SEGURANÇA DA INFORMAÇÃO está em busca de ESPECIALISTA RED TEAM para contribuir com o Futuro da Riachuelo e impulsionar cada vez mais a Moda que inspira o Brasil. Lembramos que nossas oportunidades são para todos. Na Riachuelo, você encontra um ambiente diverso, com respeito e empatia, em que cuidamos dos colaboradores. Os desafios da função são: Planejamento e Execução: Realizar testes de intrusão (internos/externos) e simulações de adversários reais em aplicações, APIs, redes, in…"
     },
     {
@@ -1468,7 +1393,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:07:05Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971424886?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=566D0D0743814AF3C3C9783825A042680F39D6F2",
+      "url": "https://www.adzuna.com.br/details/5971424886?utm_medium=api&utm_source=b0e6829d",
       "description": "SENIOR PING IDENTITY ENGINEER – IAM/SSO OPERATIONS (HYBRID OR REMOTEBRAZIL) Company hires for hybrid or remote position ?? Location: Brazil —candidates from any region are welcome ?? Only candidates already basedin Brazil will be considered ?? Work Model: Hybridfor candidates living in state capitals and Remote forcandidates living in countryside/cities outside the state capitals ??? Language Requirements:Professional English for communication in a global environment ?? Seniority: Senior (6year…"
     },
     {
@@ -1483,7 +1408,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:07:04Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971424779?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=90F32F0AAADAAD6434D9F2EE76084304D9E3CD46",
+      "url": "https://www.adzuna.com.br/details/5971424779?utm_medium=api&utm_source=b0e6829d",
       "description": "SENIORCYBERARK SECURITY ENGINEER (HYBRID OR REMOTE BRAZIL) Company hires for hybrid or remote position ?? Location: Brazil —candidates from any region are welcome ?? Only candidates already basedin Brazil will be considered ?? Work Model: Hybridfor candidates living in state capitals and Remote forcandidates living in countryside/cities outside the state capitals ??? Language Requirements:Professional English for communication in a global environment ?? Seniority: Senior (6years) ??Rate: Candid…"
     },
     {
@@ -1498,7 +1423,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:05:32Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971412481?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=3EC07F3B3B008E07E2EC56092188EB24C40B28D4",
+      "url": "https://www.adzuna.com.br/details/5971412481?utm_medium=api&utm_source=b0e6829d",
       "description": "Nível Acadêmico: Ensino Superior Completo Turno/Horas  Áreas de Atuação Profissional: TI - Projetos Descrição: 'Inglês avançado para comunicação profissional. Experiência em gestão de projetos e programas de tecnologia. Experiência sólida liderando iniciativas de Segurança da Informação, Cybersegurança, Governança de TI, Gestão de Riscos ou Compliance. Experiência na gestão de escopo, cronogramas, orçamento, recursos, riscos e dependências. Vivência em programas de transformação de segurança e …"
     },
     {
@@ -1513,7 +1438,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:01:57Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971385922?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=936871549C78894F3975EB5FE13E5E643CABA6B3",
+      "url": "https://www.adzuna.com.br/details/5971385922?utm_medium=api&utm_source=b0e6829d",
       "description": "Responsabilidades: Infraestrutura AWS: Apoiar na gestão e no monitoramento dos recursos na nuvem (EC2, S3, RDS, Lambda, CloudFront), ajudando a manter o ambiente estável e com custos sob controle. Aplicações Web: Auxiliar no deploy, configuração e manutenção das aplicações web em produção, incluindo DNS, certificados SSL e balanceamento de carga. CI/CD: Apoiar a manutenção dos pipelines de deploy, colaborando para que o time de desenvolvimento entregue código com segurança e agilidade. Banco de…"
     },
     {
@@ -1528,7 +1453,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-11-19T06:01:13Z",
-      "url": "https://www.adzuna.com.br/land/ad/5971379994?se=kOMkBwjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=94B543938A7C8F083EBDD0A25762DB4AD0AA00BE",
+      "url": "https://www.adzuna.com.br/details/5971379994?utm_medium=api&utm_source=b0e6829d",
       "description": "Descrição e responsabilidades Horário:ADM Nível do cargo:Profissional Área de atuação:Outros Stellantis is one of the world’s leading automakers and mobility providers, dedicated to developing and producing passenger cars and light commercial vehicles. We are one of the top Mobility Tech Companies globally, bringing together iconic brands such as Fiat, Jeep, Peugeot, Citroën, RAM, and Abarth. With operations in nearly 30 countries and a presence in over 130 markets, we deliver clean, connected,…"
     },
     {
@@ -1560,6 +1485,21 @@
       "posted": "2026-11-19T05:11:55Z",
       "url": "https://www.adzuna.fr/details/5971056771?utm_medium=api&utm_source=b0e6829d",
       "description": "Description du poste Taux journalier (TJM): 600 Architecte Cloud AWS / Terraform Descriptif du poste Un acteur des services numériques remplace une ressource critique dans son service Infrastructure Cloud & Cyber, rattaché à la Direction Technique. Le consultant reprendra, maintiendra et fera évoluer le socle cloud commun AWS. Le niveau d’exigence est renforcé sur la sécurité, la maîtrise des accès et la conformité des environnements. Il travaillera avec les équipes développement, exploitation,…"
+    },
+    {
+      "company": "Insight Global",
+      "title": "INTL - DevOps Engineer",
+      "location": "Recife, Pernambuco, Brazil",
+      "locationType": "onsite",
+      "type": "security",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-19T04:08:32Z",
+      "url": "https://www.adzuna.com.br/details/5971227809?utm_medium=api&utm_source=b0e6829d",
+      "description": "Job Description This role focuses on CI/CD, platform engineering, and operational excellence across on-prem, AWS, and Azure Will work closely with development teams to understand their design/challenges, propose technical solutions, and assist with implementation of systems. Standardize CI/CD on GitHub Actions by building reusable workflows/composite actions, defining runner strategy, and enforcing environment protections/approvals and required quality gates; automate build, test, security chec…"
     },
     {
       "company": "All About Work",
@@ -1605,21 +1545,6 @@
       "posted": "2026-11-18T15:16:33Z",
       "url": "https://www.adzuna.com.mx/details/5970788354?utm_medium=api&utm_source=b0e6829d",
       "description": "AgileEngine is an Inc. 5000 company that creates award-winning software for Fortune 500 brands and trailblazing startups across 17 industries. We rank among the leaders in areas like application development and AI/ML, and our people-first culture has earned us multiple Best Place to Work awards. WHY JOIN US If you're looking for a place to grow, make an impact, and work with people who care, we'd love to meet you! ABOUT THE ROLE We are looking for a DevOps Engineer to build and run cloud infras…"
-    },
-    {
-      "company": "Jobgether",
-      "title": "Staff Product Security Engineer",
-      "location": "México, Mexico",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "principal",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-18T10:49:42Z",
-      "url": "https://www.adzuna.com.mx/details/5970541108?utm_medium=api&utm_source=b0e6829d",
-      "description": "This position is listed on behalf of a partner company, who manages all applications and next steps. Our partner is looking for a Staff Product Security Engineer based in Mexico . As a Staff Product Security Engineer, you will lead and evolve the penetration testing program for a portfolio of enterprise cloud products, ensuring security vulnerabilities are identified and addressed before release and throughout production. You will combine hands-on security testing, third-party vendor management…"
     },
     {
       "company": "Bright Professionals",
@@ -1682,21 +1607,6 @@
       "description": "Voor het Rijksinstituut voor Volksgezondheid en Milieu zoeken wij een Splunk Consultant. Je werkt als ervaren Splunk-beheerder en productspecialist aan het beheer en de doorontwikkeling van Splunk On-Prem en Splunk Observability. Daarbij onderzoek je hoe deze oplossingen effectief kunnen worden ingezet voor monitoring en observability. Je draagt bij aan de verdere ontwikkeling van deze diensten en werkt op strategisch, tactisch en operationeel niveau samen met het Splunk-team. Het multidiscipli…"
     },
     {
-      "company": "Job-Room",
-      "title": "Senior Java Software Engineer (Security)",
-      "location": "Adliswil, Horgen, Switzerland",
-      "locationType": "onsite",
-      "type": "security",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-16T18:51:26Z",
-      "url": "https://www.adzuna.ch/details/5968034333?utm_medium=api&utm_source=b0e6829d",
-      "description": " A bit about the role  We-re looking for a talented Senior Software Engineer with solid experience and knowledge in application security to join our growing team in Zurich, Switzerland. In this role, you-ll work alongside experienced engineers and product specialists in a collaborative, agile environment where engineering quality, reliability, and maintainability are key. The ideal candidate combines solid software engineering experience with a good understanding of application and platform sec…"
-    },
-    {
       "company": "Nederlandse Spoorwegen",
       "title": "Solution Architect - AWS infrastructuur & security",
       "location": "Utrecht, Provincie Utrecht, Netherlands",
@@ -1742,9 +1652,9 @@
       "description": "About the Team & Role Identity is now the front door for attackers, and organisations across government, financial services, healthcare and critical infrastructure rely on Rubrik to recover quickly when identity systems like Active Directory and Entra ID are compromised. As an Account Executive, Identity Resilience, you'll take a category-defining product to customers in some of the most regulated markets in the world, building a new revenue stream alongside the Identity Sales Specialist team a…"
     },
     {
-      "company": "Leonardo",
-      "title": "CYS_Project Engineer Manager_DGB",
-      "location": "Italia, Italy",
+      "company": "Safran",
+      "title": "Tech Lead Cyber Control Tower F/H",
+      "location": "France",
       "locationType": "onsite",
       "type": "security",
       "level": "lead",
@@ -1752,9 +1662,9 @@
       "visaSponsorship": "unknown",
       "workAuthRequired": false,
       "locationRestrictions": [],
-      "posted": "2026-11-14T18:17:04Z",
-      "url": "https://www.adzuna.it/details/5966134961?utm_medium=api&utm_source=b0e6829d",
-      "description": "Job Description: Leonardo è un gruppo industriale internazionale, tra le principali realtà mondiali nell’Aerospazio, Difesa e Sicurezza che realizza capacità tecnologiche multidominio in ambito Elicotteri, Velivoli, Aerostrutture, Elettronica, Cyber Security e Spazio. Con oltre 60.000 dipendenti nel mondo, l’azienda ha una solida presenza industriale in Italia, Regno Unito, Polonia, Stati Uniti, e opera in 150 paesi anche attraverso aziende controllate, joint venture e partecipazioni. Protagoni…"
+      "posted": "2026-11-15T07:59:59Z",
+      "url": "https://www.adzuna.fr/details/5966621567?utm_medium=api&utm_source=b0e6829d",
+      "description": "Tech Lead Cyber Control Tower F/H Détail de l'offre Informations générales Entité de rattachement Safran est un groupe international de haute technologie opérant dans les domaines de l'aéronautique (propulsion, équipements et intérieurs), de l'espace et de la défense. Sa mission : contribuer durablement à un monde plus sûr, où le transport aérien devient toujours plus respectueux de l'environnement, plus confortable et plus accessible. Implanté sur tous les continents, le Groupe emploie 110 000…"
     },
     {
       "company": "Astellas Pharma",
@@ -1770,6 +1680,21 @@
       "posted": "2026-11-14T12:32:50Z",
       "url": "https://www.adzuna.in/details/5965396068?utm_medium=api&utm_source=b0e6829d",
       "description": "About Astellas Astellas is a global life sciences company committed to turning innovative science into VALUE for patients. We provide transformative therapies in disease areas that include oncology, ophthalmology, urology, immunology and women's health. Through our research and development programs, we are pioneering new healthcare solutions for diseases with high unmet medical need. Learn more at Astellas.com (https://www.astellas.com/en) . Are you driven to make a real difference in the lives…"
+    },
+    {
+      "company": "Capital Empresarial Horizonte",
+      "title": "Ingeniero de Nube Oracle (OCI)",
+      "location": "México, Mexico",
+      "locationType": "onsite",
+      "type": "security",
+      "level": "mid",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-11-14T10:50:27Z",
+      "url": "https://www.adzuna.com.mx/details/5966085677?utm_medium=api&utm_source=b0e6829d",
+      "description": "Capital Empresarial Horizonte Empresa Mexicana especialista en Recursos Humanos y Tecnologías de la Información solicita: Ingeniero de Nube Oracle (OCI) Para laborar en CDMX Esquema Hibrido (2 días presencial y 3 en home office) Inglés conversacional requerido Responsabilidades Administrar y configurar servicios de Oracle Cloud Infrastructure (OCI) . Diseñar, implementar y mantener infraestructura cloud. Gestionar Compute, VCN, Subnets, Load Balancers, Storage y otros servicios de OCI. Configur…"
     },
     {
       "company": "Cipher Recruitment",
@@ -1860,21 +1785,6 @@
       "posted": "2026-11-09T10:36:50Z",
       "url": "https://www.adzuna.it/details/5959020989?utm_medium=api&utm_source=b0e6829d",
       "description": "Welcome to catworkx Italy! We are much more than an IT consulting firm: we are innovators, pioneers, and partners of excellence. We are also one of the leading Atlassian Platinum Partners in the world, with a strong presence in Europe. We are an international company with offices in Germany, Italy, the United States, Switzerland, Austria, Ecuador, Spain, and Hungary, and we offer solutions that bring innovation, efficiency, and collaboration to companies worldwide. We specialize in Agile, DevOp…"
-    },
-    {
-      "company": "Lam Research",
-      "title": "Senior Cloud Architect (all genders)",
-      "location": "Villach, Kärnten, Austria",
-      "locationType": "onsite",
-      "type": "architect",
-      "level": "senior",
-      "clearance": "none",
-      "visaSponsorship": "unknown",
-      "workAuthRequired": false,
-      "locationRestrictions": [],
-      "posted": "2026-11-07T23:37:21Z",
-      "url": "https://www.adzuna.at/land/ad/5957531898?se=1oQ2BAjn8RGxz9-eUdfqSQ&utm_medium=api&utm_source=b0e6829d&v=11A74961E8C8183AF00341735A48ED4806ACC25A",
-      "description": "At Lam Research, we create equipment that drives technological advancements in the semiconductor industry. Our innovative solutions enable chipmakers to power progress in nearly all aspects of modern life, and it takes each member of our team to make it possible. Across our organization, our employees come to work and change the world. We take on the toughest challenges with precision and accuracy. We push for the next big semiconductor breakthrough. We lead the way in one of the most critical …"
     },
     {
       "company": "Var Group",
@@ -2038,7 +1948,7 @@
       "workAuthRequired": false,
       "locationRestrictions": [],
       "posted": "2026-10-08T12:42:39Z",
-      "url": "https://www.adzuna.com.au/land/ad/5917979291?se=Brjn_gfn8RGB-bDIy5dDgQ&utm_medium=api&utm_source=b0e6829d&v=C3E65434B6594297E0594987B57CFDF2DD30BB75",
+      "url": "https://www.adzuna.com.au/details/5917979291?utm_medium=api&utm_source=b0e6829d",
       "description": "Company Description Make extraordinary happen At NCS Australia, we’re the challenger alternative in technology services and consulting. With more than 47 years of Australian heritage, we partner with governments and leading organisations to solve complex challenges, embrace new opportunities and deliver outcomes that make a real difference. Our people bring together expertise across technology, consulting, delivery, operations, sales and corporate functions. We work collaboratively, challenge t…"
     },
     {
@@ -2220,6 +2130,21 @@
       "posted": "2026-06-29T10:32:09Z",
       "url": "https://www.adzuna.in/details/5780830587?utm_medium=api&utm_source=b0e6829d",
       "description": "Senior Product Manager, Identity Resilience Location: Bangalore About the Team The Identity Resilience team is Rubrik's fastest-growing business line, laser-focused on solving the most critical identity security challenges facing enterprises today. We operate as an entrepreneurial, \"0-to-1\" portfolio within Rubrik. As a product organization, we empower PMs to be central leaders who own the entire lifecycle - from board-level strategic vision to deep technical execution. On this team, you won't …"
+    },
+    {
+      "company": "Bitpanda",
+      "title": "Senior Cyber Security Engineer, Elastic (Security Operations)",
+      "location": "Wien, Österreich, Austria",
+      "locationType": "onsite",
+      "type": "security",
+      "level": "senior",
+      "clearance": "none",
+      "visaSponsorship": "unknown",
+      "workAuthRequired": false,
+      "locationRestrictions": [],
+      "posted": "2026-06-21T00:42:05Z",
+      "url": "https://www.adzuna.at/details/5771143650?utm_medium=api&utm_source=b0e6829d",
+      "description": "Who we are We simplify wealth creation. Founded in 2014 in Vienna, Austria by Eric Demuth, Paul Klanschek and Christian Trummer, we’re here to help people trust themselves enough to build their financial freedom — for now and the future. Our user-friendly, trade-everything platform empowers both first-time investors and seasoned experts to invest in the cryptocurrencies, crypto indices, stocks*, precious metals and commodities* they want — with any sized budget, 24/7. Our global team works acro…"
     },
     {
       "company": "Turnkey Consulting",
